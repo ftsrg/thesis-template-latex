@@ -6,3 +6,4 @@ Thesis template in LaTeX, forked from the official thesis template of BME-VIK (B
 Key improvements (see the Git log for details):
 * The template can be imported to Eclipse as a TeXlipse project.
 * The files use UTF-8 character encoding.
+* The university logo is vectorgraphical.
