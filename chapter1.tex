@@ -1,0 +1,29 @@
+%----------------------------------------------------------------------------
+\chapter{\LaTeX-eszközök}\label{sect:LatexTools}
+%----------------------------------------------------------------------------
+\section{A szerkesztéshez használatos, Windows alapú eszközök}
+%----------------------------------------------------------------------------
+Ez a sablon Windows operációs rendszer alatt készült TeXnicCenter 1 Beta 7.01 szerkesztõvel. A TeXnicCenter egy \LaTeX-szerkesztõprogram számtalan hasznos -- és ráadásul jól mûködõ -- szolgáltatással (\figref{TexnicCenter} ábra). A szoftver ingyenesen letölthetõ a\\\url{http://www.texniccenter.org/} címrõl.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
+\caption{A TeXnicCenter Windows alapú \LaTeX-szerkesztõ.} 
+\label{fig:TexnicCenter}
+\end{figure}
+
+Egy másik használható Windows alapú szerkesztõprogram a LEd (LaTeX Editor,\\\url{http://www.latexeditor.org/}), a TeXnicCenter azonban stabilabb, gyorsabb, és jobban használható.
+
+%----------------------------------------------------------------------------
+\section{A dokumentum lefordítása Windows alatt}
+%----------------------------------------------------------------------------
+A TeXnicCenter és a LEd kizárólag szerkesztõprogram (bár az utóbbiban DVI-nézegetõ is van), így a dokumentum fordításához szükséges eszközöket nem tartalmazza. Windows alatt alapvetõen két lehetõség közül érdemes választani: MiKTeX (\url{http://miktex.org/}) és TeXLive (\url{http://www.tug.org/texlive/}) programcsomag. Az utóbbi mûködik Mac OS X, GNU/Linux alatt és Unix-származékokon is. A MiKTeX egy alapcsomag telepítése után mindig letölti a használt funkciókhoz szükséges, de lokálisan hiányzó \TeX-csomagokat, míg a TeXLive DVD ISO verzóban férhetõ hozzá. Ez a dokumentum TeXLive 2008 programcsomag segítségével fordult, amelynek DVD ISO verziója a megadott oldalról letölthetõ. A sablon lefordításához a disztribúcióban szereplõ \verb+magyar.ldf+ fájlt a \verb+http://www.math.bme.hu/latex/+ változatra kell cserélni, vagy az utóbbi változatot be kell másolni a projekt-könyvtárba (ahogy ezt meg is tettük a sablonban) különben anomáliák tapasztalhatók a dokumentumban (pl. az ábra- és táblázat-aláírások formátuma nem a beállított lesz, vagy bizonyos oldalakon megjelenik alapételmezésben egy fejléc). A TeXLive 2008-at még nem kell külön telepíteni a gépre, elegendõ DVD-rõl (vagy az ISO fájlból közvetlenül, pl. DaemonTools-szal) használni. 
+
+A \TeX-eszközöket tartalmazó programcsomag binárisainak elérési útját minden esetben be kell állítani a szerkesztõprogramban, például TeXnicCenter esetén legegyszerûbben a \verb+Build / Define output profiles...+ menüponttal elõhívott dialógusablakban a \verb+Wizard...+ gombra kattintva tehetjük ezt meg.
+
+A PDF-\LaTeX~használata esetén a generált dokumentum közvetlenül PDF-formátumban áll rendelkezésre. Amennyiben a PDF-fájl egy PDF-nézõben (pl. Adobe Acrobat Reader vagy Foxit PDF Reader) meg van nyitva, akkor a fájlleírót a PDF-nézõ program tipikusan lefoglalja. Ilyen esetben a dokumentum újrafordítása hibaüzenettel kilép. Ha bezárjuk és újra megnyitjuk a PDF dokumentumot, akkor pedig a PDF-nézõk többsége az elsõ oldalon nyitja meg a dokumentumot, nem a legutóbb olvasott oldalon. Ezzel szemben például az egyszerû és ingyenes \textcolor{blue}{Sumatra PDF} nevû program képes arra, hogy a megnyitott dokumentum megváltozását detektálja, és frissítse a nézetet az aktuális oldal megtartásával.
+
+%----------------------------------------------------------------------------
+\section{Eszközök Linuxhoz}
+%----------------------------------------------------------------------------
+Linux operációs rendszer alatt is rengeteg szerkesztõprogram van, pl. a KDE alapú Kile jól használható. Ez ingyenesen letölthetõ, vagy éppenséggel az adott Linux-disztribúció eleve tartalmazza, ahogyan a dokumentum fordításához szükséges csomagokat is. Az Ubuntu Linux disztribúciók alatt például legtöbbször a \verb+texlive-base+ csomag telepítésével használhatók a \LaTeX-eszközök.

@@ -1,0 +1,168 @@
+\documentclass[11pt,a4paper,oneside]{report}             % Single-side
+%\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
+
+%\PassOptionsToPackage{chapternumber=Huordinal}{magyar.ldf}
+\usepackage{t1enc}
+\usepackage[latin2]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[thmmarks]{ntheorem}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{listings}
+\usepackage{color}
+%\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{anysize}
+\usepackage[magyar]{babel}
+\usepackage{sectsty}
+\usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
+\usepackage[hang]{caption}
+\usepackage{hyperref}
+
+%--------------------------------------------------------------------------------------
+% Main variables
+%--------------------------------------------------------------------------------------
+\newcommand{\vikszerzo}{Bódis-Szomorú András}
+\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
+\newcommand{\vikcim}{Elektronikus terelõk}
+\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
+\newcommand{\vikdoktipus}{Diplomaterv}
+\newcommand{\vikdepartmentr}{Bódis-Szomorú András}
+
+%--------------------------------------------------------------------------------------
+% Page layout setup
+%--------------------------------------------------------------------------------------
+% we need to redefine the pagestyle plain
+% another possibility is to use the body of this command without \fancypagestyle
+% and use \pagestyle{fancy} but in that case the special pages
+% (like the ToC, the References, and the Chapter pages)remain in plane style
+
+\pagestyle{plain}
+%\setlength{\parindent}{0pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
+%\setlength{\parskip}{8pt plus 3pt minus 3pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
+\setlength{\parindent}{12pt} % magyar nyelvû dokumentumokban jellemzõ
+\setlength{\parskip}{0pt}    % magyar nyelvû dokumentumokban jellemzõ
+
+\marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
+\setcounter{secnumdepth}{0}
+\sectionfont{\large\upshape\bfseries}
+\setcounter{secnumdepth}{2}
+\singlespacing
+\frenchspacing
+
+%--------------------------------------------------------------------------------------
+%	Setup hyperref package
+%--------------------------------------------------------------------------------------
+\hypersetup{
+    bookmarks=true,            % show bookmarks bar?
+    unicode=false,             % non-Latin characters in Acrobat’s bookmarks
+    pdftitle={\vikcim},        % title
+    pdfauthor={\vikszerzo},    % author
+    pdfsubject={\vikdoktipus}, % subject of the document
+    pdfcreator={\vikszerzo},   % creator of the document
+    pdfproducer={Producer},    % producer of the document
+    pdfkeywords={keywords},    % list of keywords
+    pdfnewwindow=true,         % links in new window
+    colorlinks=true,           % false: boxed links; true: colored links
+    linkcolor=black,           % color of internal links
+    citecolor=black,           % color of links to bibliography
+    filecolor=black,           % color of file links
+    urlcolor=black             % color of external links
+}
+
+%--------------------------------------------------------------------------------------
+% Set up listings
+%--------------------------------------------------------------------------------------
+\lstset{
+	basicstyle=\scriptsize\ttfamily, % print whole listing small
+	keywordstyle=\color{black}\bfseries\underbar, % underlined bold black keywords
+	identifierstyle=, 					% nothing happens
+	commentstyle=\color{white}, % white comments
+	stringstyle=\scriptsize\sffamily, 			% typewriter type for strings
+	showstringspaces=false,     % no special string spaces
+	aboveskip=3pt,
+	belowskip=3pt,
+	columns=fixed,
+	backgroundcolor=\color{lightgray},
+} 		
+\def\lstlistingname{lista}	
+
+%--------------------------------------------------------------------------------------
+%	Some new commands and declarations
+%--------------------------------------------------------------------------------------
+\newcommand{\code}[1]{{\upshape\ttfamily\scriptsize\indent #1}}
+
+% define references
+\newcommand{\figref}[1]{\ref{fig:#1}.}
+\renewcommand{\eqref}[1]{(\ref{eq:#1})}
+\newcommand{\listref}[1]{\ref{listing:#1}.}
+\newcommand{\sectref}[1]{\ref{sect:#1}}
+\newcommand{\tabref}[1]{\ref{tab:#1}.}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+%\DeclareMathOperator*[1]{\floor}{arg\,max}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\rot}{rot}
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+
+\author{\vikszerzo}
+\title{\viktitle}
+\includeonly{
+	guideline,%
+	project,%
+	titlepage,%
+	declaration,%
+	abstract,%
+	introduction,%
+	chapter1,%
+	chapter2,%
+	chapter3,%
+	acknowledgement,%
+	appendices,%
+}
+%--------------------------------------------------------------------------------------
+%	Setup captions
+%--------------------------------------------------------------------------------------
+\captionsetup[figure]{
+%labelsep=none,
+%font={footnotesize,it},
+%justification=justified,
+width=.75\textwidth,
+aboveskip=10pt}
+
+\renewcommand{\captionlabelfont}{\small\bf}
+\renewcommand{\captionfont}{\footnotesize\it}
+
+%--------------------------------------------------------------------------------------
+% Table of contents and the main text
+%--------------------------------------------------------------------------------------
+\begin{document}
+\singlespacing
+\include{guideline}
+\include{project}
+
+\pagenumbering{arabic}
+\onehalfspacing
+\include{titlepage}
+\tableofcontents\vfill
+\include{declaration}
+\include{abstract}
+\include{introduction}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{acknowledgement}
+
+%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
+%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
+
+\bibliography{mybib}
+\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+\bibliographystyle{plain}
+
+\include{appendices}
+
+\label{page:last}
+\end{document}
