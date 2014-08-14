@@ -1,29 +1,29 @@
 %----------------------------------------------------------------------------
-\chapter{\LaTeX-eszközök}\label{sect:LatexTools}
+\chapter{\LaTeX-eszkÃ¶zÃ¶k}\label{sect:LatexTools}
 %----------------------------------------------------------------------------
-\section{A szerkesztéshez használatos, Windows alapú eszközök}
+\section{A szerkesztÃ©shez hasznÃ¡latos, Windows alapÃº eszkÃ¶zÃ¶k}
 %----------------------------------------------------------------------------
-Ez a sablon Windows operációs rendszer alatt készült TeXnicCenter 1 Beta 7.01 szerkesztõvel. A TeXnicCenter egy \LaTeX-szerkesztõprogram számtalan hasznos -- és ráadásul jól mûködõ -- szolgáltatással (\figref{TexnicCenter} ábra). A szoftver ingyenesen letölthetõ a\\\url{http://www.texniccenter.org/} címrõl.
+Ez a sablon Windows operÃ¡ciÃ³s rendszer alatt kÃ©szÃ¼lt TeXnicCenter 1 Beta 7.01 szerkesztÅ‘vel. A TeXnicCenter egy \LaTeX-szerkesztÅ‘program szÃ¡mtalan hasznos -- Ã©s rÃ¡adÃ¡sul jÃ³l mÅ±kÃ¶dÅ‘ -- szolgÃ¡ltatÃ¡ssal (\figref{TexnicCenter} Ã¡bra). A szoftver ingyenesen letÃ¶lthetÅ‘ a\\\url{http://www.texniccenter.org/} cÃ­mrÅ‘l.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=150mm, keepaspectratio]{figures/TeXnicCenter.png}
-\caption{A TeXnicCenter Windows alapú \LaTeX-szerkesztõ.} 
+\caption{A TeXnicCenter Windows alapÃº \LaTeX-szerkesztÅ‘.} 
 \label{fig:TexnicCenter}
 \end{figure}
 
-Egy másik használható Windows alapú szerkesztõprogram a LEd (LaTeX Editor,\\\url{http://www.latexeditor.org/}), a TeXnicCenter azonban stabilabb, gyorsabb, és jobban használható.
+Egy mÃ¡sik hasznÃ¡lhatÃ³ Windows alapÃº szerkesztÅ‘program a LEd (LaTeX Editor,\\\url{http://www.latexeditor.org/}), a TeXnicCenter azonban stabilabb, gyorsabb, Ã©s jobban hasznÃ¡lhatÃ³.
 
 %----------------------------------------------------------------------------
-\section{A dokumentum lefordítása Windows alatt}
+\section{A dokumentum lefordÃ­tÃ¡sa Windows alatt}
 %----------------------------------------------------------------------------
-A TeXnicCenter és a LEd kizárólag szerkesztõprogram (bár az utóbbiban DVI-nézegetõ is van), így a dokumentum fordításához szükséges eszközöket nem tartalmazza. Windows alatt alapvetõen két lehetõség közül érdemes választani: MiKTeX (\url{http://miktex.org/}) és TeXLive (\url{http://www.tug.org/texlive/}) programcsomag. Az utóbbi mûködik Mac OS X, GNU/Linux alatt és Unix-származékokon is. A MiKTeX egy alapcsomag telepítése után mindig letölti a használt funkciókhoz szükséges, de lokálisan hiányzó \TeX-csomagokat, míg a TeXLive DVD ISO verzóban férhetõ hozzá. Ez a dokumentum TeXLive 2008 programcsomag segítségével fordult, amelynek DVD ISO verziója a megadott oldalról letölthetõ. A sablon lefordításához a disztribúcióban szereplõ \verb+magyar.ldf+ fájlt a \verb+http://www.math.bme.hu/latex/+ változatra kell cserélni, vagy az utóbbi változatot be kell másolni a projekt-könyvtárba (ahogy ezt meg is tettük a sablonban) különben anomáliák tapasztalhatók a dokumentumban (pl. az ábra- és táblázat-aláírások formátuma nem a beállított lesz, vagy bizonyos oldalakon megjelenik alapételmezésben egy fejléc). A TeXLive 2008-at még nem kell külön telepíteni a gépre, elegendõ DVD-rõl (vagy az ISO fájlból közvetlenül, pl. DaemonTools-szal) használni. 
+A TeXnicCenter Ã©s a LEd kizÃ¡rÃ³lag szerkesztÅ‘program (bÃ¡r az utÃ³bbiban DVI-nÃ©zegetÅ‘ is van), Ã­gy a dokumentum fordÃ­tÃ¡sÃ¡hoz szÃ¼ksÃ©ges eszkÃ¶zÃ¶ket nem tartalmazza. Windows alatt alapvetÅ‘en kÃ©t lehetÅ‘sÃ©g kÃ¶zÃ¼l Ã©rdemes vÃ¡lasztani: MiKTeX (\url{http://miktex.org/}) Ã©s TeXLive (\url{http://www.tug.org/texlive/}) programcsomag. Az utÃ³bbi mÅ±kÃ¶dik Mac OS X, GNU/Linux alatt Ã©s Unix-szÃ¡rmazÃ©kokon is. A MiKTeX egy alapcsomag telepÃ­tÃ©se utÃ¡n mindig letÃ¶lti a hasznÃ¡lt funkciÃ³khoz szÃ¼ksÃ©ges, de lokÃ¡lisan hiÃ¡nyzÃ³ \TeX-csomagokat, mÃ­g a TeXLive DVD ISO verzÃ³ban fÃ©rhetÅ‘ hozzÃ¡. Ez a dokumentum TeXLive 2008 programcsomag segÃ­tsÃ©gÃ©vel fordult, amelynek DVD ISO verziÃ³ja a megadott oldalrÃ³l letÃ¶lthetÅ‘. A sablon lefordÃ­tÃ¡sÃ¡hoz a disztribÃºciÃ³ban szereplÅ‘ \verb+magyar.ldf+ fÃ¡jlt a \verb+http://www.math.bme.hu/latex/+ vÃ¡ltozatra kell cserÃ©lni, vagy az utÃ³bbi vÃ¡ltozatot be kell mÃ¡solni a projekt-kÃ¶nyvtÃ¡rba (ahogy ezt meg is tettÃ¼k a sablonban) kÃ¼lÃ¶nben anomÃ¡liÃ¡k tapasztalhatÃ³k a dokumentumban (pl. az Ã¡bra- Ã©s tÃ¡blÃ¡zat-alÃ¡Ã­rÃ¡sok formÃ¡tuma nem a beÃ¡llÃ­tott lesz, vagy bizonyos oldalakon megjelenik alapÃ©telmezÃ©sben egy fejlÃ©c). A TeXLive 2008-at mÃ©g nem kell kÃ¼lÃ¶n telepÃ­teni a gÃ©pre, elegendÅ‘ DVD-rÅ‘l (vagy az ISO fÃ¡jlbÃ³l kÃ¶zvetlenÃ¼l, pl. DaemonTools-szal) hasznÃ¡lni. 
 
-A \TeX-eszközöket tartalmazó programcsomag binárisainak elérési útját minden esetben be kell állítani a szerkesztõprogramban, például TeXnicCenter esetén legegyszerûbben a \verb+Build / Define output profiles...+ menüponttal elõhívott dialógusablakban a \verb+Wizard...+ gombra kattintva tehetjük ezt meg.
+A \TeX-eszkÃ¶zÃ¶ket tartalmazÃ³ programcsomag binÃ¡risainak elÃ©rÃ©si ÃºtjÃ¡t minden esetben be kell Ã¡llÃ­tani a szerkesztÅ‘programban, pÃ©ldÃ¡ul TeXnicCenter esetÃ©n legegyszerÅ±bben a \verb+Build / Define output profiles...+ menÃ¼ponttal elÅ‘hÃ­vott dialÃ³gusablakban a \verb+Wizard...+ gombra kattintva tehetjÃ¼k ezt meg.
 
-A PDF-\LaTeX~használata esetén a generált dokumentum közvetlenül PDF-formátumban áll rendelkezésre. Amennyiben a PDF-fájl egy PDF-nézõben (pl. Adobe Acrobat Reader vagy Foxit PDF Reader) meg van nyitva, akkor a fájlleírót a PDF-nézõ program tipikusan lefoglalja. Ilyen esetben a dokumentum újrafordítása hibaüzenettel kilép. Ha bezárjuk és újra megnyitjuk a PDF dokumentumot, akkor pedig a PDF-nézõk többsége az elsõ oldalon nyitja meg a dokumentumot, nem a legutóbb olvasott oldalon. Ezzel szemben például az egyszerû és ingyenes \textcolor{blue}{Sumatra PDF} nevû program képes arra, hogy a megnyitott dokumentum megváltozását detektálja, és frissítse a nézetet az aktuális oldal megtartásával.
+A PDF-\LaTeX~hasznÃ¡lata esetÃ©n a generÃ¡lt dokumentum kÃ¶zvetlenÃ¼l PDF-formÃ¡tumban Ã¡ll rendelkezÃ©sre. Amennyiben a PDF-fÃ¡jl egy PDF-nÃ©zÅ‘ben (pl. Adobe Acrobat Reader vagy Foxit PDF Reader) meg van nyitva, akkor a fÃ¡jlleÃ­rÃ³t a PDF-nÃ©zÅ‘ program tipikusan lefoglalja. Ilyen esetben a dokumentum ÃºjrafordÃ­tÃ¡sa hibaÃ¼zenettel kilÃ©p. Ha bezÃ¡rjuk Ã©s Ãºjra megnyitjuk a PDF dokumentumot, akkor pedig a PDF-nÃ©zÅ‘k tÃ¶bbsÃ©ge az elsÅ‘ oldalon nyitja meg a dokumentumot, nem a legutÃ³bb olvasott oldalon. Ezzel szemben pÃ©ldÃ¡ul az egyszerÅ± Ã©s ingyenes \textcolor{blue}{Sumatra PDF} nevÅ± program kÃ©pes arra, hogy a megnyitott dokumentum megvÃ¡ltozÃ¡sÃ¡t detektÃ¡lja, Ã©s frissÃ­tse a nÃ©zetet az aktuÃ¡lis oldal megtartÃ¡sÃ¡val.
 
 %----------------------------------------------------------------------------
-\section{Eszközök Linuxhoz}
+\section{EszkÃ¶zÃ¶k Linuxhoz}
 %----------------------------------------------------------------------------
-Linux operációs rendszer alatt is rengeteg szerkesztõprogram van, pl. a KDE alapú Kile jól használható. Ez ingyenesen letölthetõ, vagy éppenséggel az adott Linux-disztribúció eleve tartalmazza, ahogyan a dokumentum fordításához szükséges csomagokat is. Az Ubuntu Linux disztribúciók alatt például legtöbbször a \verb+texlive-base+ csomag telepítésével használhatók a \LaTeX-eszközök.
+Linux operÃ¡ciÃ³s rendszer alatt is rengeteg szerkesztÅ‘program van, pl. a KDE alapÃº Kile jÃ³l hasznÃ¡lhatÃ³. Ez ingyenesen letÃ¶lthetÅ‘, vagy Ã©ppensÃ©ggel az adott Linux-disztribÃºciÃ³ eleve tartalmazza, ahogyan a dokumentum fordÃ­tÃ¡sÃ¡hoz szÃ¼ksÃ©ges csomagokat is. Az Ubuntu Linux disztribÃºciÃ³k alatt pÃ©ldÃ¡ul legtÃ¶bbszÃ¶r a \verb+texlive-base+ csomag telepÃ­tÃ©sÃ©vel hasznÃ¡lhatÃ³k a \LaTeX-eszkÃ¶zÃ¶k.

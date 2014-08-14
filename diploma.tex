@@ -3,7 +3,9 @@
 
 %\PassOptionsToPackage{chapternumber=Huordinal}{magyar.ldf}
 \usepackage{t1enc}
-\usepackage[latin2]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{cmap}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumerate}
@@ -24,12 +26,12 @@
 %--------------------------------------------------------------------------------------
 % Main variables
 %--------------------------------------------------------------------------------------
-\newcommand{\vikszerzo}{BÛdis-Szomor˙ Andr·s}
-\newcommand{\vikkonzulens}{dr.~Konzulens ElemÈr}
-\newcommand{\vikcim}{Elektronikus terelık}
-\newcommand{\viktanszek}{MÈrÈstechnika Ès Inform·ciÛs Rendszerek TanszÈk}
+\newcommand{\vikszerzo}{B√≥dis-Szomor√∫ Andr√°s}
+\newcommand{\vikkonzulens}{dr.~Konzulens Elem√©r}
+\newcommand{\vikcim}{Elektronikus terel≈ëk}
+\newcommand{\viktanszek}{M√©r√©stechnika √©s Inform√°ci√≥s Rendszerek Tansz√©k}
 \newcommand{\vikdoktipus}{Diplomaterv}
-\newcommand{\vikdepartmentr}{BÛdis-Szomor˙ Andr·s}
+\newcommand{\vikdepartmentr}{B√≥dis-Szomor√∫ Andr√°s}
 
 %--------------------------------------------------------------------------------------
 % Page layout setup
@@ -40,10 +42,10 @@
 % (like the ToC, the References, and the Chapter pages)remain in plane style
 
 \pagestyle{plain}
-%\setlength{\parindent}{0pt} % ·ttekinthetıbb, angol nyelv˚ dokumentumokban jellemzı
-%\setlength{\parskip}{8pt plus 3pt minus 3pt} % ·ttekinthetıbb, angol nyelv˚ dokumentumokban jellemzı
-\setlength{\parindent}{12pt} % magyar nyelv˚ dokumentumokban jellemzı
-\setlength{\parskip}{0pt}    % magyar nyelv˚ dokumentumokban jellemzı
+%\setlength{\parindent}{0pt} % √°ttekinthet≈ëbb, angol nyelv≈± dokumentumokban jellemz≈ë
+%\setlength{\parskip}{8pt plus 3pt minus 3pt} % √°ttekinthet≈ëbb, angol nyelv≈± dokumentumokban jellemz≈ë
+\setlength{\parindent}{12pt} % magyar nyelv≈± dokumentumokban jellemz≈ë
+\setlength{\parskip}{0pt}    % magyar nyelv≈± dokumentumokban jellemz≈ë
 
 \marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
 \setcounter{secnumdepth}{0}
@@ -57,7 +59,7 @@
 %--------------------------------------------------------------------------------------
 \hypersetup{
     bookmarks=true,            % show bookmarks bar?
-    unicode=false,             % non-Latin characters in Acrobatís bookmarks
+    unicode=false,             % non-Latin characters in Acrobat¬ís bookmarks
     pdftitle={\vikcim},        % title
     pdfauthor={\vikszerzo},    % author
     pdfsubject={\vikdoktipus}, % subject of the document
@@ -72,6 +74,7 @@
     urlcolor=black             % color of external links
 }
 
+\usepackage{inconsolata}
 %--------------------------------------------------------------------------------------
 % Set up listings
 %--------------------------------------------------------------------------------------
@@ -86,6 +89,8 @@
 	belowskip=3pt,
 	columns=fixed,
 	backgroundcolor=\color{lightgray},
+    extendedchars=false,
+    inputencoding=utf8
 } 		
 \def\lstlistingname{lista}	
 
@@ -155,11 +160,11 @@ aboveskip=10pt}
 \include{chapter3}
 \include{acknowledgement}
 
-%\listoffigures\addcontentsline{toc}{chapter}{¡br·k jegyzÈke}
-%\listoftables\addcontentsline{toc}{chapter}{T·bl·zatok jegyzÈke}
+%\listoffigures\addcontentsline{toc}{chapter}{√Åbr√°k jegyz√©ke}
+%\listoftables\addcontentsline{toc}{chapter}{T√°bl√°zatok jegyz√©ke}
 
 \bibliography{mybib}
-\addcontentsline{toc}{chapter}{IrodalomjegyzÈk}
+\addcontentsline{toc}{chapter}{Irodalomjegyz√©k}
 \bibliographystyle{plain}
 
 \include{appendices}

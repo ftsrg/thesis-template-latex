@@ -1,30 +1,30 @@
 %----------------------------------------------------------------------------
-\chapter{A \LaTeX-sablon használata}
+\chapter{A \LaTeX-sablon hasznÃ¡lata}
 %----------------------------------------------------------------------------
-Ebben a fejezetben röviden, implicit módon bemutatjuk a sablon használatának módját, ami azt jelenti, hogy sablon használata ennek a dokumentumnak a forráskódját tanulmányozva válik teljesen világossá. Amennyiben a szoftver-keretrendszer telepítve van, a sablon alkalmazása és a dolgozat szerkesztése \LaTeX-ben a sablon segítségével tapasztalataink szerint jóval hatékonyabb, mint egy WYSWYG (\emph{What You See is What You Get}) típusú szövegszerkesztõ esetén (pl. Microsoft Word, OpenOffice).
+Ebben a fejezetben rÃ¶viden, implicit mÃ³don bemutatjuk a sablon hasznÃ¡latÃ¡nak mÃ³djÃ¡t, ami azt jelenti, hogy sablon hasznÃ¡lata ennek a dokumentumnak a forrÃ¡skÃ³djÃ¡t tanulmÃ¡nyozva vÃ¡lik teljesen vilÃ¡gossÃ¡. Amennyiben a szoftver-keretrendszer telepÃ­tve van, a sablon alkalmazÃ¡sa Ã©s a dolgozat szerkesztÃ©se \LaTeX-ben a sablon segÃ­tsÃ©gÃ©vel tapasztalataink szerint jÃ³val hatÃ©konyabb, mint egy WYSWYG (\emph{What You See is What You Get}) tÃ­pusÃº szÃ¶vegszerkesztÅ‘ esetÃ©n (pl. Microsoft Word, OpenOffice).
 
 %----------------------------------------------------------------------------
-\section{Címkék és hivatkozások}
+\section{CÃ­mkÃ©k Ã©s hivatkozÃ¡sok}
 %----------------------------------------------------------------------------
-A \LaTeX~dokumentumban címkéket (\verb+\label+) rendelhetünk ábrákhoz, táblázatokhoz, fejezetekhez, listákhoz, képletekhez stb. Ezekre a dokumentum bármely részében hivatkozhatunk, a hivatkozások automatikusan feloldásra kerülnek.
+A \LaTeX~dokumentumban cÃ­mkÃ©ket (\verb+\label+) rendelhetÃ¼nk Ã¡brÃ¡khoz, tÃ¡blÃ¡zatokhoz, fejezetekhez, listÃ¡khoz, kÃ©pletekhez stb. Ezekre a dokumentum bÃ¡rmely rÃ©szÃ©ben hivatkozhatunk, a hivatkozÃ¡sok automatikusan feloldÃ¡sra kerÃ¼lnek.
 
-A sablonban makrókat definiáltunk a hivatkozások megkönnyítéséhez. Ennek megfelelõen minden ábra (\emph{figure}) címkéje \verb+fig:+ kulcsszóval kezdõdik, míg minden táblázat (\emph{table}), képlet (\emph{equation}), fejezet (\emph{section}) és lista (\emph{listing}) rendre a \verb+tab:+, \verb+eq:+, \verb+sect:+ és \verb+listing:+ kulcsszóval kezdõdik, és a kulcsszavak után tetszõlegesen választott címke használható. Ha ezt a konvenciót betartjuk, akkor az elõbbi objektumok számára rendre a \verb+\figref+, \verb+\tabref+, \verb+\eqref+, \verb+\sectref+ és \verb+\listref+ makrókkal hivatkozhatunk. A makrók paramétere a címke, amelyre hivatkozunk (a kulcsszó nélkül). Az összes említett hivatkozástípus, beleértve az \verb+\url+ kulcsszóval bevezetett web-hivatkozásokat is a  \verb+hyperref+\footnote{Segítségével a dokumentumban megjelenõ hivatkozások nem csak dinamikussá válnak, de színezhetõk is, bõvebbet errõl a csomag dokumentációjában találunk. Ez egyúttal egy példa lábjegyzet írására.} csomagnak köszönhetõen aktívak a legtöbb PDF-nézegetõben, rájuk kattintva a dokumentum megfelelõ oldalára ugrik a PDF-nézõ vagy a megfelelõ linket megnyitja az alapértelmezett böngészõvel. A \verb+hyperref+ csomag a kimeneti PDF-dokumentumba könyvjelzõket is készít a tartalomjegyzékbõl. Ez egy szintén aktív tartalomjegyzék, amelynek elemeire kattintva a nézegetõ behozza a kiválasztott fejezetet.
+A sablonban makrÃ³kat definiÃ¡ltunk a hivatkozÃ¡sok megkÃ¶nnyÃ­tÃ©sÃ©hez. Ennek megfelelÅ‘en minden Ã¡bra (\emph{figure}) cÃ­mkÃ©je \verb+fig:+ kulcsszÃ³val kezdÅ‘dik, mÃ­g minden tÃ¡blÃ¡zat (\emph{table}), kÃ©plet (\emph{equation}), fejezet (\emph{section}) Ã©s lista (\emph{listing}) rendre a \verb+tab:+, \verb+eq:+, \verb+sect:+ Ã©s \verb+listing:+ kulcsszÃ³val kezdÅ‘dik, Ã©s a kulcsszavak utÃ¡n tetszÅ‘legesen vÃ¡lasztott cÃ­mke hasznÃ¡lhatÃ³. Ha ezt a konvenciÃ³t betartjuk, akkor az elÅ‘bbi objektumok szÃ¡mÃ¡ra rendre a \verb+\figref+, \verb+\tabref+, \verb+\eqref+, \verb+\sectref+ Ã©s \verb+\listref+ makrÃ³kkal hivatkozhatunk. A makrÃ³k paramÃ©tere a cÃ­mke, amelyre hivatkozunk (a kulcsszÃ³ nÃ©lkÃ¼l). Az Ã¶sszes emlÃ­tett hivatkozÃ¡stÃ­pus, beleÃ©rtve az \verb+\url+ kulcsszÃ³val bevezetett web-hivatkozÃ¡sokat is a  \verb+hyperref+\footnote{SegÃ­tsÃ©gÃ©vel a dokumentumban megjelenÅ‘ hivatkozÃ¡sok nem csak dinamikussÃ¡ vÃ¡lnak, de szÃ­nezhetÅ‘k is, bÅ‘vebbet errÅ‘l a csomag dokumentÃ¡ciÃ³jÃ¡ban talÃ¡lunk. Ez egyÃºttal egy pÃ©lda lÃ¡bjegyzet Ã­rÃ¡sÃ¡ra.} csomagnak kÃ¶szÃ¶nhetÅ‘en aktÃ­vak a legtÃ¶bb PDF-nÃ©zegetÅ‘ben, rÃ¡juk kattintva a dokumentum megfelelÅ‘ oldalÃ¡ra ugrik a PDF-nÃ©zÅ‘ vagy a megfelelÅ‘ linket megnyitja az alapÃ©rtelmezett bÃ¶ngÃ©szÅ‘vel. A \verb+hyperref+ csomag a kimeneti PDF-dokumentumba kÃ¶nyvjelzÅ‘ket is kÃ©szÃ­t a tartalomjegyzÃ©kbÅ‘l. Ez egy szintÃ©n aktÃ­v tartalomjegyzÃ©k, amelynek elemeire kattintva a nÃ©zegetÅ‘ behozza a kivÃ¡lasztott fejezetet.
 
 %----------------------------------------------------------------------------
-\section{Ábrák és táblázatok}
+\section{ÃbrÃ¡k Ã©s tÃ¡blÃ¡zatok}
 %----------------------------------------------------------------------------
-A képeket PDFLaTeX esetén a veszteségmentes PNG, valamint a veszteséges JPEG formátumban érdemes elmenteni. Az EPS (PostScript) vektorgrafikus képformátum beillesztését a PDFLatex közvetlenül nem támogatja. Ehelyett egy lehetõség 200 dpi, vagy annál nagyobb felbontásban raszterizálni a képet, és PNG formátumban elmenteni. Az egyes képek mérete általában nem, de sok kép esetén a dokumentum összmérete így már szignifikáns is lehet. A dokumentumban felhasznált képfájlokat a dokumentum forrása mellett érdemes tartani, archiválni, mivel ezek hiányában a dokumentum nem fordul újra. Ha lehet, a vektorgrafikus képeket vektorgrafikus formátumban is érdemes elmenteni az újrafelhasználhatóság (az átszerkeszthetõség) érdekében.
+A kÃ©peket PDFLaTeX esetÃ©n a vesztesÃ©gmentes PNG, valamint a vesztesÃ©ges JPEG formÃ¡tumban Ã©rdemes elmenteni. Az EPS (PostScript) vektorgrafikus kÃ©pformÃ¡tum beillesztÃ©sÃ©t a PDFLatex kÃ¶zvetlenÃ¼l nem tÃ¡mogatja. Ehelyett egy lehetÅ‘sÃ©g 200 dpi, vagy annÃ¡l nagyobb felbontÃ¡sban raszterizÃ¡lni a kÃ©pet, Ã©s PNG formÃ¡tumban elmenteni. Az egyes kÃ©pek mÃ©rete Ã¡ltalÃ¡ban nem, de sok kÃ©p esetÃ©n a dokumentum Ã¶sszmÃ©rete Ã­gy mÃ¡r szignifikÃ¡ns is lehet. A dokumentumban felhasznÃ¡lt kÃ©pfÃ¡jlokat a dokumentum forrÃ¡sa mellett Ã©rdemes tartani, archivÃ¡lni, mivel ezek hiÃ¡nyÃ¡ban a dokumentum nem fordul Ãºjra. Ha lehet, a vektorgrafikus kÃ©peket vektorgrafikus formÃ¡tumban is Ã©rdemes elmenteni az ÃºjrafelhasznÃ¡lhatÃ³sÃ¡g (az Ã¡tszerkeszthetÅ‘sÃ©g) Ã©rdekÃ©ben.
 
-Kapcsolási rajzok legtöbbször kimásolhatók egy vektorgrafikus programba (pl. CorelDraw) és onnan nagyobb felbontással raszterizálva kimenthatõk PNG formátumban. Ugyanakkor kiváló ábrák készíthetõk Microsoft Visio vagy hasonló program használatával is: Visio-ból az ábrák közvetlenül PNG-be is menthetõk.
+KapcsolÃ¡si rajzok legtÃ¶bbszÃ¶r kimÃ¡solhatÃ³k egy vektorgrafikus programba (pl. CorelDraw) Ã©s onnan nagyobb felbontÃ¡ssal raszterizÃ¡lva kimenthatÅ‘k PNG formÃ¡tumban. Ugyanakkor kivÃ¡lÃ³ Ã¡brÃ¡k kÃ©szÃ­thetÅ‘k Microsoft Visio vagy hasonlÃ³ program hasznÃ¡latÃ¡val is: Visio-bÃ³l az Ã¡brÃ¡k kÃ¶zvetlenÃ¼l PNG-be is menthetÅ‘k.
 
-Lehetõségeink Matlab ábrák esetén:
+LehetÅ‘sÃ©geink Matlab Ã¡brÃ¡k esetÃ©n:
 \begin{itemize}
-	\item Képernyõlopás (\emph{screenshot}) is elfogadható minõségû lehet a dokumentumban, de általában jobb felbontást is el lehet érni más módszerrel.
-	\item A Matlab ábrát a \verb+File/Save As+ opcióval lementhetjük PNG formátumban (ugyanaz itt is érvényes, mint korábban, ezért nem javasoljuk).
-	\item A Matlab ábrát az \verb+Edit/Copy figure+ opcióval kimásolhatjuk egy vektorgrafikus programba is és onnan nagyobb felbontással raszterizálva kimenthatjük PNG formátumban (nem javasolt).
-	\item Javasolt megoldás: az ábrát a \verb+File/Save As+ opcióval EPS \emph{vektorgrafikus} formátumban elmentjük, PDF-be konvertálva beillesztjük a dolgozatba.
+	\item KÃ©pernyÅ‘lopÃ¡s (\emph{screenshot}) is elfogadhatÃ³ minÅ‘sÃ©gÅ± lehet a dokumentumban, de Ã¡ltalÃ¡ban jobb felbontÃ¡st is el lehet Ã©rni mÃ¡s mÃ³dszerrel.
+	\item A Matlab Ã¡brÃ¡t a \verb+File/Save As+ opciÃ³val lementhetjÃ¼k PNG formÃ¡tumban (ugyanaz itt is Ã©rvÃ©nyes, mint korÃ¡bban, ezÃ©rt nem javasoljuk).
+	\item A Matlab Ã¡brÃ¡t az \verb+Edit/Copy figure+ opciÃ³val kimÃ¡solhatjuk egy vektorgrafikus programba is Ã©s onnan nagyobb felbontÃ¡ssal raszterizÃ¡lva kimenthatjÃ¼k PNG formÃ¡tumban (nem javasolt).
+	\item Javasolt megoldÃ¡s: az Ã¡brÃ¡t a \verb+File/Save As+ opciÃ³val EPS \emph{vektorgrafikus} formÃ¡tumban elmentjÃ¼k, PDF-be konvertÃ¡lva beillesztjÃ¼k a dolgozatba.
 \end{itemize}
-Az EPS kép az \verb+epstopdf+ programmal\footnote{a korábban említett \LaTeX-disztribúciókban megtalálható} konvertálható PDF formátumba. Célszerû egy batch-fájlt készíteni az összes EPS ábra lefordítására az alábbi módon (ez Windows alatt mûködik).
+Az EPS kÃ©p az \verb+epstopdf+ programmal\footnote{a korÃ¡bban emlÃ­tett \LaTeX-disztribÃºciÃ³kban megtalÃ¡lhatÃ³} konvertÃ¡lhatÃ³ PDF formÃ¡tumba. CÃ©lszerÅ± egy batch-fÃ¡jlt kÃ©szÃ­teni az Ã¶sszes EPS Ã¡bra lefordÃ­tÃ¡sÃ¡ra az alÃ¡bbi mÃ³don (ez Windows alatt mÅ±kÃ¶dik).
 \begin{lstlisting}[frame=single,float=!ht]
 @echo off
 for %%j in (*.eps) do (
@@ -34,11 +34,11 @@ epstopdf "%%j"
 echo done .
 \end{lstlisting}
 
-Egy ilyen parancsfájlt (\verb+convert.cmd+) elhelyeztük a sablon \verb+figures\eps+ könyvtárába, így a felhasználónak csak annyi a dolga, hogy a \verb+figures\eps+ könyvtárba kimenti az EPS formátumú vektorgrafikus képet, majd lefuttatja a \verb+convert.cmd+ parancsfájlt, ami PDF-be konvertálja az EPS fájlt.
+Egy ilyen parancsfÃ¡jlt (\verb+convert.cmd+) elhelyeztÃ¼k a sablon \verb+figures\eps+ kÃ¶nyvtÃ¡rÃ¡ba, Ã­gy a felhasznÃ¡lÃ³nak csak annyi a dolga, hogy a \verb+figures\eps+ kÃ¶nyvtÃ¡rba kimenti az EPS formÃ¡tumÃº vektorgrafikus kÃ©pet, majd lefuttatja a \verb+convert.cmd+ parancsfÃ¡jlt, ami PDF-be konvertÃ¡lja az EPS fÃ¡jlt.
 
-Ezek után a PDF-ábrát ugyanúgy lehet a dokumentumba beilleszteni, mint a PNG-t vagy a JPEG-et. A megoldás elõnye, hogy a lefordított dokumentumban is vektorgrafikusan tárolódik az ábra, így a mérete jóval kisebb, mintha raszterizáltuk volna beillesztés elõtt. Ez a módszer minden -- az EPS formátumot ismerõ -- vektorgrafikus program (pl. CorelDraw) esetén is használható.
+Ezek utÃ¡n a PDF-Ã¡brÃ¡t ugyanÃºgy lehet a dokumentumba beilleszteni, mint a PNG-t vagy a JPEG-et. A megoldÃ¡s elÅ‘nye, hogy a lefordÃ­tott dokumentumban is vektorgrafikusan tÃ¡rolÃ³dik az Ã¡bra, Ã­gy a mÃ©rete jÃ³val kisebb, mintha raszterizÃ¡ltuk volna beillesztÃ©s elÅ‘tt. Ez a mÃ³dszer minden -- az EPS formÃ¡tumot ismerÅ‘ -- vektorgrafikus program (pl. CorelDraw) esetÃ©n is hasznÃ¡lhatÃ³.
 
-A képek beillesztésére az \sectref{LatexTools}. fejezetben mutattunk be példát (\figref{TexnicCenter}~ábra). Az elõzõ mondatban egyúttal az automatikusan feloldódó ábrahivatkozásra is láthatunk példát. Több képfájlt is beilleszthetünk egyetlen ábrába. Az egyes képek közötti horizontális és vertikális margót metrikusan szabályozhatjuk (\figref{HVSpaces}~ábra). Az ábrák elhelyezését számtalan tipográfiai szabály egyidejû teljesítésével a fordító maga végzi, a dokumentum írója csak preferenciáit jelezheti a fordító felé (olykor ez bosszúságot is okozhat, ilyenkor pl. a kép méretével lehet játszani).
+A kÃ©pek beillesztÃ©sÃ©re az \sectref{LatexTools}. fejezetben mutattunk be pÃ©ldÃ¡t (\figref{TexnicCenter}~Ã¡bra). Az elÅ‘zÅ‘ mondatban egyÃºttal az automatikusan feloldÃ³dÃ³ Ã¡brahivatkozÃ¡sra is lÃ¡thatunk pÃ©ldÃ¡t. TÃ¶bb kÃ©pfÃ¡jlt is beilleszthetÃ¼nk egyetlen Ã¡brÃ¡ba. Az egyes kÃ©pek kÃ¶zÃ¶tti horizontÃ¡lis Ã©s vertikÃ¡lis margÃ³t metrikusan szabÃ¡lyozhatjuk (\figref{HVSpaces}~Ã¡bra). Az Ã¡brÃ¡k elhelyezÃ©sÃ©t szÃ¡mtalan tipogrÃ¡fiai szabÃ¡ly egyidejÅ± teljesÃ­tÃ©sÃ©vel a fordÃ­tÃ³ maga vÃ©gzi, a dokumentum Ã­rÃ³ja csak preferenciÃ¡it jelezheti a fordÃ­tÃ³ felÃ© (olykor ez bosszÃºsÃ¡got is okozhat, ilyenkor pl. a kÃ©p mÃ©retÃ©vel lehet jÃ¡tszani).
 
 \begin{figure}[!ht]
 \centering
@@ -46,19 +46,19 @@ A képek beillesztésére az \sectref{LatexTools}. fejezetben mutattunk be példát (
 \includegraphics[width=67mm, keepaspectratio]{figures/TeXnicCenter.png}\\\vspace{5mm}
 \includegraphics[width=67mm, keepaspectratio]{figures/TeXnicCenter.png}\hspace{1cm}
 \includegraphics[width=67mm, keepaspectratio]{figures/TeXnicCenter.png}
-\caption{Több képfájl beillesztése esetén térközöket is érdemes használni.} 
+\caption{TÃ¶bb kÃ©pfÃ¡jl beillesztÃ©se esetÃ©n tÃ©rkÃ¶zÃ¶ket is Ã©rdemes hasznÃ¡lni.} 
 \label{fig:HVSpaces}
 \end{figure}
 
-A táblázatok használatára a \tabref{TabularExample}~táblázat mutat példát.
-A táblázat címkéje nem véletlenül került a táblázat fölé, ez a szokványos.
+A tÃ¡blÃ¡zatok hasznÃ¡latÃ¡ra a \tabref{TabularExample}~tÃ¡blÃ¡zat mutat pÃ©ldÃ¡t.
+A tÃ¡blÃ¡zat cÃ­mkÃ©je nem vÃ©letlenÃ¼l kerÃ¼lt a tÃ¡blÃ¡zat fÃ¶lÃ©, ez a szokvÃ¡nyos.
 \begin{table}[ht]
 	\footnotesize
 	\centering
-	\caption{Az órajel-generátor chip órajel-kimenetei.} \label{tab:SysClocks}
+	\caption{Az Ã³rajel-generÃ¡tor chip Ã³rajel-kimenetei.} \label{tab:SysClocks}
 	\begin{tabular}{ | l | c | c |}
 	\hline
-	Órajel & Frekvencia & Cél pin \\ \hline
+	Ã“rajel & Frekvencia & CÃ©l pin \\ \hline
 	CLKA & 100 MHz & FPGA CLK0\\
 	CLKB & 48 MHz  & FPGA CLK1\\
 	CLKC & 20 MHz  & Processzor\\
@@ -72,52 +72,52 @@ A táblázat címkéje nem véletlenül került a táblázat fölé, ez a szokványos.
 
 
 %----------------------------------------------------------------------------
-\section{Felsorolások és listák}
+\section{FelsorolÃ¡sok Ã©s listÃ¡k}
 %----------------------------------------------------------------------------
-Számozatlan felsorolásra mutat példát a jelenlegi bekezdés:
+SzÃ¡mozatlan felsorolÃ¡sra mutat pÃ©ldÃ¡t a jelenlegi bekezdÃ©s:
 \begin{itemize}
-	\item \emph{elsõ bajusz:} ide lehetne írni az elsõ elem kifejését,
-	\item \emph{második bajusz:} ide lehetne írni a második elem kifejését,
-	\item \emph{ez meg egy szakáll:} ide lehetne írni a harmadik elem kifejését.
+	\item \emph{elsÅ‘ bajusz:} ide lehetne Ã­rni az elsÅ‘ elem kifejÃ©sÃ©t,
+	\item \emph{mÃ¡sodik bajusz:} ide lehetne Ã­rni a mÃ¡sodik elem kifejÃ©sÃ©t,
+	\item \emph{ez meg egy szakÃ¡ll:} ide lehetne Ã­rni a harmadik elem kifejÃ©sÃ©t.
 \end{itemize}
 
-Számozott felsorolást is készíthetünk az alábbi módon:
+SzÃ¡mozott felsorolÃ¡st is kÃ©szÃ­thetÃ¼nk az alÃ¡bbi mÃ³don:
 \begin{enumerate}
-	\item \emph{elsõ bajusz:} ide lehetne írni az elsõ elem kifejését, és ez a kifejtés így néz ki, ha több sorosra sikeredik,
-	\item \emph{második bajusz:} ide lehetne írni a második elem kifejését,
-	\item \emph{ez meg egy szakáll:} ide lehetne írni a harmadik elem kifejését.
+	\item \emph{elsÅ‘ bajusz:} ide lehetne Ã­rni az elsÅ‘ elem kifejÃ©sÃ©t, Ã©s ez a kifejtÃ©s Ã­gy nÃ©z ki, ha tÃ¶bb sorosra sikeredik,
+	\item \emph{mÃ¡sodik bajusz:} ide lehetne Ã­rni a mÃ¡sodik elem kifejÃ©sÃ©t,
+	\item \emph{ez meg egy szakÃ¡ll:} ide lehetne Ã­rni a harmadik elem kifejÃ©sÃ©t.
 \end{enumerate}
-A felsorolásokban sorok végén vesszõ, az utolsó sor végén pedig pont a szokásos írásjel. Ez alól kivételt képezhet, ha az egyes elemek több teljes mondatot tartalmaznak.
+A felsorolÃ¡sokban sorok vÃ©gÃ©n vesszÅ‘, az utolsÃ³ sor vÃ©gÃ©n pedig pont a szokÃ¡sos Ã­rÃ¡sjel. Ez alÃ³l kivÃ©telt kÃ©pezhet, ha az egyes elemek tÃ¶bb teljes mondatot tartalmaznak.
 
-Listákban a dolgozat szövegétõl elkülönítendõ kódrészleteket, programsorokat, pszeudo-kódokat jeleníthetünk meg (\listref{Example}~lista). 
-\begin{lstlisting}[frame=single,float=!ht,caption=A fenti számozott felsorolás \LaTeX- forráskódja, label=listing:Example]
+ListÃ¡kban a dolgozat szÃ¶vegÃ©tÅ‘l elkÃ¼lÃ¶nÃ­tendÅ‘ kÃ³drÃ©szleteket, programsorokat, pszeudo-kÃ³dokat jelenÃ­thetÃ¼nk meg (\listref{Example}~lista). 
+\begin{lstlisting}[frame=single,float=!ht,caption=A fenti szÃ¡mozott felsorolÃ¡s \LaTeX- forrÃ¡skÃ³dja, label=listing:Example]
 \begin{enumerate}
-	\item \emph{elsõ bajusz:} ide lehetne írni az elsõ elem kifejését, 
-	és ez a kifejtés így néz ki, ha több sorosra sikeredik,
-	\item \emph{második bajusz:} ide lehetne írni a második elem kifejését,
-	\item \emph{ez meg egy szakáll:} ide lehetne írni a harmadik elem kifejését.
+	\item \emph{elsÅ‘ bajusz:} ide lehetne Ã­rni az elsÅ‘ elem kifejÃ©sÃ©t, 
+	Ã©s ez a kifejtÃ©s Ã­gy nÃ©z ki, ha tÃ¶bb sorosra sikeredik,
+	\item \emph{mÃ¡sodik bajusz:} ide lehetne Ã­rni a mÃ¡sodik elem kifejÃ©sÃ©t,
+	\item \emph{ez meg egy szakÃ¡ll:} ide lehetne Ã­rni a harmadik elem kifejÃ©sÃ©t.
 \end{enumerate}
 \end{lstlisting}
-A lista keretét, háttérszínét, egész stílusát megválaszthatjuk. Ráadásul különféle programnyelveket és a nyelveken belül kulcsszavakat is definiálhatunk, ha szükséges. Errõl bõvebbet a \verb+listings+ csomag hivatalos leírásában találhatunk.
+A lista keretÃ©t, hÃ¡ttÃ©rszÃ­nÃ©t, egÃ©sz stÃ­lusÃ¡t megvÃ¡laszthatjuk. RÃ¡adÃ¡sul kÃ¼lÃ¶nfÃ©le programnyelveket Ã©s a nyelveken belÃ¼l kulcsszavakat is definiÃ¡lhatunk, ha szÃ¼ksÃ©ges. ErrÅ‘l bÅ‘vebbet a \verb+listings+ csomag hivatalos leÃ­rÃ¡sÃ¡ban talÃ¡lhatunk.
 
 %----------------------------------------------------------------------------
-\section{Képletek}
+\section{KÃ©pletek}
 %----------------------------------------------------------------------------
-Ha egy formula nem túlságosan hosszú, és nem akarjuk hivatkozni a szövegbõl, mint például a $e^{i\pi}+1=0$ képlet, \emph{szövegközi képletként} szokás leírni. Csak, hogy másik példát is lássunk, az $U_i=-d\Phi/dt$ Faraday-törvény a $\rot E=-\frac{dB}{dt}$ differenciális alakban adott Maxwell-egyenlet felületre vett integráljából vezethetõ le. Látható, hogy a \LaTeX-fordító a sorközöket betartja, így a szöveg szedése esztétikus marad szövegközi képletek használata esetén is.
+Ha egy formula nem tÃºlsÃ¡gosan hosszÃº, Ã©s nem akarjuk hivatkozni a szÃ¶vegbÅ‘l, mint pÃ©ldÃ¡ul a $e^{i\pi}+1=0$ kÃ©plet, \emph{szÃ¶vegkÃ¶zi kÃ©pletkÃ©nt} szokÃ¡s leÃ­rni. Csak, hogy mÃ¡sik pÃ©ldÃ¡t is lÃ¡ssunk, az $U_i=-d\Phi/dt$ Faraday-tÃ¶rvÃ©ny a $\rot E=-\frac{dB}{dt}$ differenciÃ¡lis alakban adott Maxwell-egyenlet felÃ¼letre vett integrÃ¡ljÃ¡bÃ³l vezethetÅ‘ le. LÃ¡thatÃ³, hogy a \LaTeX-fordÃ­tÃ³ a sorkÃ¶zÃ¶ket betartja, Ã­gy a szÃ¶veg szedÃ©se esztÃ©tikus marad szÃ¶vegkÃ¶zi kÃ©pletek hasznÃ¡lata esetÃ©n is.
 
-Képletek esetén az általános konvenció, hogy a kisbetûk skalárt, a kis félkövér betûk ($\mathbf{v}$) oszlopvektort -- és ennek megfelelõen $\mathbf{v}^T$ sorvektort -- a kapitális félkövér betûk ($\mathbf{V}$) mátrixot jelölnek. Ha ettõl el szeretnénk térni, akkor az alkalmazni kívánt jelölésmódot célszerû külön alfejezetben definiálni. Ennek megfelelõen, amennyiben $\mathbf{y}$ jelöli a mérések vektorát, $\mathbf{\vartheta}$ a paraméterek vektorát és $\hat{\mathbf{y}}=\mathbf{X}\vartheta$ a paraméterekben lineáris modellt, akkor a \emph{Least-Squares} értelemben optimális paraméterbecslõ $\hat{\mathbf{\vartheta}}_{LS}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$ lesz.
+KÃ©pletek esetÃ©n az Ã¡ltalÃ¡nos konvenciÃ³, hogy a kisbetÅ±k skalÃ¡rt, a kis fÃ©lkÃ¶vÃ©r betÅ±k ($\mathbf{v}$) oszlopvektort -- Ã©s ennek megfelelÅ‘en $\mathbf{v}^T$ sorvektort -- a kapitÃ¡lis fÃ©lkÃ¶vÃ©r betÅ±k ($\mathbf{V}$) mÃ¡trixot jelÃ¶lnek. Ha ettÅ‘l el szeretnÃ©nk tÃ©rni, akkor az alkalmazni kÃ­vÃ¡nt jelÃ¶lÃ©smÃ³dot cÃ©lszerÅ± kÃ¼lÃ¶n alfejezetben definiÃ¡lni. Ennek megfelelÅ‘en, amennyiben $\mathbf{y}$ jelÃ¶li a mÃ©rÃ©sek vektorÃ¡t, $\mathbf{\vartheta}$ a paramÃ©terek vektorÃ¡t Ã©s $\hat{\mathbf{y}}=\mathbf{X}\vartheta$ a paramÃ©terekben lineÃ¡ris modellt, akkor a \emph{Least-Squares} Ã©rtelemben optimÃ¡lis paramÃ©terbecslÅ‘ $\hat{\mathbf{\vartheta}}_{LS}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$ lesz.
 
-Emellett kiemelt, sorszámozott képleteket is megadhatunk, ennél az \verb+equation+ és a \verb+eqnarray+ környezetek helyett a korszerûbb \verb+align+ környezet alkalmazását javasoljuk (több okból, különféle problémák elkerülése végett, amelyekre most nem térünk ki). Tehát
+Emellett kiemelt, sorszÃ¡mozott kÃ©pleteket is megadhatunk, ennÃ©l az \verb+equation+ Ã©s a \verb+eqnarray+ kÃ¶rnyezetek helyett a korszerÅ±bb \verb+align+ kÃ¶rnyezet alkalmazÃ¡sÃ¡t javasoljuk (tÃ¶bb okbÃ³l, kÃ¼lÃ¶nfÃ©le problÃ©mÃ¡k elkerÃ¼lÃ©se vÃ©gett, amelyekre most nem tÃ©rÃ¼nk ki). TehÃ¡t
 \begin{align}
 \dot{\mathbf{x}}&=\mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u},\\
 \mathbf{y}&=\mathbf{C}\mathbf{x},
 \end{align}
-ahol $\mathbf{x}$ az állapotvektor, $\mathbf{y}$ a mérések vektora és $\mathbf{A}$, $\mathbf{B}$ és $\mathbf{C}$ a rendszert leíró paramétermátrixok. Figyeljük meg, hogy a két egyenletben az egyenlõségjelek egymáshoz igazítva jelennek meg, mivel a mindkettõt az \& karakter elõzi meg a kódban. Lehetõség van számozatlan kiemelt képlet használatára is, például
+ahol $\mathbf{x}$ az Ã¡llapotvektor, $\mathbf{y}$ a mÃ©rÃ©sek vektora Ã©s $\mathbf{A}$, $\mathbf{B}$ Ã©s $\mathbf{C}$ a rendszert leÃ­rÃ³ paramÃ©termÃ¡trixok. FigyeljÃ¼k meg, hogy a kÃ©t egyenletben az egyenlÅ‘sÃ©gjelek egymÃ¡shoz igazÃ­tva jelennek meg, mivel a mindkettÅ‘t az \& karakter elÅ‘zi meg a kÃ³dban. LehetÅ‘sÃ©g van szÃ¡mozatlan kiemelt kÃ©plet hasznÃ¡latÃ¡ra is, pÃ©ldÃ¡ul
 \begin{align}
 \dot{\mathbf{x}}&=\mathbf{A}\mathbf{x}+\mathbf{B}\mathbf{u},\nonumber\\
 \mathbf{y}&=\mathbf{C}\mathbf{x}\nonumber.
 \end{align}
-Mátrixok felírására az $\mathbf{A}\mathbf{x}=\mathbf{b}$ inhomogén lineáris egyenlet részletes kifejtésével mutatunk példát:
+MÃ¡trixok felÃ­rÃ¡sÃ¡ra az $\mathbf{A}\mathbf{x}=\mathbf{b}$ inhomogÃ©n lineÃ¡ris egyenlet rÃ©szletes kifejtÃ©sÃ©vel mutatunk pÃ©ldÃ¡t:
 \begin{align}
 \begin{bmatrix}
 a_{11} & a_{12} & \dots & a_{1n}\\
@@ -128,21 +128,21 @@ a_{m1} & a_{m2} & \dots & a_{mn}
 \begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}=
 \begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix}.
 \end{align}
-A \verb+\frac+ utasítás hatékonyságát egy általános másodfokú tag átviteli függvényén keresztül mutatjuk be, azaz
+A \verb+\frac+ utasÃ­tÃ¡s hatÃ©konysÃ¡gÃ¡t egy Ã¡ltalÃ¡nos mÃ¡sodfokÃº tag Ã¡tviteli fÃ¼ggvÃ©nyÃ©n keresztÃ¼l mutatjuk be, azaz
 \begin{align}
 W(s)=\frac{A}{1+2T\xi s+s^2T^2}.
 \end{align}
-A matematikai mód minden szimbólumának és képességének a bemutatására természetesen itt nincs lehetõség, de gyors referenciaként hatékonyan használhatók a következõ linkek:\\
+A matematikai mÃ³d minden szimbÃ³lumÃ¡nak Ã©s kÃ©pessÃ©gÃ©nek a bemutatÃ¡sÃ¡ra termÃ©szetesen itt nincs lehetÅ‘sÃ©g, de gyors referenciakÃ©nt hatÃ©konyan hasznÃ¡lhatÃ³k a kÃ¶vetkezÅ‘ linkek:\\
 \indent\url{http://www.artofproblemsolving.com/LaTeX/AoPS_L_GuideSym.php},\\
 \indent\url{http://www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf},\\
 \indent\url{ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf}.\\
-Ez pedig itt egy magyarázat, hogy miért érdemes \verb+align+ környezetet használni:\\
+Ez pedig itt egy magyarÃ¡zat, hogy miÃ©rt Ã©rdemes \verb+align+ kÃ¶rnyezetet hasznÃ¡lni:\\
 \indent\url{http://texblog.net/latex-archive/maths/eqnarray-align-environment/}.
 
 %----------------------------------------------------------------------------
-\section{Irodalmi hivatkozások}\label{sect:HowtoReference}
+\section{Irodalmi hivatkozÃ¡sok}\label{sect:HowtoReference}
 %----------------------------------------------------------------------------
-Egy \LaTeX dokumentumban az irodalmi hivatkozások definíciójának két módja van. Az egyik a \verb+\thebibliograhy+ környezet használata a dokumentum végén, az \verb+\end{document}+ lezárás elõtt.
+Egy \LaTeX dokumentumban az irodalmi hivatkozÃ¡sok definÃ­ciÃ³jÃ¡nak kÃ©t mÃ³dja van. Az egyik a \verb+\thebibliograhy+ kÃ¶rnyezet hasznÃ¡lata a dokumentum vÃ©gÃ©n, az \verb+\end{document}+ lezÃ¡rÃ¡s elÅ‘tt.
 \begin{lstlisting}[frame=single,float=!ht]
 \begin{thebibliography}{9}
 
@@ -152,14 +152,14 @@ Addison Wesley, Massachusetts, 2nd Edition, 1994.
 \end{thebibliography}
 \end{lstlisting}
 
-Ezek után a dokumentumban a \verb+\cite{Lamport94}+ utasítással hivatkozhatunk a forrásra. A fenti megadás viszonylag kötetlen, a szerzõ maga formázza az irodalomjegyzéket. 
+Ezek utÃ¡n a dokumentumban a \verb+\cite{Lamport94}+ utasÃ­tÃ¡ssal hivatkozhatunk a forrÃ¡sra. A fenti megadÃ¡s viszonylag kÃ¶tetlen, a szerzÅ‘ maga formÃ¡zza az irodalomjegyzÃ©ket. 
 
-Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablon is ezt támogatja. Ebben az esetben egy külön szöveges adatbázisban definiáljuk a forrásmunkákat, és egy külön stílusfájl határozza meg az irodalomjegyzék kinézetét. Ez, összhangban azzal, hogy külön formátumkonvenció határozza meg a folyóirat-, a könyv-, a konferenciacikk- stb. hivatkozások kinézetét az irodalomjegyzékben (a sablon használata esetén ezzel nem is kell foglalkoznia a hallgatónak, de az eredményt célszerû ellenõrizni). A felhasznált hivatkozások adatbázisa egy \verb+.bib+ kiterjesztésû szöveges fájl, amelynek szerkezetét a \listref{Bibtex} kódrészlet demonstrálja. A forrásmunkák bevitelekor a sor végi vesszõk külön figyelmet igényelnek, mert hiányuk a BiB\TeX-fordító hibaüzenetét eredményezi. A forrásmunkákat típus szerinti kulcsszó vezeti be (\verb+@book+ könyv, \verb+@inproceedings+ konferenciakiadványban megjelent cikk, \verb+@article+ folyóiratban megjelent cikk, \verb+@techreport+ valamelyik egyetem gondozásában megjelent mûszaki tanulmány, \verb+@manual+ mûszaki dokumentáció esetén stb.). Nemcsak a megjelenés stílusa, de a kötelezõen megadandó mezõk is típusról-típusra változnak. Egy jól használható referencia a \url{http://en.wikipedia.org/wiki/BibTeX} oldalon található.
-\begin{lstlisting}[frame=single,float=!ht,caption=Példa szöveges irodalomjegyzék-adatbázisra BiBTeX használata esetén., label=listing:Bibtex]
+Egy sokkal professzionÃ¡lisabb mÃ³dszer a BiB\TeX~hasznÃ¡lata, ezÃ©rt ez a sablon is ezt tÃ¡mogatja. Ebben az esetben egy kÃ¼lÃ¶n szÃ¶veges adatbÃ¡zisban definiÃ¡ljuk a forrÃ¡smunkÃ¡kat, Ã©s egy kÃ¼lÃ¶n stÃ­lusfÃ¡jl hatÃ¡rozza meg az irodalomjegyzÃ©k kinÃ©zetÃ©t. Ez, Ã¶sszhangban azzal, hogy kÃ¼lÃ¶n formÃ¡tumkonvenciÃ³ hatÃ¡rozza meg a folyÃ³irat-, a kÃ¶nyv-, a konferenciacikk- stb. hivatkozÃ¡sok kinÃ©zetÃ©t az irodalomjegyzÃ©kben (a sablon hasznÃ¡lata esetÃ©n ezzel nem is kell foglalkoznia a hallgatÃ³nak, de az eredmÃ©nyt cÃ©lszerÅ± ellenÅ‘rizni). A felhasznÃ¡lt hivatkozÃ¡sok adatbÃ¡zisa egy \verb+.bib+ kiterjesztÃ©sÅ± szÃ¶veges fÃ¡jl, amelynek szerkezetÃ©t a \listref{Bibtex} kÃ³drÃ©szlet demonstrÃ¡lja. A forrÃ¡smunkÃ¡k bevitelekor a sor vÃ©gi vesszÅ‘k kÃ¼lÃ¶n figyelmet igÃ©nyelnek, mert hiÃ¡nyuk a BiB\TeX-fordÃ­tÃ³ hibaÃ¼zenetÃ©t eredmÃ©nyezi. A forrÃ¡smunkÃ¡kat tÃ­pus szerinti kulcsszÃ³ vezeti be (\verb+@book+ kÃ¶nyv, \verb+@inproceedings+ konferenciakiadvÃ¡nyban megjelent cikk, \verb+@article+ folyÃ³iratban megjelent cikk, \verb+@techreport+ valamelyik egyetem gondozÃ¡sÃ¡ban megjelent mÅ±szaki tanulmÃ¡ny, \verb+@manual+ mÅ±szaki dokumentÃ¡ciÃ³ esetÃ©n stb.). Nemcsak a megjelenÃ©s stÃ­lusa, de a kÃ¶telezÅ‘en megadandÃ³ mezÅ‘k is tÃ­pusrÃ³l-tÃ­pusra vÃ¡ltoznak. Egy jÃ³l hasznÃ¡lhatÃ³ referencia a \url{http://en.wikipedia.org/wiki/BibTeX} oldalon talÃ¡lhatÃ³.
+\begin{lstlisting}[frame=single,float=!ht,caption=PÃ©lda szÃ¶veges irodalomjegyzÃ©k-adatbÃ¡zisra BiBTeX hasznÃ¡lata esetÃ©n., label=listing:Bibtex]
 @BOOK{Wettl04,
-  author="Ferenc Wettl and Gyula Mayer and Péter Szabó",
-  title="\LaTeX~kézikönyv",
-  publisher="Panem Könyvkiadó",
+  author="Ferenc Wettl and Gyula Mayer and PÃ©ter SzabÃ³",
+  title="\LaTeX~kÃ©zikÃ¶nyv",
+  publisher="Panem KÃ¶nyvkiadÃ³",
   year=2004
 }
 @ARTICLE{Candy86,
@@ -200,45 +200,45 @@ Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablon is
   note   ="\newline URL: http://www.mathworks.com/matlabcentral/fileexchange/"
 }
 @MISC{DipPortal,
-	author="Budapesti {M}ûszaki és {G}azdaságtudományi {E}gyetem 
-	{V}illamosmérnöki és {I}nformatikai {K}ar",
-  title="{D}iplomaterv portál (2011 február 26.)",
+	author="Budapesti {M}Å±szaki Ã©s {G}azdasÃ¡gtudomÃ¡nyi {E}gyetem 
+	{V}illamosmÃ©rnÃ¶ki Ã©s {I}nformatikai {K}ar",
+  title="{D}iplomaterv portÃ¡l (2011 februÃ¡r 26.)",
   howpublished="\url{http://diplomaterv.vik.bme.hu/}",
 }}
 \end{lstlisting}
 
-A stílusfájl egy \verb+.sty+ kiterjesztésû fájl, de ezzel lényegében nem kell foglalkozni, mert vannak beépített stílusok, amelyek jól használhatók. Ez a sablon a BiB\TeX-et használja, a hozzá tartozó adatbázisfájl a \verb+mybib.bib+ fájl. Megfigyelhetõ, hogy az irodalomjegyzéket a dokumentum végére (a \verb+\end{document}+ utasítás elé) beillesztett \verb+\bibliography{mybib}+ utasítással hozhatjuk létre, a stílusát pedig ugyanitt a  \verb+\bibliographystyle{plain}+ utasítással adhatjuk meg. Ebben az esetben a \verb+plain+ elõre definiált stílust használjuk (a sablonban is ezt állítottuk be). A \verb+plain+ stíluson kívül természetesen számtalan más elõre definiált stílus is létezik. Mivel a \verb+.bib+ adatbázisban ezeket megadtuk, a BiB\TeX-fordító is meg tudja különböztetni a szerzõt a címtõl és a kiadótól, és ez alapján automatikusan generálódik az irodalomjegyzék a stílusfájl által meghatározott stílusban.
+A stÃ­lusfÃ¡jl egy \verb+.sty+ kiterjesztÃ©sÅ± fÃ¡jl, de ezzel lÃ©nyegÃ©ben nem kell foglalkozni, mert vannak beÃ©pÃ­tett stÃ­lusok, amelyek jÃ³l hasznÃ¡lhatÃ³k. Ez a sablon a BiB\TeX-et hasznÃ¡lja, a hozzÃ¡ tartozÃ³ adatbÃ¡zisfÃ¡jl a \verb+mybib.bib+ fÃ¡jl. MegfigyelhetÅ‘, hogy az irodalomjegyzÃ©ket a dokumentum vÃ©gÃ©re (a \verb+\end{document}+ utasÃ­tÃ¡s elÃ©) beillesztett \verb+\bibliography{mybib}+ utasÃ­tÃ¡ssal hozhatjuk lÃ©tre, a stÃ­lusÃ¡t pedig ugyanitt a  \verb+\bibliographystyle{plain}+ utasÃ­tÃ¡ssal adhatjuk meg. Ebben az esetben a \verb+plain+ elÅ‘re definiÃ¡lt stÃ­lust hasznÃ¡ljuk (a sablonban is ezt Ã¡llÃ­tottuk be). A \verb+plain+ stÃ­luson kÃ­vÃ¼l termÃ©szetesen szÃ¡mtalan mÃ¡s elÅ‘re definiÃ¡lt stÃ­lus is lÃ©tezik. Mivel a \verb+.bib+ adatbÃ¡zisban ezeket megadtuk, a BiB\TeX-fordÃ­tÃ³ is meg tudja kÃ¼lÃ¶nbÃ¶ztetni a szerzÅ‘t a cÃ­mtÅ‘l Ã©s a kiadÃ³tÃ³l, Ã©s ez alapjÃ¡n automatikusan generÃ¡lÃ³dik az irodalomjegyzÃ©k a stÃ­lusfÃ¡jl Ã¡ltal meghatÃ¡rozott stÃ­lusban.
 
-Az egyes forrásmunkákra a szövegbõl továbbra is a \verb+\cite+ paranccsal tudunk hivatkozni, így a \listref{Bibtex} kódrészlet esetén a hivatkozások rendre \verb+\cite{Wettl04}+, \verb+\cite{Candy86}+, \verb+\cite{Lee87}+, \verb+\cite{KissPhD}+, \verb+\cite{Schreirer00}+ és \verb+\cite{DipPortal}+. Az irodalomjegyzékben alapértelmezésben csak azok a forrásmunkák jelennek meg, amelyekre található hivatkozás a szövegben, és ez így alapvetõen helyes is, hiszen olyan forrásmunkákat nem illik az irodalomjegyzékbe írni, amelyekre nincs hivatkozás.
+Az egyes forrÃ¡smunkÃ¡kra a szÃ¶vegbÅ‘l tovÃ¡bbra is a \verb+\cite+ paranccsal tudunk hivatkozni, Ã­gy a \listref{Bibtex} kÃ³drÃ©szlet esetÃ©n a hivatkozÃ¡sok rendre \verb+\cite{Wettl04}+, \verb+\cite{Candy86}+, \verb+\cite{Lee87}+, \verb+\cite{KissPhD}+, \verb+\cite{Schreirer00}+ Ã©s \verb+\cite{DipPortal}+. Az irodalomjegyzÃ©kben alapÃ©rtelmezÃ©sben csak azok a forrÃ¡smunkÃ¡k jelennek meg, amelyekre talÃ¡lhatÃ³ hivatkozÃ¡s a szÃ¶vegben, Ã©s ez Ã­gy alapvetÅ‘en helyes is, hiszen olyan forrÃ¡smunkÃ¡kat nem illik az irodalomjegyzÃ©kbe Ã­rni, amelyekre nincs hivatkozÃ¡s.
 
-Mivel a fordítási folyamat során több lépésben oldódnak fel a szimbólumok, ezért gyakran többször (TeXLive és TeXnicCenter esetén 2-3-szor) is le kell fordítani a dokumentumot. Ilyenkor ez elsõ 1-2 fordítás esetleg szimbólum-feloldásra vonatkozó figyelmeztetõ üzenettel zárul. Ha hibaüzenettel zárul bármelyik fordítás, akkor nincs értelme megismételni, hanem a hibát kell megkeresni. A \verb+.bib+ fájl megváltoztatáskor sokszor nincs hatása a változtatásnak azonnal, mivel nem mindig fut újra a BibTeX fordító. Ezért célszerû a változtatás után azt manuálisan is lefuttatni (TeXnicCenter esetén \verb+Build/BibTeX+).
+Mivel a fordÃ­tÃ¡si folyamat sorÃ¡n tÃ¶bb lÃ©pÃ©sben oldÃ³dnak fel a szimbÃ³lumok, ezÃ©rt gyakran tÃ¶bbszÃ¶r (TeXLive Ã©s TeXnicCenter esetÃ©n 2-3-szor) is le kell fordÃ­tani a dokumentumot. Ilyenkor ez elsÅ‘ 1-2 fordÃ­tÃ¡s esetleg szimbÃ³lum-feloldÃ¡sra vonatkozÃ³ figyelmeztetÅ‘ Ã¼zenettel zÃ¡rul. Ha hibaÃ¼zenettel zÃ¡rul bÃ¡rmelyik fordÃ­tÃ¡s, akkor nincs Ã©rtelme megismÃ©telni, hanem a hibÃ¡t kell megkeresni. A \verb+.bib+ fÃ¡jl megvÃ¡ltoztatÃ¡skor sokszor nincs hatÃ¡sa a vÃ¡ltoztatÃ¡snak azonnal, mivel nem mindig fut Ãºjra a BibTeX fordÃ­tÃ³. EzÃ©rt cÃ©lszerÅ± a vÃ¡ltoztatÃ¡s utÃ¡n azt manuÃ¡lisan is lefuttatni (TeXnicCenter esetÃ©n \verb+Build/BibTeX+).
 
-Hogy a szövegbe ágyazott hivatkozások kinézetét demonstráljuk, itt most sorban meghivatkozzuk a \cite{Wettl04}, \cite{Candy86}, \cite{Lee87}, \cite{KissPhD} és az \cite{Schreier00} forrásmunkát, valamint az \cite{DipPortal} weboldalt.
+Hogy a szÃ¶vegbe Ã¡gyazott hivatkozÃ¡sok kinÃ©zetÃ©t demonstrÃ¡ljuk, itt most sorban meghivatkozzuk a \cite{Wettl04}, \cite{Candy86}, \cite{Lee87}, \cite{KissPhD} Ã©s az \cite{Schreier00} forrÃ¡smunkÃ¡t, valamint az \cite{DipPortal} weboldalt.
 
-Megjegyzendõ, hogy az ékezetes magyar betûket is tartalmazó \verb+.bib+ fájl az \verb+inputenc+ csomaggal betöltött \verb+latin2+ betûkészlet miatt fordítható. Ugyanez a \verb+.bib+ fájl hibaüzenettel fordul egy olyan dokumentumban, ami nem tartalmazza a \verb+\usepackage[latin2]{inputenc}+ sort. Speciális igény esetén az irodalmi adatbázis általánosabb érvényûvé tehetõ, ha az ékezetes betûket speciális latex karakterekkel helyettesítjük a \verb+.bib+ fájlban, pl. á helyett \verb+\'{a}+-t vagy õ helyett \verb+\H{o}+-t írunk. 
+MegjegyzendÅ‘, hogy az Ã©kezetes magyar betÅ±ket is tartalmazÃ³ \verb+.bib+ fÃ¡jl az \verb+inputenc+ csomaggal betÃ¶ltÃ¶tt \verb+latin2+ betÅ±kÃ©szlet miatt fordÃ­thatÃ³. Ugyanez a \verb+.bib+ fÃ¡jl hibaÃ¼zenettel fordul egy olyan dokumentumban, ami nem tartalmazza a \verb+\usepackage[latin2]{inputenc}+ sort. SpeciÃ¡lis igÃ©ny esetÃ©n az irodalmi adatbÃ¡zis Ã¡ltalÃ¡nosabb Ã©rvÃ©nyÅ±vÃ© tehetÅ‘, ha az Ã©kezetes betÅ±ket speciÃ¡lis latex karakterekkel helyettesÃ­tjÃ¼k a \verb+.bib+ fÃ¡jlban, pl. Ã¡ helyett \verb+\'{a}+-t vagy Å‘ helyett \verb+\H{o}+-t Ã­runk. 
 
-Oldaltörés következik (ld. forrás).
+OldaltÃ¶rÃ©s kÃ¶vetkezik (ld. forrÃ¡s).
 \newpage
 
 %----------------------------------------------------------------------------
-\section{A dolgozat szerkezete és a forrásfájlok}
+\section{A dolgozat szerkezete Ã©s a forrÃ¡sfÃ¡jlok}
 %----------------------------------------------------------------------------
-A diplomatervsablon (a kari irányelvek szerint) az alábbi fõ fejezetekbõl áll:
+A diplomatervsablon (a kari irÃ¡nyelvek szerint) az alÃ¡bbi fÅ‘ fejezetekbÅ‘l Ã¡ll:
 \begin{enumerate}
-	\item 1 oldalas \emph{tájékoztató} a szakdolgozat/diplomaterv szerkezetérõl (\verb+guideline.tex+), ami a végsõ dolgozatból törlendõ,
-	\item \emph{feladatkiírás} (\verb+project.tex+), a dolgozat nyomtatott verzójában ennek a helyére kerül a tanszék által kiadott, a tanszékvezetõ által aláírt feladatkiírás, a dolgozat elektronikus verziójába pedig a feladatkiírás egyáltalán ne kerüljön bele, azt külön tölti fel a tanszék a diplomaterv-honlapra,
-	\item \emph{címoldal} (\verb+titlepage.tex+),
-	\item \emph{tartalomjegyzék} (\verb+diploma.tex+),
-	\item a diplomatervezõ \emph{nyilatkozat}a az önálló munkáról (\verb+declaration.tex+),
-	\item 1-2 oldalas tartalmi \emph{összefoglaló} magyarul és angolul, illetve elkészíthetõ még további nyelveken is (\verb+abstract.tex+),
-	\item \emph{bevezetés}: a feladat értelmezése, a tervezés célja, a feladat indokoltsága, a diplomaterv felépítésének rövid összefoglalása (\verb+introduction.tex+),
-	\item sorszámmal ellátott \emph{fejezetek}: a feladatkiírás pontosítása és részletes elemzése, elõzmények (irodalomkutatás, hasonló alkotások), az ezekbõl levonható következtetések, a tervezés részletes leírása, a döntési lehetõségek értékelése és a választott megoldások indoklása, a megtervezett mûszaki alkotás értékelése, kritikai elemzése, továbbfejlesztési lehetõségek (\verb+chapter{1,2..n}.tex+),
-	\item esetleges \emph{köszönetnyilvánítás}ok (\verb+acknowledgement.tex+),
-	\item részletes és pontos \emph{irodalomjegyzék} (ez a sablon esetében automatikusan generálódik a \verb+diploma.tex+ fájlban elhelyezett \verb+\bibliography+ utasítás hatására, a \sectref{HowtoReference}. fejezetben leírtak szerint),
-	\item \emph{függelékek} (\verb+appendices.tex+).
+	\item 1 oldalas \emph{tÃ¡jÃ©koztatÃ³} a szakdolgozat/diplomaterv szerkezetÃ©rÅ‘l (\verb+guideline.tex+), ami a vÃ©gsÅ‘ dolgozatbÃ³l tÃ¶rlendÅ‘,
+	\item \emph{feladatkiÃ­rÃ¡s} (\verb+project.tex+), a dolgozat nyomtatott verzÃ³jÃ¡ban ennek a helyÃ©re kerÃ¼l a tanszÃ©k Ã¡ltal kiadott, a tanszÃ©kvezetÅ‘ Ã¡ltal alÃ¡Ã­rt feladatkiÃ­rÃ¡s, a dolgozat elektronikus verziÃ³jÃ¡ba pedig a feladatkiÃ­rÃ¡s egyÃ¡ltalÃ¡n ne kerÃ¼ljÃ¶n bele, azt kÃ¼lÃ¶n tÃ¶lti fel a tanszÃ©k a diplomaterv-honlapra,
+	\item \emph{cÃ­moldal} (\verb+titlepage.tex+),
+	\item \emph{tartalomjegyzÃ©k} (\verb+diploma.tex+),
+	\item a diplomatervezÅ‘ \emph{nyilatkozat}a az Ã¶nÃ¡llÃ³ munkÃ¡rÃ³l (\verb+declaration.tex+),
+	\item 1-2 oldalas tartalmi \emph{Ã¶sszefoglalÃ³} magyarul Ã©s angolul, illetve elkÃ©szÃ­thetÅ‘ mÃ©g tovÃ¡bbi nyelveken is (\verb+abstract.tex+),
+	\item \emph{bevezetÃ©s}: a feladat Ã©rtelmezÃ©se, a tervezÃ©s cÃ©lja, a feladat indokoltsÃ¡ga, a diplomaterv felÃ©pÃ­tÃ©sÃ©nek rÃ¶vid Ã¶sszefoglalÃ¡sa (\verb+introduction.tex+),
+	\item sorszÃ¡mmal ellÃ¡tott \emph{fejezetek}: a feladatkiÃ­rÃ¡s pontosÃ­tÃ¡sa Ã©s rÃ©szletes elemzÃ©se, elÅ‘zmÃ©nyek (irodalomkutatÃ¡s, hasonlÃ³ alkotÃ¡sok), az ezekbÅ‘l levonhatÃ³ kÃ¶vetkeztetÃ©sek, a tervezÃ©s rÃ©szletes leÃ­rÃ¡sa, a dÃ¶ntÃ©si lehetÅ‘sÃ©gek Ã©rtÃ©kelÃ©se Ã©s a vÃ¡lasztott megoldÃ¡sok indoklÃ¡sa, a megtervezett mÅ±szaki alkotÃ¡s Ã©rtÃ©kelÃ©se, kritikai elemzÃ©se, tovÃ¡bbfejlesztÃ©si lehetÅ‘sÃ©gek (\verb+chapter{1,2..n}.tex+),
+	\item esetleges \emph{kÃ¶szÃ¶netnyilvÃ¡nÃ­tÃ¡s}ok (\verb+acknowledgement.tex+),
+	\item rÃ©szletes Ã©s pontos \emph{irodalomjegyzÃ©k} (ez a sablon esetÃ©ben automatikusan generÃ¡lÃ³dik a \verb+diploma.tex+ fÃ¡jlban elhelyezett \verb+\bibliography+ utasÃ­tÃ¡s hatÃ¡sÃ¡ra, a \sectref{HowtoReference}. fejezetben leÃ­rtak szerint),
+	\item \emph{fÃ¼ggelÃ©kek} (\verb+appendices.tex+).
 \end{enumerate}
 
-A sablonban a fejezetek a \verb+diploma.tex+ fájlba vannak beillesztve \verb+\include+ utasítások segítségével. Lehetõség van arra, hogy csak az éppen szerkesztés alatt álló \verb+.tex+ fájlt fordítsuk le, ezzel lerövidítve a fordítási folyamatot. Ezt a lehetõséget az alábbi kódrészlet biztosítja a \verb+diploma.tex+ fájlban.
+A sablonban a fejezetek a \verb+diploma.tex+ fÃ¡jlba vannak beillesztve \verb+\include+ utasÃ­tÃ¡sok segÃ­tsÃ©gÃ©vel. LehetÅ‘sÃ©g van arra, hogy csak az Ã©ppen szerkesztÃ©s alatt Ã¡llÃ³ \verb+.tex+ fÃ¡jlt fordÃ­tsuk le, ezzel lerÃ¶vidÃ­tve a fordÃ­tÃ¡si folyamatot. Ezt a lehetÅ‘sÃ©get az alÃ¡bbi kÃ³drÃ©szlet biztosÃ­tja a \verb+diploma.tex+ fÃ¡jlban.
 \begin{lstlisting}[frame=single,float=!ht]
 \includeonly{
 	guideline,%
@@ -255,26 +255,26 @@ A sablonban a fejezetek a \verb+diploma.tex+ fájlba vannak beillesztve \verb+\in
 }
 \end{lstlisting}
 
-Ha az alábbi kódrészletben az egyes sorokat a \verb+%+ szimbólummal kikommentezzük, akkor a megfelelõ \verb+.tex+ fájl nem fordul le. Az oldalszámok és a tartalomjegyék természetesen csak akkor billennek helyre, ha a teljes dokumentumot lefordítjuk.
+Ha az alÃ¡bbi kÃ³drÃ©szletben az egyes sorokat a \verb+%+ szimbÃ³lummal kikommentezzÃ¼k, akkor a megfelelÅ‘ \verb+.tex+ fÃ¡jl nem fordul le. Az oldalszÃ¡mok Ã©s a tartalomjegyÃ©k termÃ©szetesen csak akkor billennek helyre, ha a teljes dokumentumot lefordÃ­tjuk.
 
 %----------------------------------------------------------------------------
 \newpage
-\section{Alapadatok megadása}
+\section{Alapadatok megadÃ¡sa}
 %----------------------------------------------------------------------------
-A diplomaterv alapadatait (cím, szerzõ, konzulens, konzulens titulusa) a \verb+diploma.tex+ fájlban lehet megadni az alábbi kódrészlet módosításával.
+A diplomaterv alapadatait (cÃ­m, szerzÅ‘, konzulens, konzulens titulusa) a \verb+diploma.tex+ fÃ¡jlban lehet megadni az alÃ¡bbi kÃ³drÃ©szlet mÃ³dosÃ­tÃ¡sÃ¡val.
 \begin{lstlisting}[frame=single,float=!ht]
-\newcommand{\vikszerzo}{Bódis-Szomorú András}
-\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
-\newcommand{\vikcim}{Elektronikus terelõk}
-\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
+\newcommand{\vikszerzo}{BÃ³dis-SzomorÃº AndrÃ¡s}
+\newcommand{\vikkonzulens}{dr.~Konzulens ElemÃ©r}
+\newcommand{\vikcim}{Elektronikus terelÅ‘k}
+\newcommand{\viktanszek}{MÃ©rÃ©stechnika Ã©s InformÃ¡ciÃ³s Rendszerek TanszÃ©k}
 \newcommand{\vikdoktipus}{Diplomaterv}
-\newcommand{\vikdepartmentr}{Bódis-Szomorú András}
+\newcommand{\vikdepartmentr}{BÃ³dis-SzomorÃº AndrÃ¡s}
 \end{lstlisting}
 
 %----------------------------------------------------------------------------
-\section{Új fejezet írása}
+\section{Ãšj fejezet Ã­rÃ¡sa}
 %----------------------------------------------------------------------------
-A fõfejezetek külön \verb+chapter{1..n}.tex+ fájlban foglalnak helyet. A sablonhoz 3 fejezet készült. További fõfejezeteket úgy hozhatunk létre, ha új \verb+chapter{i}.tex+ fájlt készítünk a fejezet számára, és a \verb+diploma.tex+ fájlban, a \verb+\include+ és \verb+\includeonly+ utasítások argumentumába felvesszük az új \verb+.tex+ fájl nevét.
+A fÅ‘fejezetek kÃ¼lÃ¶n \verb+chapter{1..n}.tex+ fÃ¡jlban foglalnak helyet. A sablonhoz 3 fejezet kÃ©szÃ¼lt. TovÃ¡bbi fÅ‘fejezeteket Ãºgy hozhatunk lÃ©tre, ha Ãºj \verb+chapter{i}.tex+ fÃ¡jlt kÃ©szÃ­tÃ¼nk a fejezet szÃ¡mÃ¡ra, Ã©s a \verb+diploma.tex+ fÃ¡jlban, a \verb+\include+ Ã©s \verb+\includeonly+ utasÃ­tÃ¡sok argumentumÃ¡ba felvesszÃ¼k az Ãºj \verb+.tex+ fÃ¡jl nevÃ©t.
 
 
 
