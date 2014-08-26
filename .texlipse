@@ -2,7 +2,7 @@
 #Thu Aug 14 18:19:20 CEST 2014
 markTmpDer=true
 builderNum=2
-outputDir=
+outputDir=pdf
 makeIndSty=
 bibrefDir=
 outputFormat=pdf
@@ -11,4 +11,4 @@ mainTexFile=diploma.tex
 outputFile=diploma.pdf
 langSpell=hu
 markDer=true
-srcDir=
+srcDir=src
