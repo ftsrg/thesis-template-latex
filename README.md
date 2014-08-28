@@ -8,3 +8,4 @@ Key improvements (see the Git log for details):
 * The files use UTF-8 character encoding.
 * The university logo is vectorgraphical.
 * Added separate directory for tex and bib source files.
+* Set the language to English for the English abstract.
