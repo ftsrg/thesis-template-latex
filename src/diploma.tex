@@ -1,6 +1,8 @@
 \documentclass[11pt,a4paper,oneside]{report}             % Single-side
 %\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
+\input{EDITMEauthor}
+
 %\PassOptionsToPackage{chapternumber=Huordinal}{magyar.ldf}
 \usepackage{t1enc}
 \usepackage[utf8]{inputenc}
@@ -22,15 +24,6 @@
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
 \usepackage{hyperref}
-
-%--------------------------------------------------------------------------------------
-% Main variables
-%--------------------------------------------------------------------------------------
-\newcommand{\vikszerzo}{Bódis-Szomorú András}
-\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
-\newcommand{\vikcim}{Elektronikus terelők}
-\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
-\newcommand{\vikdoktipus}{Diplomaterv}
 
 %--------------------------------------------------------------------------------------
 % Page layout setup
@@ -73,7 +66,7 @@
     urlcolor=black             % color of external links
 }
 
-\usepackage{inconsolata}
+%\usepackage{inconsolata}
 %--------------------------------------------------------------------------------------
 % Set up listings
 %--------------------------------------------------------------------------------------
@@ -113,19 +106,8 @@
 
 \author{\vikszerzo}
 \title{\viktitle}
-\includeonly{
-	guideline,%
-	project,%
-	titlepage,%
-	declaration,%
-	abstract,%
-	introduction,%
-	chapter1,%
-	chapter2,%
-	chapter3,%
-	acknowledgement,%
-	appendices,%
-}
+
+
 %--------------------------------------------------------------------------------------
 %	Setup captions
 %--------------------------------------------------------------------------------------
@@ -143,31 +125,8 @@ aboveskip=10pt}
 % Table of contents and the main text
 %--------------------------------------------------------------------------------------
 \begin{document}
-\selectlanguage{magyar}
-\singlespacing
-\include{guideline}
-\include{project}
 
-\pagenumbering{arabic}
-\onehalfspacing
-\include{titlepage}
-\tableofcontents\vfill
-\include{declaration}
-\include{abstract}
-\include{introduction}
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
-\include{acknowledgement}
-
-%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
-%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
-
-\bibliography{bib/mybib}
-\addcontentsline{toc}{chapter}{Irodalomjegyzék}
-\bibliographystyle{plain}
-
-\include{appendices}
+\input{EDITMEcontent}
 
 \label{page:last}
 \end{document}
