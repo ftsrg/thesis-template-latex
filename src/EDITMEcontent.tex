@@ -1,0 +1,45 @@
+%--------------------------------------------------------------------------------------
+%	Select document language.
+%--------------------------------------------------------------------------------------
+\selectlanguage{magyar}
+
+%--------------------------------------------------------------------------------------
+%	This will be BEFORE your titlepage. This block should be completely empty.
+%--------------------------------------------------------------------------------------
+\singlespacing
+\include{guideline}
+\include{project}
+
+%--------------------------------------------------------------------------------------
+%	Numbering, spacing, titlepage and TOC. Don't change this.
+%--------------------------------------------------------------------------------------
+\pagenumbering{arabic}
+\onehalfspacing
+\include{titlepage}
+\tableofcontents\vfill
+
+%--------------------------------------------------------------------------------------
+%	Add your chapters in the order you want them in your document.
+%--------------------------------------------------------------------------------------
+\include{declaration}
+\include{abstract}
+\include{introduction}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{acknowledgement}
+
+%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
+%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
+
+%--------------------------------------------------------------------------------------
+%	Select your bibliography file(s) and style.
+%--------------------------------------------------------------------------------------
+\bibliography{bib/mybib}
+\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+\bibliographystyle{plain}
+
+%--------------------------------------------------------------------------------------
+%	Add anything else you might need, like appendices.
+%--------------------------------------------------------------------------------------
+\include{appendices}
