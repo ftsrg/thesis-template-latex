@@ -1,6 +1,8 @@
 thesis-template-latex
 =====================
 
+[![Build status](https://travis-ci.org/FTSRG/thesis-template-latex.svg?branch=master)](https://travis-ci.org/FTSRG/thesis-template-latex)
+
 Thesis template in LaTeX, forked from the official thesis template of BME-VIK (Budapest University of Technology and Economics, Faculty of Electrical Engineering and Informatics).
 
 Key improvements (see the Git log for details):
@@ -9,3 +11,4 @@ Key improvements (see the Git log for details):
 * The university logo is vectorgraphical.
 * Added separate directory for tex and bib source files.
 * Set the language to English for the English abstract.
+* Added makefile.
