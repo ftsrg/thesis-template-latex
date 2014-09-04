@@ -6,6 +6,8 @@ thesis-template-latex
 
 Thesis template in LaTeX, forked from the official thesis template of BME-VIK (Budapest University of Technology and Economics, Faculty of Electrical Engineering and Informatics).
 
+Check out the latest [PDF output](https://www.sharelatex.com/github/repos/FTSRG/thesis-template-latex/builds/latest/output.pdf).
+
 Key improvements (see the Git log for details):
 * The template can be imported to Eclipse as a TeXlipse project.
 * The files use UTF-8 character encoding.
