@@ -2,7 +2,7 @@ thesis-template-latex
 =====================
 
 * ShareLaTeX: [![PDF Status](https://www.sharelatex.com/github/repos/FTSRG/thesis-template-latex/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/FTSRG/thesis-template-latex/builds/latest/output.pdf)
-* Travis build: [![Build status](https://travis-ci.org/FTSRG/thesis-template-latex.svg?branch=master)](https://travis-ci.org/FTSRG/thesis-template-latex)
+* Travis CI: [![Build status](https://travis-ci.org/FTSRG/thesis-template-latex.svg?branch=master)](https://travis-ci.org/FTSRG/thesis-template-latex)
 
 Thesis template in LaTeX, forked from the official thesis template of BME-VIK (Budapest University of Technology and Economics, Faculty of Electrical Engineering and Informatics).
 
