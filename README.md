@@ -15,3 +15,4 @@ Key improvements (see the Git log for details):
 * Added separate directory for tex and bib source files.
 * Set the language to English for the English abstract.
 * Added makefile.
+* Added support for XeLaTeX.

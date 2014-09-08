@@ -1,10 +1,14 @@
 \documentclass[11pt,a4paper,oneside]{report}             % Single-side
 %\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
-%\PassOptionsToPackage{chapternumber=Huordinal}{magyar.ldf}
-\usepackage{t1enc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
 \usepackage{cmap}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -58,7 +62,7 @@
 %--------------------------------------------------------------------------------------
 \hypersetup{
     bookmarks=true,            % show bookmarks bar?
-    unicode=false,             % non-Latin characters in Acrobats bookmarks
+    unicode=true,              % non-Latin characters in Acrobat's bookmarks
     pdftitle={\vikcim},        % title
     pdfauthor={\vikszerzo},    % author
     pdfsubject={\vikdoktipus}, % subject of the document
