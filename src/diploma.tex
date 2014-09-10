@@ -21,7 +21,7 @@
 %\usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{anysize}
-\usepackage[magyar,english]{babel}
+\usepackage[english,magyar]{babel} % Az utoljára definiált nyelv lesz aktív.
 \usepackage{sectsty}
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
@@ -32,6 +32,7 @@
 %--------------------------------------------------------------------------------------
 \newcommand{\vikszerzo}{Bódis-Szomorú András}
 \newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
+\newcommand{\vikkonzulensb}{Második Konzulens} % Második konzulens neve; hagyd üresen, ha egy konzulensed van.
 \newcommand{\vikcim}{Elektronikus terelők}
 \newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
 \newcommand{\vikdoktipus}{Diplomaterv}
@@ -55,20 +56,22 @@
 \sectionfont{\large\upshape\bfseries}
 \setcounter{secnumdepth}{2}
 \singlespacing
-\frenchspacing
+\frenchspacing % Ettől nem lesznek hosszabb szóközök a mondatvégi írásjelek után.
+\sloppy % Margón túllógó sorok tiltása.
 
 %--------------------------------------------------------------------------------------
 %	Setup hyperref package
 %--------------------------------------------------------------------------------------
 \hypersetup{
     bookmarks=true,            % show bookmarks bar?
-    unicode=true,              % non-Latin characters in Acrobat's bookmarks
+    unicode=false,              % non-Latin characters in Acrobat's bookmarks
     pdftitle={\vikcim},        % title
     pdfauthor={\vikszerzo},    % author
     pdfsubject={\vikdoktipus}, % subject of the document
     pdfcreator={\vikszerzo},   % creator of the document
     pdfproducer={Producer},    % producer of the document
-    pdfkeywords={keywords},    % list of keywords
+    pdfkeywords={kulcsszó1, kulcsszó2, kulcsszó3},
+	                           % list of keywords (separate then by comma)
     pdfnewwindow=true,         % links in new window
     colorlinks=true,           % false: boxed links; true: colored links
     linkcolor=black,           % color of internal links
@@ -77,7 +80,6 @@
     urlcolor=black             % color of external links
 }
 
-\usepackage{inconsolata}
 %--------------------------------------------------------------------------------------
 % Set up listings
 %--------------------------------------------------------------------------------------
