@@ -100,6 +100,28 @@
 \def\lstlistingname{lista}	
 
 %--------------------------------------------------------------------------------------
+%    Set up theorem-like environments
+%--------------------------------------------------------------------------------------
+% Using ntheorem package -- see http://www.math.washington.edu/tex-archive/macros/latex/contrib/ntheorem/ntheorem.pdf
+\theoremstyle{plain}
+\theoremseparator{.}
+\newtheorem{example}{Példa}
+
+\theoremseparator{.}
+%\theoremprework{\bigskip\hrule\medskip}
+%\theorempostwork{\hrule\bigskip}
+\theorembodyfont{\upshape}
+\theoremsymbol{{\large \ensuremath{\centerdot}}}
+\newtheorem{definition}{Definíció}
+
+\theoremseparator{.}
+%\theoremprework{\bigskip\hrule\medskip}
+%\theorempostwork{\hrule\bigskip}
+\newtheorem{theorem}{Tétel}
+
+
+
+%--------------------------------------------------------------------------------------
 %	Some new commands and declarations
 %--------------------------------------------------------------------------------------
 \newcommand{\code}[1]{{\upshape\ttfamily\scriptsize\indent #1}}
