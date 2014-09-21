@@ -10,14 +10,14 @@
   \usepackage{lmodern}
 \fi
 \usepackage{cmap}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{enumerate}
-\usepackage[thmmarks]{ntheorem}
+\usepackage{amsfonts,amsmath,amssymb} % Mathematical symbols.
+\usepackage[thmmarks]{ntheorem} % Theorem-like environments.
 \usepackage{graphics}
-\usepackage{epsfig}
-\usepackage{listings}
 \usepackage{color}
+
+\usepackage{listings} % For source code snippets.
+\usepackage[ruled,boxed,resetcount]{algorithm2e} % For pseudocodes.
+\usepackage{hyperref} For hyperlinks in the generated document. 
 %\usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{anysize}
@@ -25,17 +25,30 @@
 \usepackage{sectsty}
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
-\usepackage{hyperref}
+
 
 %--------------------------------------------------------------------------------------
 % Main variables
 %--------------------------------------------------------------------------------------
-\newcommand{\vikszerzo}{Bódis-Szomorú András}
-\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
-\newcommand{\vikkonzulensb}{Második Konzulens} % Második konzulens neve; hagyd üresen, ha egy konzulensed van.
-\newcommand{\vikcim}{Elektronikus terelők}
-\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
-\newcommand{\vikdoktipus}{Diplomaterv}
+\newcommand{\vikszerzoA}{Bódis-Szomorú András} % Szerző neve
+\newcommand{\vikkonzulensA}{dr.~Konzulens Elemér} % Első konzulens neve
+\newcommand{\vikkonzulensB}{Második Konzulens} % Második konzulens neve; hagyd üresen, ha egy konzulensed van.
+\newcommand{\vikcim}{Elektronikus terelők} % Cím
+\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék} % Tanszék
+\newcommand{\vikdoktipus}{Diplomaterv} % Dokumentum típusa (diplomaterv, szakdolgozat, TDK-dolgozat, stb.)
+
+
+%--------------------------------------------------------------------------------------
+% TDK-specifikus változók
+%--------------------------------------------------------------------------------------
+\newcommand{\tdkszerzoB}{Második Szerző} % Második szerző neve; hagyd üresen, ha egyedül í­rtad a TDK-t.
+\newcommand{\tdkev}{2014} % A dolgozat írásának éve (pl. "2014") (Ez OTDK-nál eltérhet az aktuális évtől.)
+
+% További adatok az OTDK címlaphoz (BME-s TDK-hoz nem kell kitölteni)
+\newcommand{\tdkevfolyamA}{IV} % Első szerző évfolyama, római számmal (pl. IV).
+\newcommand{\tdkevfolyamB}{III} % Második szerző évfolyama, római számmal (pl. III).
+\newcommand{\tdkkonzulensbeosztasA}{egyetemi tanár} % Első konzulens beosztása (pl. egyetemi docens)
+\newcommand{\tdkkonzulensbeosztasB}{doktorandusz} % Második konzulens beosztása (pl. egyetemi docens)
 
 %--------------------------------------------------------------------------------------
 % Page layout setup
@@ -56,8 +69,11 @@
 \sectionfont{\large\upshape\bfseries}
 \setcounter{secnumdepth}{2}
 \singlespacing
+
 \frenchspacing % Ettől nem lesznek hosszabb szóközök a mondatvégi írásjelek után.
 \sloppy % Margón túllógó sorok tiltása.
+\widowpenalty=10000 \clubpenalty=10000 %A fattyú- és árvasorok elkerülése
+\def\hyph{-\penalty0\hskip0pt\relax} % Kötőjeles szavak elválasztásának engedélyezése
 
 %--------------------------------------------------------------------------------------
 %	Setup hyperref package
@@ -66,10 +82,10 @@
     bookmarks=true,            % show bookmarks bar?
     unicode=false,              % non-Latin characters in Acrobat's bookmarks
     pdftitle={\vikcim},        % title
-    pdfauthor={\vikszerzo},    % author
+    pdfauthor={\vikszerzoA \tdkszerzoB},    % author
     pdfsubject={\vikdoktipus}, % subject of the document
-    pdfcreator={\vikszerzo},   % creator of the document
-    pdfproducer={Producer},    % producer of the document
+    pdfcreator={\vikszerzoA \tdkszerzoB},   % creator of the document
+    pdfproducer={},    % producer of the document
     pdfkeywords={kulcsszó1, kulcsszó2, kulcsszó3},
 	                           % list of keywords (separate then by comma)
     pdfnewwindow=true,         % links in new window
@@ -85,18 +101,18 @@
 %--------------------------------------------------------------------------------------
 \lstset{
 	basicstyle=\scriptsize\ttfamily, % print whole listing small
-	keywordstyle=\color{black}\bfseries\underbar, % underlined bold black keywords
+	keywordstyle=\color{black}\bfseries, % bold black keywords
 	identifierstyle=, 					% nothing happens
-	commentstyle=\color{white}, % white comments
-	stringstyle=\scriptsize\sffamily, 			% typewriter type for strings
+	commentstyle=\color{green}, % green comments
+	stringstyle=\scriptsize, 			
 	showstringspaces=false,     % no special string spaces
 	aboveskip=3pt,
 	belowskip=3pt,
-	columns=fixed,
+	columns=flexible,
 	backgroundcolor=\color{lightgray},
     extendedchars=false,
     inputencoding=utf8
-} 		
+} 	
 \def\lstlistingname{lista}	
 
 %--------------------------------------------------------------------------------------
@@ -119,6 +135,17 @@
 %\theorempostwork{\hrule\bigskip}
 \newtheorem{theorem}{Tétel}
 
+%--------------------------------------------------------------------------------------
+%    Set up Algo2e environments
+%--------------------------------------------------------------------------------------
+\LinesNumbered %sorok számozása
+\SetAlgoNoLine %nem kérünk begin-end közé vonalakat
+\SetAlgorithmName{Algoritmus}
+%\SetKwInOut{Input}{bemenet}
+%\SetKwInOut{Output}{kimenet}
+%\SetKw{Return}{return}
+%\SetKw{Continue}{continue}
+%\SetKw{Foreach}{foreach}
 
 
 %--------------------------------------------------------------------------------------
@@ -133,6 +160,9 @@
 \newcommand{\sectref}[1]{\ref{sect:#1}}
 \newcommand{\tabref}[1]{\ref{tab:#1}.}
 
+% Hyphenation exceptions
+\hyphenation{Shakes-peare Mar-seilles ár-víz-tű-rő tü-kör-fú-ró-gép}
+
 \newcommand{\doi}[1]{DOI: \href{http://dx.doi.org/\detokenize{#1}}{\raggedright{\texttt{\detokenize{#1}}}}} % A hivatkozások közt így könnyebb DOI-t megadni.
 
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -143,28 +173,13 @@
 
 \author{\vikszerzo}
 \title{\viktitle}
-\includeonly{
-	guideline,%
-	project,%
-	titlepage,%
-	declaration,%
-	abstract,%
-	introduction,%
-	chapter1,%
-	chapter2,%
-	chapter3,%
-	acknowledgement,%
-	appendices,%
-}
+
 %--------------------------------------------------------------------------------------
 %	Setup captions
 %--------------------------------------------------------------------------------------
 \captionsetup[figure]{
-%labelsep=none,
-%font={footnotesize,it},
-%justification=justified,
-width=.75\textwidth,
-aboveskip=10pt}
+	width=.75\textwidth,
+	aboveskip=10pt}
 
 \renewcommand{\captionlabelfont}{\small\bf}
 \renewcommand{\captionfont}{\footnotesize\it}
@@ -180,19 +195,28 @@ aboveskip=10pt}
 
 \pagenumbering{arabic}
 \onehalfspacing
-\include{titlepage}
+
+% Titlepage -- choose one from below
+\include{titlepage}		% Szakdolgozat/Diplomaterv címlap
+%\include{titlepage_tdk}	% TDK címlap
+%\include{titlepage_otdk}% OTDK címlap
+ 
 \tableofcontents\vfill
-\include{declaration}
-\include{abstract}
+\include{declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
+\include{abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
+
+% The main part of the thesis
 \include{introduction}
 \include{chapter1}
 \include{chapter2}
 \include{chapter3}
 \include{acknowledgement}
 
-%\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
+% List of figures, tables
+\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
 %\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
 
+% Bibliography
 \bibliography{bib/mybib}
 \addcontentsline{toc}{chapter}{Irodalomjegyzék}
 \bibliographystyle{plain}
