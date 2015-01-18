@@ -21,11 +21,14 @@
 %\usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{anysize}
-\usepackage[english,magyar]{babel} % Az utoljára definiált nyelv lesz aktív.
+
+\usepackage[english,magyar]{babel} % Alapértelmezés szerint utoljára definiált nyelv lesz aktív, de később külön beállítjuk az aktív nyelvet.
 \usepackage{sectsty}
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
 
+\include{thesis-hu}
+%\include{thesis-en} % Beállítások angol nyelvű dolgozatokhoz
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -34,8 +37,8 @@
 \newcommand{\vikkonzulensA}{dr.~Konzulens Elemér} % Első konzulens neve
 \newcommand{\vikkonzulensB}{Második Konzulens} % Második konzulens neve; hagyd üresen, ha egy konzulensed van.
 \newcommand{\vikcim}{Elektronikus terelők} % Cím
-\newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék} % Tanszék
-\newcommand{\vikdoktipus}{Diplomaterv} % Dokumentum típusa (diplomaterv, szakdolgozat, TDK-dolgozat, stb.)
+\newcommand{\viktanszek}{\bmemit} % Tanszék
+\newcommand{\vikdoktipus}{\msc} % Dokumentum típusa (diplomaterv, szakdolgozat, TDK-dolgozat, stb.)
 
 
 %--------------------------------------------------------------------------------------
@@ -121,19 +124,19 @@
 % Using ntheorem package -- see http://www.math.washington.edu/tex-archive/macros/latex/contrib/ntheorem/ntheorem.pdf
 \theoremstyle{plain}
 \theoremseparator{.}
-\newtheorem{example}{Példa}
+\newtheorem{example}{\pelda}
 
 \theoremseparator{.}
 %\theoremprework{\bigskip\hrule\medskip}
 %\theorempostwork{\hrule\bigskip}
 \theorembodyfont{\upshape}
 \theoremsymbol{{\large \ensuremath{\centerdot}}}
-\newtheorem{definition}{Definíció}
+\newtheorem{definition}{\definicio}
 
 \theoremseparator{.}
 %\theoremprework{\bigskip\hrule\medskip}
 %\theorempostwork{\hrule\bigskip}
-\newtheorem{theorem}{Tétel}
+\newtheorem{theorem}{\tetel}
 
 %--------------------------------------------------------------------------------------
 %	Some new commands and declarations
@@ -175,7 +178,7 @@
 % Table of contents and the main text
 %--------------------------------------------------------------------------------------
 \begin{document}
-\selectlanguage{magyar}
+\dolgozatnyelve
 \singlespacing
 \include{guideline}
 \include{project}
@@ -200,12 +203,12 @@
 \include{acknowledgement}
 
 % List of figures, tables
-\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
-%\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
+\listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
+\listoftables\addcontentsline{toc}{chapter}{\tablazatokjegyzeke}
 
 % Bibliography
 \bibliography{bib/mybib}
-\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+\addcontentsline{toc}{chapter}{\irodalomjegyzek}
 \bibliographystyle{plain}
 
 \include{appendices}

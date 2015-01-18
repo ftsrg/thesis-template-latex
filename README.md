@@ -13,6 +13,6 @@ Key improvements (see the Git log for details):
 * The files use UTF-8 character encoding.
 * The university logo is vectorgraphical.
 * Added separate directory for tex and bib source files.
-* Set the language to English for the English abstract.
+* Supports Hungarian and English documents, uses correct date formatting and hyphenation settings for both.
 * Added makefile.
 * Added support for XeLaTeX.
