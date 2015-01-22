@@ -223,19 +223,21 @@ Oldaltörés következik (ld. forrás).
 %----------------------------------------------------------------------------
 \section{A dolgozat szerkezete és a forrásfájlok}
 %----------------------------------------------------------------------------
+A diplomatervsablonban a TeX fájlok két alkönyvtárban helyezkednek el. Az \verb+include+ könyvtárban azok szerepelnek, amiket tipikusan nem kell szerkesztenünk, ezek a sablon részei (pl. címoldal). A \verb+content+ alkönyvtárban pedig a saját munkánkat helyezhetjük el. Itt érdemes az egyes fejezeteket külön TeX állományokba rakni.
+
 A diplomatervsablon (a kari irányelvek szerint) az alábbi fő fejezetekből áll:
 \begin{enumerate}
-	\item 1 oldalas \emph{tájékoztató} a szakdolgozat/diplomaterv szerkezetéről (\verb+guideline.tex+), ami a végső dolgozatból törlendő,
-	\item \emph{feladatkiírás} (\verb+project.tex+), a dolgozat nyomtatott verzójában ennek a helyére kerül a tanszék által kiadott, a tanszékvezető által aláírt feladatkiírás, a dolgozat elektronikus verziójába pedig a feladatkiírás egyáltalán ne kerüljön bele, azt külön tölti fel a tanszék a diplomaterv-honlapra,
-	\item \emph{címoldal} (\verb+titlepage.tex+),
+	\item 1 oldalas \emph{tájékoztató} a szakdolgozat/diplomaterv szerkezetéről (\verb+include/guideline.tex+), ami a végső dolgozatból törlendő,
+	\item \emph{feladatkiírás} (\verb+include/project.tex+), a dolgozat nyomtatott verzójában ennek a helyére kerül a tanszék által kiadott, a tanszékvezető által aláírt feladatkiírás, a dolgozat elektronikus verziójába pedig a feladatkiírás egyáltalán ne kerüljön bele, azt külön tölti fel a tanszék a diplomaterv-honlapra,
+	\item \emph{címoldal} (\verb+include/titlepage.tex+),
 	\item \emph{tartalomjegyzék} (\verb+diploma.tex+),
-	\item a diplomatervező \emph{nyilatkozat}a az önálló munkáról (\verb+declaration.tex+),
-	\item 1-2 oldalas tartalmi \emph{összefoglaló} magyarul és angolul, illetve elkészíthető még további nyelveken is (\verb+abstract.tex+),
-	\item \emph{bevezetés}: a feladat értelmezése, a tervezés célja, a feladat indokoltsága, a diplomaterv felépítésének rövid összefoglalása (\verb+introduction.tex+),
-	\item sorszámmal ellátott \emph{fejezetek}: a feladatkiírás pontosítása és részletes elemzése, előzmények (irodalomkutatás, hasonló alkotások), az ezekből levonható következtetések, a tervezés részletes leírása, a döntési lehetőségek értékelése és a választott megoldások indoklása, a megtervezett műszaki alkotás értékelése, kritikai elemzése, továbbfejlesztési lehetőségek (\verb+chapter{1,2..n}.tex+),
-	\item esetleges \emph{köszönetnyilvánítás}ok (\verb+acknowledgement.tex+),
+	\item a diplomatervező \emph{nyilatkozat}a az önálló munkáról (\verb+include/declaration.tex+),
+	\item 1-2 oldalas tartalmi \emph{összefoglaló} magyarul és angolul, illetve elkészíthető még további nyelveken is (\verb+content/abstract.tex+),
+	\item \emph{bevezetés}: a feladat értelmezése, a tervezés célja, a feladat indokoltsága, a diplomaterv felépítésének rövid összefoglalása (\verb+content/introduction.tex+),
+	\item sorszámmal ellátott \emph{fejezetek}: a feladatkiírás pontosítása és részletes elemzése, előzmények (irodalomkutatás, hasonló alkotások), az ezekből levonható következtetések, a tervezés részletes leírása, a döntési lehetőségek értékelése és a választott megoldások indoklása, a megtervezett műszaki alkotás értékelése, kritikai elemzése, továbbfejlesztési lehetőségek,
+	\item esetleges \emph{köszönetnyilvánítás}ok (\verb+content/acknowledgement.tex+),
 	\item részletes és pontos \emph{irodalomjegyzék} (ez a sablon esetében automatikusan generálódik a \verb+diploma.tex+ fájlban elhelyezett \verb+\bibliography+ utasítás hatására, a \sectref{HowtoReference}. fejezetben leírtak szerint),
-	\item \emph{függelékek} (\verb+appendices.tex+).
+	\item \emph{függelékek} (\verb+content/appendices.tex+).
 \end{enumerate}
 
 A sablonban a fejezetek a \verb+diploma.tex+ fájlba vannak beillesztve \verb+\include+ utasítások segítségével. Lehetőség van arra, hogy csak az éppen szerkesztés alatt álló \verb+.tex+ fájlt fordítsuk le, ezzel lerövidítve a fordítási folyamatot. Ezt a lehetőséget az alábbi kódrészlet biztosítja a \verb+diploma.tex+ fájlban.
@@ -263,17 +265,18 @@ Ha az alábbi kódrészletben az egyes sorokat a \verb+%+ szimbólummal kikommen
 %----------------------------------------------------------------------------
 A diplomaterv alapadatait (cím, szerző, konzulens, konzulens titulusa) a \verb+diploma.tex+ fájlban lehet megadni az alábbi kódrészlet módosításával.
 \begin{lstlisting}[frame=single,float=!ht]
-\newcommand{\vikszerzo}{Bódis-Szomorú András}
-\newcommand{\vikkonzulens}{dr.~Konzulens Elemér}
+\newcommand{\vikszerzoA}{Bódis-Szomorú András}
+\newcommand{\vikkonzulensA}{dr.~Konzulens Elemér}
+\newcommand{\vikkonzulensB}{Második Konzulens}
 \newcommand{\vikcim}{Elektronikus terelők}
 \newcommand{\viktanszek}{Méréstechnika és Információs Rendszerek Tanszék}
-\newcommand{\vikdoktipus}{Diplomaterv}
+\newcommand{\vikdoktipus}{\msc}
 \end{lstlisting}
 
 %----------------------------------------------------------------------------
 \section{Új fejezet írása}
 %----------------------------------------------------------------------------
-A főfejezetek külön \verb+chapter{1..n}.tex+ fájlban foglalnak helyet. A sablonhoz 3 fejezet készült. További főfejezeteket úgy hozhatunk létre, ha új \verb+chapter{i}.tex+ fájlt készítünk a fejezet számára, és a \verb+diploma.tex+ fájlban, a \verb+\include+ és \verb+\includeonly+ utasítások argumentumába felvesszük az új \verb+.tex+ fájl nevét.
+A főfejezetek külön \verb+content.tex+ könyvtárban foglalnak helyet. A sablonhoz 3 fejezet készült. További főfejezeteket úgy hozhatunk létre, ha új Tex fájlt készítünk a fejezet számára, és a \verb+diploma.tex+ fájlban, a \verb+\include+ és \verb+\includeonly+ utasítások argumentumába felvesszük az új \verb+.tex+ fájl nevét.
 
 
 %----------------------------------------------------------------------------
