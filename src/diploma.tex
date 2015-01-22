@@ -27,8 +27,8 @@
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
 
-\include{thesis-hu}
-%\include{thesis-en} % Beállítások angol nyelvű dolgozatokhoz
+\include{include/thesis-hu}
+%\include{include/thesis-en} % Beállítások angol nyelvű dolgozatokhoz
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -180,27 +180,27 @@
 \begin{document}
 \dolgozatnyelve
 \singlespacing
-\include{guideline}
-\include{project}
+\include{include/guideline}
+\include{include/project}
 
 \pagenumbering{arabic}
 \onehalfspacing
 
 % Titlepage -- choose one from below
-\include{titlepage}		% Szakdolgozat/Diplomaterv címlap
-%\include{titlepage_tdk}	% TDK címlap
-%\include{titlepage_otdk}% OTDK címlap
+\include{include/titlepage}		% Szakdolgozat/Diplomaterv címlap
+%\include{include/titlepage_tdk}	% TDK címlap
+%\include{include/titlepage_otdk}% OTDK címlap
  
 \tableofcontents\vfill
-\include{declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
-\include{abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
+\include{include/declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
+\include{content/abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
 
 % The main part of the thesis
-\include{introduction}
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
-\include{acknowledgement}
+\include{content/introduction}
+\include{content/latex-tools}
+\include{content/thesis-format}
+\include{content/template-usage}
+\include{content/acknowledgement}
 
 % List of figures, tables
 \listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
@@ -211,7 +211,7 @@
 \addcontentsline{toc}{chapter}{\irodalomjegyzek}
 \bibliographystyle{plain}
 
-\include{appendices}
+\include{content/appendices}
 
 \label{page:last}
 \end{document}
