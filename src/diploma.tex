@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper,oneside]{report}             % Single-side
 %\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
+
 %--------------------------------------------------------------------------------------
 % Language configuration -- choose one
 %--------------------------------------------------------------------------------------
@@ -27,42 +28,71 @@
 %--------------------------------------------------------------------------------------
 \begin{document}
 
+
+% Guidelines -- remove these
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\pagenumbering{gobble}
 \dolgozatnyelve
 \hungarianParagraph
 \singlespacing
-\include{include/guideline}
-\include{include/project}
-
-\pagenumbering{arabic}
+	\include{include/guideline}
+	\include{include/project}
 \onehalfspacing
 \defaultParagraph
 
+
 % Titlepage -- choose one from below
-\include{include/titlepage}		% Szakdolgozat/Diplomaterv címlap
-%\include{include/titlepage_tdk}	% TDK címlap
-%\include{include/titlepage_otdk}% OTDK címlap
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\include{include/titlepage}		   % Szakdolgozat/Diplomaterv címlap
+	%\include{include/titlepage_tdk}	% TDK címlap
+	%\include{include/titlepage_otdk}   % OTDK címlap
  
-\tableofcontents\vfill
-\include{include/declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
-\include{content/abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
+
+% Table of Contents
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\tableofcontents\vfill
+
+
+% Declaration and Abstract
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\include{include/declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
+	\include{content/abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
+
 
 % The main part of the thesis
-\include{content/introduction}
-\include{content/latex-tools}
-\include{content/thesis-format}
-\include{content/template-usage}
-\include{content/acknowledgement}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\pagenumbering{arabic}
 
-% List of figures, tables
-\listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
-\listoftables\addcontentsline{toc}{chapter}{\tablazatokjegyzeke}
+	\include{content/introduction}
+	\include{content/latex-tools}
+	\include{content/thesis-format}
+	\include{content/template-usage}
+
+\pagenumbering{roman}
+\setcounter{page}{\value{romanPage}}
+
+
+% Acknowledgements
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\include{content/acknowledgement}
+
+
+% List of Figures, Tables
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
+	\listoftables\addcontentsline{toc}{chapter}{\tablazatokjegyzeke}
+
 
 % Bibliography
-\bibliography{bib/mybib}
-\addcontentsline{toc}{chapter}{\irodalomjegyzek}
-\bibliographystyle{plain}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\bibliography{bib/mybib}
+	\addcontentsline{toc}{chapter}{\irodalomjegyzek}
+	\bibliographystyle{plain}
 
-\include{content/appendices}
+
+% Appendix
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	\include{content/appendices}
 
 \label{page:last}
 \end{document}

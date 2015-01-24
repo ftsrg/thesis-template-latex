@@ -1,3 +1,6 @@
+\pagenumbering{roman}
+\setcounter{page}{1}
+
 \selectlanguage{magyar}
 \hungarianParagraph
 
@@ -26,3 +29,7 @@ This document is a \LaTeX-based skeleton for BSc/MSc~theses of students at the E
 \vfill
 \dolgozatnyelve
 \defaultParagraph
+
+\newcounter{romanPage}
+\setcounter{romanPage}{\value{page}}
+\stepcounter{romanPage}
