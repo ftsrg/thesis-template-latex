@@ -92,7 +92,7 @@
     pdfcreator={\vikszerzoA \tdkszerzoB},   % creator of the document
     pdfproducer={},    % producer of the document
     pdfkeywords={kulcsszó1, kulcsszó2, kulcsszó3},
-	                           % list of keywords (separate then by comma)
+                                  % list of keywords (separate then by comma)
     pdfnewwindow=true,         % links in new window
     colorlinks=true,           % false: boxed links; true: colored links
     linkcolor=black,           % color of internal links
@@ -107,16 +107,32 @@
 \lstset{
 	basicstyle=\scriptsize\ttfamily, % print whole listing small
 	keywordstyle=\color{black}\bfseries, % bold black keywords
-	identifierstyle=, 					% nothing happens
+	identifierstyle=, % nothing happens
 	commentstyle=\color{green}, % green comments
-	stringstyle=\scriptsize, 			
-	showstringspaces=false,     % no special string spaces
+	stringstyle=\scriptsize,
+	showstringspaces=false, % no special string spaces
 	aboveskip=3pt,
 	belowskip=3pt,
-	columns=flexible,
 	backgroundcolor=\color{lightgray},
-    extendedchars=false,
-    inputencoding=utf8
+	literate=*
+		{á}{{\'a}}1
+		{é}{{\'e}}1
+		{í}{{\'i}}1
+		{ó}{{\'o}}1
+		{ö}{{\"o}}1
+		{ő}{{\H{o}}}1
+		{ú}{{\'u}}1
+		{ü}{{\"u}}1
+		{ű}{{\H{u}}}1
+		{Á}{{\'A}}1
+		{É}{{\'E}}1
+		{Í}{{\'I}}1
+		{Ó}{{\'O}}1
+		{Ö}{{\"O}}1
+		{Ő}{{\H{O}}}1
+		{Ú}{{\'U}}1
+		{Ü}{{\"U}}1
+		{Ű}{{\H{U}}}1
 } 	
 \def\lstlistingname{lista}	
 
