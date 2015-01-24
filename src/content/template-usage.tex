@@ -13,9 +13,9 @@ A sablonban makrókat definiáltunk a hivatkozások megkönnyítéséhez. Ennek 
 %----------------------------------------------------------------------------
 \section{Ábrák és táblázatok}
 %----------------------------------------------------------------------------
-A képeket PDFLaTeX esetén a veszteségmentes PNG, valamint a veszteséges JPEG formátumban érdemes elmenteni. Az EPS (PostScript) vektorgrafikus képformátum beillesztését a PDFLatex közvetlenül nem támogatja. Ehelyett egy lehetőség 200 dpi, vagy annál nagyobb felbontásban raszterizálni a képet, és PNG formátumban elmenteni. Az egyes képek mérete általában nem, de sok kép esetén a dokumentum összmérete így már szignifikáns is lehet. A dokumentumban felhasznált képfájlokat a dokumentum forrása mellett érdemes tartani, archiválni, mivel ezek hiányában a dokumentum nem fordul újra. Ha lehet, a vektorgrafikus képeket vektorgrafikus formátumban is érdemes elmenteni az újrafelhasználhatóság (az átszerkeszthetőség) érdekében.
+Használjunk vektorgrafikus ábrákat, ha van rá módunk. PDFLaTeX használata esetén PDF formátumú ábrákat lehet beilleszteni könnyen, az EPS (PostScript) vektorgrafikus képformátum beillesztését a PDFLaTeX közvetlenül nem támogatja (de lehet konvertálni, lásd később). Ha vektorgrafikus formában nem áll rendelkezésünkre az ábra, akkor a  veszteségmentes PNG, valamint a veszteséges JPEG formátumban érdemes elmenteni.  Figyeljünk arra, hogy ilyenkor a képek felbontása elég nagy legyen ahhoz, hogy nyomtatásban is megfelelő minőséget nyújtson (legalább 300 dpi javasolt). A dokumentumban felhasznált képfájlokat a dokumentum forrása mellett érdemes tartani, archiválni, mivel ezek hiányában a dokumentum nem fordul újra. Ha lehet, a vektorgrafikus képeket vektorgrafikus formátumban is érdemes elmenteni az újrafelhasználhatóság (az átszerkeszthetőség) érdekében.
 
-Kapcsolási rajzok legtöbbször kimásolhatók egy vektorgrafikus programba (pl. CorelDraw) és onnan nagyobb felbontással raszterizálva kimenthatők PNG formátumban. Ugyanakkor kiváló ábrák készíthetők Microsoft Visio vagy hasonló program használatával is: Visio-ból az ábrák közvetlenül PNG-be is menthetők.
+Kapcsolási rajzok legtöbbször kimásolhatók egy vektorgrafikus programba (pl. CorelDraw) és onnan nagyobb felbontással raszterizálva kimenthatők PNG formátumban. Ugyanakkor kiváló ábrák készíthetők Microsoft Visio vagy hasonló program használatával is: Visio-ból az ábrák közvetlenül PDF-be is menthetők.
 
 Lehetőségeink Matlab ábrák esetén:
 \begin{itemize}
@@ -41,31 +41,32 @@ Ezek után a PDF-ábrát ugyanúgy lehet a dokumentumba beilleszteni, mint a PNG
 A képek beillesztésére az \sectref{LatexTools}. fejezetben mutattunk be példát (\figref{TeXstudio}~ábra). Az előző mondatban egyúttal az automatikusan feloldódó ábrahivatkozásra is láthatunk példát. Több képfájlt is beilleszthetünk egyetlen ábrába. Az egyes képek közötti horizontális és vertikális margót metrikusan szabályozhatjuk (\figref{HVSpaces}~ábra). Az ábrák elhelyezését számtalan tipográfiai szabály egyidejű teljesítésével a fordító maga végzi, a dokumentum írója csak preferenciáit jelezheti a fordító felé (olykor ez bosszúságot is okozhat, ilyenkor pl. a kép méretével lehet játszani).
 
 \begin{figure}[!ht]
-\centering
-\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\hspace{1cm}
-\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\\\vspace{5mm}
-\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\hspace{1cm}
-\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}
-\caption{Több képfájl beillesztése esetén térközöket is érdemes használni.} 
-\label{fig:HVSpaces}
+	\centering
+	\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\hspace{1cm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\\\vspace{5mm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}\hspace{1cm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/TeXstudio.png}
+	\caption{Több képfájl beillesztése esetén térközöket is érdemes használni.} 
+	\label{fig:HVSpaces}
 \end{figure}
 
-A táblázatok használatára a \tabref{TabularExample}~táblázat mutat példát.
-A táblázat címkéje nem véletlenül került a táblázat fölé, ez a szokványos.
+A táblázatok használatára a \tabref{TabularExample}~táblázat mutat példát. A táblázat címkéje nem véletlenül került a táblázat fölé, ez a szokványos. A táblázatok formázásához hasznos tanácsokat találunk a \verb+booktabs+ csomag dokumentációjában.
+
 \begin{table}[ht]
 	\footnotesize
 	\centering
 	\caption{Az órajel-generátor chip órajel-kimenetei.} \label{tab:SysClocks}
-	\begin{tabular}{ | l | c | c |}
-	\hline
-	Órajel & Frekvencia & Cél pin \\ \hline
-	CLKA & 100 MHz & FPGA CLK0\\
-	CLKB & 48 MHz  & FPGA CLK1\\
-	CLKC & 20 MHz  & Processzor\\
-	CLKD & 25 MHz  & Ethernet chip \\
-	CLKE & 72 MHz  & FPGA CLK2\\
-	XBUF & 20 MHz  & FPGA CLK3\\
-	\hline
+	\begin{tabular}{ l c c }
+		\toprule
+		Órajel & Frekvencia & Cél pin \\
+		\midrule
+		CLKA & 100 MHz & FPGA CLK0\\
+		CLKB & 48 MHz  & FPGA CLK1\\
+		CLKC & 20 MHz  & Processzor\\
+		CLKD & 25 MHz  & Ethernet chip \\
+		CLKE & 72 MHz  & FPGA CLK2\\
+		XBUF & 20 MHz  & FPGA CLK3\\
+		\bottomrule
 	\end{tabular}
 	\label{tab:TabularExample}
 \end{table}
