@@ -17,7 +17,6 @@
 \usepackage{hyperref} % For hyperlinks in the generated document. 
 %\usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{anysize}
 
 \usepackage[english,magyar]{babel} % Alapértelmezés szerint utoljára definiált nyelv lesz aktív, de később külön beállítjuk az aktív nyelvet.
 \usepackage{sectsty}
@@ -34,13 +33,9 @@
 % another possibility is to use the body of this command without \fancypagestyle
 % and use \pagestyle{fancy} but in that case the special pages
 % (like the ToC, the References, and the Chapter pages)remain in plane style
+\usepackage{anysize}
 
 \pagestyle{plain}
-%\setlength{\parindent}{0pt} % áttekinthetőbb, angol nyelvű dokumentumokban jellemző
-%\setlength{\parskip}{8pt plus 3pt minus 3pt} % áttekinthetőbb, angol nyelvű dokumentumokban jellemző
-\setlength{\parindent}{12pt} % magyar nyelvű dokumentumokban jellemző
-\setlength{\parskip}{0pt}    % magyar nyelvű dokumentumokban jellemző
-
 \marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
 \setcounter{secnumdepth}{0}
 \sectionfont{\large\upshape\bfseries}
