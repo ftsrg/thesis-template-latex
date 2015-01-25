@@ -3,4 +3,4 @@ before_script:
 
 script:
   - cd src
-  - make
+  - make test
