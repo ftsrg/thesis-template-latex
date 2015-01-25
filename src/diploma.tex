@@ -4,7 +4,7 @@
 \input{include/packages}
 
 %--------------------------------------------------------------------------------------
-% Language configuration -- choose one
+%TODO Language configuration -- choose one
 %--------------------------------------------------------------------------------------
 \input{include/thesis-hu}  % Beállítások magyar nyelvű dolgozathoz
 %\input{include/thesis-en} % Settings for English documents
@@ -12,6 +12,7 @@
 
 %--------------------------------------------------------------------------------------
 % Main variables
+%TODO edit names and captions
 %--------------------------------------------------------------------------------------
 \newcommand{\vikszerzoA}{Bódis-Szomorú András} % Szerző neve
 \newcommand{\vikkonzulensA}{dr.~Konzulens Elemér} % Első konzulens neve
@@ -30,7 +31,7 @@
 \begin{document}
 
 
-% Guidelines -- remove these
+%TODO Guidelines -- remove these
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \pagenumbering{gobble}
 \dolgozatnyelve
@@ -42,7 +43,7 @@
 \defaultParagraph
 
 
-% Titlepage -- choose one from below
+%TODO Titlepage -- choose one from below
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	\include{include/titlepage}		   % Szakdolgozat/Diplomaterv címlap
 	%\include{include/titlepage_tdk}	% TDK címlap
@@ -56,14 +57,15 @@
 
 % Declaration and Abstract
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\include{include/declaration} % Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
-	\include{content/abstract}	  % Összefoglaló -- TDK és OTDK esetén nem kötelező
+	\include{include/declaration} %TODO Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
+	\include{content/abstract}	  %TODO Összefoglaló -- TDK és OTDK esetén nem kötelező
 
 
 % The main part of the thesis
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \pagenumbering{arabic}
 
+%TODO import your own content
 	\include{content/introduction}
 	\include{content/latex-tools}
 	\include{content/thesis-format}
