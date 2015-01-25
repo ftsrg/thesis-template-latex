@@ -1,0 +1,32 @@
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+\usepackage[english,magyar]{babel} % Alapértelmezés szerint utoljára definiált nyelv lesz aktív, de később külön beállítjuk az aktív nyelvet.
+
+\usepackage{cmap}
+\usepackage{amsfonts,amsmath,amssymb} % Mathematical symbols.
+\usepackage[ruled,boxed,resetcount,linesnumbered]{algorithm2e} % For pseudocodes.
+\usepackage{booktabs} % For publication quality tables for LaTeX
+\usepackage{graphicx}
+
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}
+
+\usepackage{anysize}
+\usepackage{sectsty}
+\usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
+
+\usepackage{hyperref} % For hyperlinks in the generated document. 
+\usepackage{color}
+\usepackage{listings} % For source code snippets.
+
+\usepackage[amsmath,thmmarks]{ntheorem} % Theorem-like environments.
+
+\usepackage[hang]{caption}
+

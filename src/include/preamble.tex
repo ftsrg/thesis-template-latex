@@ -1,24 +1,3 @@
-\usepackage{ifxetex}
-\ifxetex
-  \usepackage{fontspec}
-\else
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{lmodern}
-\fi
-
-\usepackage[english,magyar]{babel} % Alapértelmezés szerint utoljára definiált nyelv lesz aktív, de később külön beállítjuk az aktív nyelvet.
-
-\usepackage{cmap}
-\usepackage{amsfonts,amsmath,amssymb} % Mathematical symbols.
-\usepackage[ruled,boxed,resetcount,linesnumbered]{algorithm2e} % For pseudocodes.
-\usepackage{booktabs} % For publication quality tables for LaTeX
-\usepackage{graphicx}
-
-%\usepackage{fancyhdr}
-%\usepackage{lastpage}
-
-
 %--------------------------------------------------------------------------------------
 % Page layout setup
 %--------------------------------------------------------------------------------------
@@ -26,9 +5,6 @@
 % another possibility is to use the body of this command without \fancypagestyle
 % and use \pagestyle{fancy} but in that case the special pages
 % (like the ToC, the References, and the Chapter pages)remain in plane style
-\usepackage{anysize}
-\usepackage{sectsty}
-\usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 
 \pagestyle{plain}
 \marginsize{35mm}{25mm}{15mm}{15mm}
@@ -45,7 +21,6 @@
 %--------------------------------------------------------------------------------------
 % Setup hyperref package
 %--------------------------------------------------------------------------------------
-\usepackage{hyperref} % For hyperlinks in the generated document. 
 \hypersetup{
     bookmarks=true,            % show bookmarks bar?
     unicode=false,              % non-Latin characters in Acrobat's bookmarks
@@ -68,10 +43,7 @@
 %--------------------------------------------------------------------------------------
 % Set up listings
 %--------------------------------------------------------------------------------------
-\usepackage{color}
 \definecolor{lightgray}{rgb}{0.95,0.95,0.95}
-
-\usepackage{listings} % For source code snippets.
 \lstset{
 	basicstyle=\scriptsize\ttfamily, % print whole listing small
 	keywordstyle=\color{black}\bfseries, % bold black keywords
@@ -96,8 +68,6 @@
 % Set up theorem-like environments
 %--------------------------------------------------------------------------------------
 % Using ntheorem package -- see http://www.math.washington.edu/tex-archive/macros/latex/contrib/ntheorem/ntheorem.pdf
-
-\usepackage[amsmath,thmmarks]{ntheorem} % Theorem-like environments.
 
 \theoremstyle{plain}
 \theoremseparator{.}
@@ -131,7 +101,6 @@
 %--------------------------------------------------------------------------------------
 % Setup captions
 %--------------------------------------------------------------------------------------
-\usepackage[hang]{caption}
 \captionsetup[figure]{
 	width=.75\textwidth,
 	aboveskip=10pt}
