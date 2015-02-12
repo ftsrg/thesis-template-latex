@@ -154,7 +154,7 @@ Addison Wesley, Massachusetts, 2nd Edition, 1994.
 \end{thebibliography}
 \end{lstlisting}
 
-Ezek után a dokumentumban a \verb+\cite{Lamport94}+ utasítással hivatkozhatunk a forrásra. A fenti megadás viszonylag kötetlen, a szerző maga formázza az irodalomjegyzéket. 
+Ezek után a dokumentumban a \verb+\cite{Lamport94}+ utasítással hivatkozhatunk a forrásra. A fenti megadás viszonylag kötetlen, a szerző maga formázza az irodalomjegyzéket (ami gyakran inkonzisztens eredményhez vezet). 
 
 Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablon is ezt támogatja. Ebben az esetben egy külön szöveges adatbázisban definiáljuk a forrásmunkákat, és egy külön stílusfájl határozza meg az irodalomjegyzék kinézetét. Ez, összhangban azzal, hogy külön formátumkonvenció határozza meg a folyóirat-, a könyv-, a konferenciacikk- stb. hivatkozások kinézetét az irodalomjegyzékben (a sablon használata esetén ezzel nem is kell foglalkoznia a hallgatónak, de az eredményt célszerű ellenőrizni). A felhasznált hivatkozások adatbázisa egy \verb+.bib+ kiterjesztésű szöveges fájl, amelynek szerkezetét a \listref{Bibtex} kódrészlet demonstrálja. A forrásmunkák bevitelekor a sor végi vesszők külön figyelmet igényelnek, mert hiányuk a BiB\TeX-fordító hibaüzenetét eredményezi. A forrásmunkákat típus szerinti kulcsszó vezeti be (\verb+@book+ könyv, \verb+@inproceedings+ konferenciakiadványban megjelent cikk, \verb+@article+ folyóiratban megjelent cikk, \verb+@techreport+ valamelyik egyetem gondozásában megjelent műszaki tanulmány, \verb+@manual+ műszaki dokumentáció esetén stb.). Nemcsak a megjelenés stílusa, de a kötelezően megadandó mezők is típusról-típusra változnak. Egy jól használható referencia a \url{http://en.wikipedia.org/wiki/BibTeX} oldalon található.
 \begin{lstlisting}[frame=single,float=!ht,caption=Példa szöveges irodalomjegyzék-adatbázisra BiBTeX használata esetén., label=listing:Bibtex]
@@ -164,6 +164,7 @@ Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablo
   publisher="Panem Könyvkiadó",
   year=2004
 }
+
 @ARTICLE{Candy86,
   author ="James C. Candy",
   title  ="Decimation for Sigma Delta Modulation",
@@ -173,49 +174,69 @@ Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablo
   pages  ="72--76",
   month  =jan,
   year   =1986,
+  note = {\doi{10.1109/TCOM.1986.1096432}},
 }
+
 @INPROCEEDINGS{Lee87,
   author =       "Wai L. Lee and Charles G. Sodini",
   title =        "A Topology for Higher Order Interpolative Coders",
-  booktitle =    "Proc.\ of the IEEE International Symposium on 
-  Circuits and Systems",
+  booktitle =    "Proc.\ of the IEEE International Symposium on Circuits and Systems",
   year =         1987,
   vol =          2,
   month =        may # "~4--7",
   address =      "Philadelphia, PA, USA",
   pages =        "459--462"
 }
+
 @PHDTHESIS{KissPhD,
   author =   "Peter Kiss",
-  title =    "Adaptive Digital Compensation of Analog Circuit Imperfections 
-  for Cascaded Delta-Sigma Analog-to-Digital Converters",
+  title =    "Adaptive Digital Compensation of Analog Circuit Imperfections for Cascaded Delta-Sigma Analog-to-Digital Converters",
   school =   "Technical University of Timi\c{s}oara, Romania",
   month =    apr,
   year =     2000
 }
+
 @MANUAL{Schreier00,
   author = "Richard Schreier",
   title  = "The Delta-Sigma Toolbox v5.2",
   organization = "Oregon State University",
   year   = 2000,
   month  = jan,
-  note   ="\newline URL: http://www.mathworks.com/matlabcentral/fileexchange/"
+  note   ="\url{http://www.mathworks.com/matlabcentral/fileexchange/}"
 }
+
 @MISC{DipPortal,
-  author="Budapesti {M}(*@ű@*)szaki és {G}azdaságtudományi {E}gyetem 
-  {V}illamosmérnöki és {I}nformatikai {K}ar",
-  title="{D}iplomaterv portál (2011. február 26.)",
-  howpublished="\url{http://diplomaterv.vik.bme.hu/}",
-}}
+	author = "{Budapesti Műszaki és Gazdaságtudományi Egyetem Villamosmérnöki és Informatikai Kar}",
+	title = "Diplomaterv portál (2011. február 26.)",
+	howpublished = "\url{http://diplomaterv.vik.bme.hu/}",
+}
+
+@incollection{Mkrtychev:1997,
+	author={Mkrtychev, Alexey},
+	title={Models for the logic of proofs},
+	year={1997},
+	editor={Adian, Sergei and Nerode, Anil},
+	booktitle={Logical Foundations of Computer Science},
+	series={Lecture Notes in Computer Science},
+	volume={1234},
+	pages={266-275},
+	isbn={978-3-540-63045-6},
+	doi={10.1007/3-540-63045-7_27},
+	publisher={Springer Berlin Heidelberg},
+	url={http://dx.doi.org/10.1007/3-540-63045-7_27},
+}
 \end{lstlisting}
 
 A stílusfájl egy \verb+.sty+ kiterjesztésű fájl, de ezzel lényegében nem kell foglalkozni, mert vannak beépített stílusok, amelyek jól használhatók. Ez a sablon a BiB\TeX-et használja, a hozzá tartozó adatbázisfájl a \verb+mybib.bib+ fájl. Megfigyelhető, hogy az irodalomjegyzéket a dokumentum végére (a \verb+\end{document}+ utasítás elé) beillesztett \verb+\bibliography{mybib}+ utasítással hozhatjuk létre, a stílusát pedig ugyanitt a  \verb+\bibliographystyle{plain}+ utasítással adhatjuk meg. Ebben az esetben a \verb+plain+ előre definiált stílust használjuk (a sablonban is ezt állítottuk be). A \verb+plain+ stíluson kívül természetesen számtalan más előre definiált stílus is létezik. Mivel a \verb+.bib+ adatbázisban ezeket megadtuk, a BiB\TeX-fordító is meg tudja különböztetni a szerzőt a címtől és a kiadótól, és ez alapján automatikusan generálódik az irodalomjegyzék a stílusfájl által meghatározott stílusban.
 
-Az egyes forrásmunkákra a szövegből továbbra is a \verb+\cite+ paranccsal tudunk hivatkozni, így a \listref{Bibtex} kódrészlet esetén a hivatkozások rendre \verb+\cite{Wettl04}+, \verb+\cite{Candy86}+, \verb+\cite{Lee87}+, \verb+\cite{KissPhD}+, \verb+\cite{Schreirer00}+ és \verb+\cite{DipPortal}+. Az irodalomjegyzékben alapértelmezésben csak azok a forrásmunkák jelennek meg, amelyekre található hivatkozás a szövegben, és ez így alapvetően helyes is, hiszen olyan forrásmunkákat nem illik az irodalomjegyzékbe írni, amelyekre nincs hivatkozás.
+Az egyes forrásmunkákra a szövegből továbbra is a \verb+\cite+ paranccsal tudunk hivatkozni, így a \listref{Bibtex} kódrészlet esetén a hivatkozások rendre \verb+\cite{Wettl04}+, \verb+\cite{Candy86}+, \verb+\cite{Lee87}+, \verb+\cite{KissPhD}+, \verb+\cite{Schreirer00}+,
+\verb+\cite{Mkrtychev:1997}+ és \verb+\cite{DipPortal}+. Az egyes forrásmunkák sorszáma az irodalomjegyzék bővítésekor változhat. Amennyiben az aktuális számhoz illeszkedő névelőt szeretnénk használni, használjuk az \verb+\acite{}+ parancsot.
+
+Az irodalomjegyzékben alapértelmezésben csak azok a forrásmunkák jelennek meg, amelyekre található hivatkozás a szövegben, és ez így alapvetően helyes is, hiszen olyan forrásmunkákat nem illik az irodalomjegyzékbe írni, amelyekre nincs hivatkozás.
 
 Mivel a fordítási folyamat során több lépésben oldódnak fel a szimbólumok, ezért gyakran többször is le kell fordítani a dokumentumot. Ilyenkor ez első 1-2 fordítás esetleg szimbólum-feloldásra vonatkozó figyelmeztető üzenettel zárul. Ha hibaüzenettel zárul bármelyik fordítás, akkor nincs értelme megismételni, hanem a hibát kell megkeresni. A \verb+.bib+ fájl megváltoztatáskor sokszor nincs hatása a változtatásnak azonnal, mivel nem mindig fut újra a BibTeX fordító. Ezért célszerű a változtatás után azt manuálisan is lefuttatni (TeXstudio esetén \verb+Tools/Bibliography+).
 
-Hogy a szövegbe ágyazott hivatkozások kinézetét demonstráljuk, itt most sorban meghivatkozzuk a \cite{Wettl04}, \cite{Candy86}, \cite{Lee87}, \cite{KissPhD} és az \cite{Schreier00} forrásmunkát, valamint az \cite{DipPortal} weboldalt.
+Hogy a szövegbe ágyazott hivatkozások kinézetét demonstráljuk, itt most sorban meghivatkozzuk a \cite{Wettl04}, \cite{Candy86}, \cite{Lee87}, \cite{KissPhD}, \cite{Schreier00} és \acite{Mkrtychev:1997}\footnote{Informatikai témában gyakran hivatkozunk cikkeket a Springer LNCS valamely kötetéből, ez a hivatkozás erre mutat egy helyes példát.} forrásmunkát, valamint \acite{DipPortal} weboldalt.
 
 Megjegyzendő, hogy az ékezetes magyar betűket is tartalmazó \verb+.bib+ fájl az \verb+inputenc+ csomaggal betöltött \verb+latin2+ betűkészlet miatt fordítható. Ugyanez a \verb+.bib+ fájl hibaüzenettel fordul egy olyan dokumentumban, ami nem tartalmazza a \verb+\usepackage[latin2]{inputenc}+ sort. Speciális igény esetén az irodalmi adatbázis általánosabb érvényűvé tehető, ha az ékezetes betűket speciális latex karakterekkel helyettesítjük a \verb+.bib+ fájlban, pl. á helyett \verb+\'{a}+-t vagy ő helyett \verb+\H{o}+-t írunk. 
 
