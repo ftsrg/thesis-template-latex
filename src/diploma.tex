@@ -4,17 +4,12 @@
 \input{include/packages}
 
 %--------------------------------------------------------------------------------------
-%TODO Language configuration -- choose one
-%--------------------------------------------------------------------------------------
-\input{include/thesis-hu}  % Beállítások magyar nyelvű dolgozathoz
-%\input{include/thesis-en} % Settings for English documents
-
-
-%--------------------------------------------------------------------------------------
 % Main variables
+
 %TODO edit names and captions
 %--------------------------------------------------------------------------------------
-\newcommand{\vikszerzoA}{Bódis-Szomorú András} % Szerző neve
+\newcommand{\vikszerzoVezeteknev}{Bódis-Szomorú}
+\newcommand{\vikszerzoKeresztnev}{András}
 \newcommand{\vikkonzulensA}{dr.~Konzulens Elemér} % Első konzulens neve
 \newcommand{\vikkonzulensB}{Második Konzulens} % Második konzulens neve; hagyd üresen, ha egy konzulensed van.
 \newcommand{\vikcim}{Elektronikus terelők} % Cím
@@ -22,8 +17,15 @@
 \newcommand{\vikdoktipus}{\msc} % Dokumentum típusa (diplomaterv, szakdolgozat, TDK-dolgozat, stb.)
 
 \input{include/tdk-variables.tex}
-\newcommand{\szerzoMeta}{\vikszerzoA} % egy szerző esetén
-%\newcommand{\szerzoMeta}{\vikszerzoA, \tdkszerzoB} % két szerző esetén
+\newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev} % egy szerző esetén
+%\newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev, \tdkszerzoB} % két szerző esetén
+
+%--------------------------------------------------------------------------------------
+%TODO Language configuration -- choose one
+%--------------------------------------------------------------------------------------
+\input{include/thesis-hu}  % Beállítások magyar nyelvű dolgozathoz
+%\input{include/thesis-en} % Settings for English documents
+
 
 \input{include/preamble.tex}
 
