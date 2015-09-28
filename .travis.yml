@@ -1,3 +1,4 @@
+sudo: false
 addons:
   apt:
     packages:
