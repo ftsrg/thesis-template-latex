@@ -1,6 +1,8 @@
 addons:
   apt:
     packages:
+    - lmodern
+    - texlive-latex-recommended
     - texlive-latex-extra
     - texlive-fonts-extra
     - texlive-fonts-recommended
