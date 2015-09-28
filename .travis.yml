@@ -1,6 +1,11 @@
-before_script:
-  - sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science
-
+addons:
+  apt:
+    packages:
+    - texlive-latex-extra
+    - texlive-fonts-extra
+    - texlive-fonts-recommended
+    - texlive-xetex
+    - texlive-science
 script:
   - cd src
   - make test
