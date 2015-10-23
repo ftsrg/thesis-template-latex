@@ -70,9 +70,6 @@
 	\include{content/thesis-format}
 	\include{content/template-usage}
 
-\pagenumbering{roman}
-\setcounter{page}{\value{romanPage}}
-
 
 % Acknowledgements
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,9 +87,10 @@
 	\bibliography{bib/mybib}
 	\addcontentsline{toc}{chapter}{\irodalomjegyzek}
 
+
 % Appendix
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	\include{content/appendices}
 
-\label{page:last}
+%\label{page:last}
 \end{document}
