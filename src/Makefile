@@ -11,7 +11,7 @@ compile_xelatex:
 	mv $(DOCUMENT).pdf $(DOCUMENT)-xelatex.pdf
 
 pdflatex: compile_pdflatex
-	mv $(DOCUMENT).pdf ../pdf
+	mv $(DOCUMENT)-pdflatex.pdf ../pdf
 
 compile_pdflatex:
 	pdflatex $(DOCUMENT)
