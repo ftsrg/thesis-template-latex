@@ -1,7 +1,7 @@
 DOCUMENT=diploma
 
 xelatex: compile_xelatex
-	mv $(DOCUMENT)-xelatex.pdf ../$(DOCUMENT).pdf
+	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT).pdf
 
 compile_xelatex:
 	xelatex $(DOCUMENT)
@@ -11,7 +11,7 @@ compile_xelatex:
 	mv $(DOCUMENT).pdf $(DOCUMENT)-xelatex.pdf
 
 pdflatex: compile_pdflatex
-	mv $(DOCUMENT)-pdflatex.pdf ../pdf
+	mv $(DOCUMENT)-pdflatex.pdf ../pdf/$(DOCUMENT).pdf
 
 compile_pdflatex:
 	pdflatex $(DOCUMENT)
