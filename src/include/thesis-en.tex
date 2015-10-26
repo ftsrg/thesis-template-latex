@@ -1,7 +1,17 @@
 %--------------------------------------------------------------------------------------
 % Elnevezések
 %--------------------------------------------------------------------------------------
-\newcommand{\dolgozatnyelve}{\selectlanguage{english}}
+\newcommand{\dolgozatnyelve}{
+	\selectlanguage{english}
+	\nonfrenchspacing
+	\renewcommand{\figureautorefname}{Figure}
+	\renewcommand{\tableautorefname}{Table}
+	\renewcommand{\partautorefname}{Part}
+	\renewcommand{\chapterautorefname}{Chapter}
+	\renewcommand{\sectionautorefname}{Section}
+	\renewcommand{\subsectionautorefname}{Section}
+	\renewcommand{\subsubsectionautorefname}{Section}
+}
 
 \newcommand{\bme}{Budapest University of Technology and Economics}
 \newcommand{\vik}{Faculty of Electrical Engineering and Informatics}
@@ -27,21 +37,7 @@
 
 \newcommand{\szerzo}{\vikszerzoKeresztnev{} \vikszerzoVezeteknev}
 
-\newcommand{\englishParagraph}{
-	\setlength{\parindent}{0em} % angol nyelvű dokumentumokban jellemző
-	\setlength{\parskip}{0.5em} % angol nyelvű dokumentumokban jellemző
-	\nonfrenchspacing
-}
-
-\newcommand{\hungarianParagraph}{
-	\setlength{\parindent}{2em} % angol nyelvű dokumentumokban jellemző
-	\setlength{\parskip}{0em}   % angol nyelvű dokumentumokban jellemző
-	\frenchspacing
-}
-
-\newcommand{\defaultParagraph}{
-	\englishParagraph
-}
+\newcommand{\selectthesislanguage}{\selectenglish}
 
 \bibliographystyle{plain}
 
@@ -51,3 +47,11 @@
 \newcommand{\Eg}{E.g.\@\xspace}
 \newcommand{\etal}{et al.\@\xspace}
 \newcommand{\etc}{etc.\@\xspace}
+
+\renewcommand{\figureautorefname}{Figure}
+\renewcommand{\tableautorefname}{Table}
+\renewcommand{\partautorefname}{Part}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}

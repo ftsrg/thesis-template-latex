@@ -1,7 +1,10 @@
 %--------------------------------------------------------------------------------------
 % Elnevezések
 %--------------------------------------------------------------------------------------
-\newcommand{\dolgozatnyelve}{\selectlanguage{magyar}}
+\newcommand{\dolgozatnyelve}{
+	\selectlanguage{magyar}
+	\frenchspacing
+}
 
 \newcommand{\bme}{Budapesti Műszaki és Gazdaságtudományi Egyetem}
 \newcommand{\vik}{Villamosmérnöki és Informatikai Kar}
@@ -27,22 +30,7 @@
 
 \newcommand{\szerzo}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev}
 
-
-\newcommand{\englishParagraph}{
-	\setlength{\parindent}{0em} % angol nyelvű dokumentumokban jellemző
-	\setlength{\parskip}{0.5em} % angol nyelvű dokumentumokban jellemző
-	\nonfrenchspacing
-}
-
-\newcommand{\hungarianParagraph}{
-	\setlength{\parindent}{2em} % angol nyelvű dokumentumokban jellemző
-	\setlength{\parskip}{0em}   % angol nyelvű dokumentumokban jellemző
-	\frenchspacing
-}
-
-\newcommand{\defaultParagraph}{
-	\hungarianParagraph
-}
+\newcommand{\selectthesislanguage}{\selecthungarian}
 
 \bibliographystyle{huplain}
 
