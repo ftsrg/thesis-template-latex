@@ -27,7 +27,7 @@ Lehetőségeink Matlab ábrák esetén:
 	\item Javasolt megoldás: az ábrát a \verb+File/Save As+ opcióval EPS \emph{vektorgrafikus} formátumban elmentjük, PDF-be konvertálva beillesztjük a dolgozatba.
 \end{itemize}
 Az EPS kép az \verb+epstopdf+ programmal\footnote{a korábban említett \LaTeX-disztribúciókban megtalálható} konvertálható PDF formátumba. Célszerű egy batch-fájlt készíteni az összes EPS ábra lefordítására az alábbi módon (ez Windows alatt működik).
-\begin{lstlisting}[frame=single,float=!ht]
+\begin{lstlisting}
 @echo off
 for %%j in (*.eps) do (
 echo converting file "%%j"
@@ -93,7 +93,7 @@ Számozott felsorolást is készíthetünk az alábbi módon:
 A felsorolásokban sorok végén vessző, az utolsó sor végén pedig pont a szokásos írásjel. Ez alól kivételt képezhet, ha az egyes elemek több teljes mondatot tartalmaznak.
 
 Listákban a dolgozat szövegétől elkülönítendő kódrészleteket, programsorokat, pszeudo-kódokat jeleníthetünk meg (\listref{Example}~lista). 
-\begin{lstlisting}[frame=single,float=!ht,caption=A fenti számozott felsorolás \LaTeX- forráskódja, label=listing:Example]
+\begin{lstlisting}[caption=A fenti számozott felsorolás \LaTeX-forráskódja,label=listing:Example]
 \begin{enumerate}
 	\item \emph{els(*@ő@*) bajusz:} ide lehetne írni az els(*@ő@*) elem kifejését, 
 	és ez a kifejtés így néz ki, ha több sorosra sikeredik,
@@ -146,7 +146,7 @@ Ez pedig itt egy magyarázat, hogy miért érdemes \verb+align+ környezetet has
 \section{Irodalmi hivatkozások}\label{sect:HowtoReference}
 %----------------------------------------------------------------------------
 Egy \LaTeX~dokumentumban az irodalmi hivatkozások definíciójának két módja van. Az egyik a \verb+\thebibliograhy+ környezet használata a dokumentum végén, az \verb+\end{document}+ lezárás előtt.
-\begin{lstlisting}[frame=single,float=!ht]
+\begin{lstlisting}
 \begin{thebibliography}{9}
 
 \bibitem{Lamport94} Leslie Lamport, \emph{\LaTeX: A Document Preparation System}. 
@@ -158,7 +158,7 @@ Addison Wesley, Massachusetts, 2nd Edition, 1994.
 Ezek után a dokumentumban a \verb+\cite{Lamport94}+ utasítással hivatkozhatunk a forrásra. A fenti megadás viszonylag kötetlen, a szerző maga formázza az irodalomjegyzéket (ami gyakran inkonzisztens eredményhez vezet). 
 
 Egy sokkal professzionálisabb módszer a BiB\TeX~használata, ezért ez a sablon is ezt támogatja. Ebben az esetben egy külön szöveges adatbázisban definiáljuk a forrásmunkákat, és egy külön stílusfájl határozza meg az irodalomjegyzék kinézetét. Ez, összhangban azzal, hogy külön formátumkonvenció határozza meg a folyóirat-, a könyv-, a konferenciacikk- stb. hivatkozások kinézetét az irodalomjegyzékben (a sablon használata esetén ezzel nem is kell foglalkoznia a hallgatónak, de az eredményt célszerű ellenőrizni). A felhasznált hivatkozások adatbázisa egy \verb+.bib+ kiterjesztésű szöveges fájl, amelynek szerkezetét a \listref{Bibtex} kódrészlet demonstrálja. A forrásmunkák bevitelekor a sor végi vesszők külön figyelmet igényelnek, mert hiányuk a BiB\TeX-fordító hibaüzenetét eredményezi. A forrásmunkákat típus szerinti kulcsszó vezeti be (\verb+@book+ könyv, \verb+@inproceedings+ konferenciakiadványban megjelent cikk, \verb+@article+ folyóiratban megjelent cikk, \verb+@techreport+ valamelyik egyetem gondozásában megjelent műszaki tanulmány, \verb+@manual+ műszaki dokumentáció esetén stb.). Nemcsak a megjelenés stílusa, de a kötelezően megadandó mezők is típusról-típusra változnak. Egy jól használható referencia a \url{http://en.wikipedia.org/wiki/BibTeX} oldalon található.
-\begin{lstlisting}[frame=single,float=!ht,caption=Példa szöveges irodalomjegyzék-adatbázisra BiBTeX használata esetén., label=listing:Bibtex]
+\begin{lstlisting}[caption=Példa szöveges irodalomjegyzék-adatbázisra BiBTeX használata esetén.,label=listing:Bibtex]
 @BOOK{Wettl04,
   author="Ferenc Wettl and Gyula Mayer and Péter Szabó",
   title="\LaTeX~kézikönyv",
@@ -265,7 +265,7 @@ A diplomatervsablon (a kari irányelvek szerint) az alábbi fő fejezetekből á
 \end{enumerate}
 
 A sablonban a fejezetek a \verb+diploma.tex+ fájlba vannak beillesztve \verb+\include+ utasítások segítségével. Lehetőség van arra, hogy csak az éppen szerkesztés alatt álló \verb+.tex+ fájlt fordítsuk le, ezzel lerövidítve a fordítási folyamatot. Ezt a lehetőséget az alábbi kódrészlet biztosítja a \verb+diploma.tex+ fájlban.
-\begin{lstlisting}[frame=single,float=!ht]
+\begin{lstlisting}
 \includeonly{
 	guideline,%
 	project,%
@@ -310,5 +310,3 @@ Példa egy példára. Duis aute irure dolor in reprehenderit in voluptate velit 
 \begin{theorem}[Kovács tétele]
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 \end{theorem}
-
-

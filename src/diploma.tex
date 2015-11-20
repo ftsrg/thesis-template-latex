@@ -3,11 +3,7 @@
 
 \input{include/packages}
 
-%--------------------------------------------------------------------------------------
-% Main variables
-
-%TODO edit names and captions
-%--------------------------------------------------------------------------------------
+%TODO Set the main variables
 \newcommand{\vikszerzoVezeteknev}{Bódis-Szomorú}
 \newcommand{\vikszerzoKeresztnev}{András}
 \newcommand{\vikkonzulensA}{dr.~Konzulens Elemér} % Első konzulens neve
@@ -20,9 +16,7 @@
 \newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev} % egy szerző esetén
 %\newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev, \tdkszerzoB} % két szerző esetén
 
-%--------------------------------------------------------------------------------------
 %TODO Language configuration -- choose one
-%--------------------------------------------------------------------------------------
 \input{include/thesis-hu}  % Beállítások magyar nyelvű dolgozathoz
 %\input{include/thesis-en} % Settings for English documents
 
@@ -42,20 +36,20 @@
 
 %TODO Titlepage -- choose one from below
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\include{include/titlepage}		   % Szakdolgozat/Diplomaterv címlap
-	%\include{include/titlepage-tdk}	% TDK címlap
-	%\include{include/titlepage-otdk}   % OTDK címlap
- 
+\include{include/titlepage}		   % Szakdolgozat/Diplomaterv címlap
+%\include{include/titlepage-tdk}	% TDK címlap
+%\include{include/titlepage-otdk}   % OTDK címlap
+
 
 % Table of Contents
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\tableofcontents\vfill
+\tableofcontents\vfill
 
 
 % Declaration and Abstract
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\include{include/declaration} %TODO Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
-	\include{content/abstract}	  %TODO Összefoglaló -- TDK és OTDK esetén nem kötelező
+\include{include/declaration} %TODO Hallgatói nyilatkozat -- TDK és OTDK esetén törlendő!
+\include{content/abstract}    %TODO Összefoglaló -- TDK és OTDK esetén nem kötelező
 
 
 % The main part of the thesis
@@ -63,32 +57,32 @@
 \pagenumbering{arabic}
 
 %TODO import your own content
-	\include{content/introduction}
-	\include{content/latex-tools}
-	\include{content/thesis-format}
-	\include{content/template-usage}
+\include{content/introduction}
+\include{content/latex-tools}
+\include{content/thesis-format}
+\include{content/template-usage}
 
 
 % Acknowledgements
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\include{content/acknowledgement}
+\include{content/acknowledgement}
 
 
 % List of Figures, Tables
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
-	\listoftables\addcontentsline{toc}{chapter}{\tablazatokjegyzeke}
+\listoffigures\addcontentsline{toc}{chapter}{\abrakjegyzeke}
+\listoftables\addcontentsline{toc}{chapter}{\tablazatokjegyzeke}
 
 
 % Bibliography
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\bibliography{bib/mybib}
-	\addcontentsline{toc}{chapter}{\irodalomjegyzek}
+\bibliography{bib/mybib}
+\addcontentsline{toc}{chapter}{\irodalomjegyzek}
 
 
 % Appendix
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	\include{content/appendices}
+\include{content/appendices}
 
 %\label{page:last}
 \end{document}
