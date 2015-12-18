@@ -38,13 +38,13 @@ A PDF-\LaTeX~használata esetén a generált dokumentum közvetlenül PDF-formá
 %----------------------------------------------------------------------------
 Linux operációs rendszer alatt is rengeteg szerkesztőprogram van, pl. a KDE alapú Kile jól használható. Ez ingyenesen letölthető, vagy éppenséggel az adott Linux-disztribúció eleve tartalmazza, ahogyan a dokumentum fordításához szükséges csomagokat is. Az Ubuntu Linux disztribúciók alatt például legtöbbször a \verb+texlive-*+ csomagok telepítésével használhatók a \LaTeX-eszközök. A jelen sablon fordításához szükséges csomagok (kb. 0,5 GB) az alábbi paranccsal telepíthetők:
 
-\begin{lstlisting}[language=bash,breaklines=true]
+\begin{lstlisting}[language=bash,morekeywords={sudo,apt\-get},alsoletter={-},breaklines=true]
 sudo apt-get install texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science
 \end{lstlisting}
 
 Amennyiben egy újabb csomag hozzáadása után hiányzó fájlra utaló hibát kapunk a fordítótól, telepítenünk kell az azt tartalmazó TeX Live csomagot. Ha pl. a \verb+bibentry+ csomagot szeretnénk használni, futtassuk az alábbi parancsot:
 
-\begin{lstlisting}[language=bash,breaklines=true]
+\begin{lstlisting}[language=bash,morekeywords={apt\-cache},alsoletter={-},breaklines=true]
 $ apt-cache search bibentry
 texlive-luatex - TeX Live: LuaTeX packages
 \end{lstlisting}
@@ -53,6 +53,6 @@ Majd telepítsük fel a megfelelő TeX Live csomagot, jelen esetben a `texlive-l
 
 Ha gyakran szerkesztünk más \LaTeX dokumentumokat is, kényelmes és biztos megoldás a teljes TeX Live disztribúció telepítése, ez azonban kb. 4 GB helyet igényel.
 
-\begin{lstlisting}[language=bash,breaklines=true]
+\begin{lstlisting}[language=bash,morekeywords={sudo,apt\-get},alsoletter={-},breaklines=true]
 sudo apt-get install texlive-full
 \end{lstlisting}
