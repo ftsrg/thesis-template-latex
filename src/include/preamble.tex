@@ -22,8 +22,8 @@
 % Setup hyperref package
 %--------------------------------------------------------------------------------------
 \hypersetup{
-    bookmarks=true,            % show bookmarks bar?
-    unicode=false,              % non-Latin characters in Acrobat's bookmarks
+    % bookmarks=true,            % show bookmarks bar?
+    unicode=true,              % non-Latin characters in Acrobat's bookmarks
     pdftitle={\vikcim},        % title
     pdfauthor={\szerzoMeta},    % author
     pdfsubject={\vikdoktipus}, % subject of the document
@@ -47,7 +47,8 @@
 	basicstyle=\scriptsize\ttfamily, % print whole listing small
 	keywordstyle=\color{black}\bfseries, % bold black keywords
 	identifierstyle=, % nothing happens
-	commentstyle=\color{green}, % green comments
+	% default behavior: comments in italic, to change use
+	% commentstyle=\color{green}, % for e.g. green comments
 	stringstyle=\scriptsize,
 	showstringspaces=false, % no special string spaces
 	aboveskip=3pt,
