@@ -10,6 +10,8 @@ Check out the latest [PDF output](https://www.sharelatex.com/github/repos/FTSRG/
 
 For writing LaTeX documents, we recommend the [TeXstudio](http://www.texstudio.org/) editor.
 
+You should rename the `diploma.tex` file to something more descriptive, e.g. `john-doe-msc-thesis.tex`.
+
 Key improvements (see the Git log for details):
 * The template can be imported to Eclipse as a TeXlipse project.
 * The files use UTF-8 character encoding.
