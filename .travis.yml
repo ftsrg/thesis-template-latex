@@ -14,7 +14,7 @@ env:
   - GH_REF: github.com/FTSRG/thesis-template-latex.git
   - secure: UKf7VrvJ7IuC2f/QSIK7JPvtbPKNR00/1E9zm37UbHFSc3QsNLJ+NdHIWBSdkJQH6pgIJEgjW/q7n7iuIFPCkCgmORjFgfdad2cvTg4ntiEfdvG23vIZtGBvCwTeWb4QlANyzkaacHchkoCdgaDzNOEBl4cgH09XXkaks/IZ9Bc=
 script:
-- cd src
-- make test
-- cd ..
-- "./deploy.sh"
+  - cd src
+  - make test
+  - cd ..
+  - "./deploy.sh"

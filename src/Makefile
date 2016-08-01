@@ -20,9 +20,20 @@ compile_pdflatex:
 	pdflatex $(DOCUMENT)
 	mv $(DOCUMENT).pdf $(DOCUMENT)-pdflatex.pdf
 	
-test: clean compile_xelatex clean compile_pdflatex
-	mv $(DOCUMENT)-xelatex.pdf ../pdf/
-	mv $(DOCUMENT)-pdflatex.pdf ../pdf/
+test_hu: clean compile_xelatex clean compile_pdflatex
+	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT)-xelatex-hu.pdf
+	mv $(DOCUMENT)-pdflatex.pdf ../pdf/$(DOCUMENT)-pdflatex-hu.pdf
+	
+switch_to_english:
+	sed -i "s|\\\input{include/thesis-hu}|%\\\input{include/thesis-hu}|" $(DOCUMENT).tex
+	sed -i "s|%\\\input{include/thesis-en}|\\\input{include/thesis-en}|" $(DOCUMENT).tex
+
+test_en: switch_to_english clean compile_xelatex clean compile_pdflatex
+	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT)-xelatex-en.pdf
+	mv $(DOCUMENT)-pdflatex.pdf ../pdf/$(DOCUMENT)-pdflatex-en.pdf
+
+test: test_hu test_en
+	;
 
 clean:
 	rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg
