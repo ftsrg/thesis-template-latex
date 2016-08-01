@@ -9,6 +9,12 @@ addons:
     - texlive-fonts-recommended
     - texlive-xetex
     - texlive-science
+env:
+  global:
+  - GH_REF: github.com/FTSRG/thesis-template-latex.git
+  - secure: D/sI1HUk702s8RwkfRUx5sXJ7h8Ph49EX3y+cYsIdcrUF4q3HtymCsVKu4LqjSlINOiLj74ZGDO23haie94eViB6ImVXnRe7i0momXCDlwYaCPlgYUmrRtu5F3TaQlCSm/j49C7H3dm/TtsHzYxy9WuhYU6Ld9P2GVmau/NJd0W7Hq8Ag3iPoST/IcXLMP3QtrV24DhNzZQBb9T9DURuY8Jxpw7wnWIq/D2CpVcosn4rXCIK4yRAil8gderuuXNjWZlNrxHvGFgvMtSiduQv8oyHoEsaIQIE/v9N6fUzxMzWpFg1nstYXshc4it7qOIixRydlom/LVRYQWzbHNJ7aDwY5ByusjMcHZ4m5t4LY5dNBFFzY/nuenmbvJRTm3EnlH5QlNFUsXysG7k0x78P+6yYt8itVN7mEje2WAs00s0/Md4GO+wdtqgTkUmx1qFjdK5LOLPTCUITDOPNyRaoqYt2gP1YjF1LqhoISmn7vaZon32ztSqwMKBXVk0jaJGlt7jRVihreWjg3BrMH3niutYzOoU6aIV51iibs7LECneGql8p7NpRXtwE5pz7HxmG2u0bkz36y1xlu1R7XdLrLKUHFe84EjtOFJLq8w6M1rae3R3Nbz4emvJHjMHo17LR1P7CYJhzhWR/lgGuteoIhm+RIVyOAkIafAPFQCqXxu4=
 script:
   - cd src
   - make test
+  - cd ..
+  - ./deploy.sh
