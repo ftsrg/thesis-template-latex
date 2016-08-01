@@ -1,6 +1,0 @@
-# Site settings
-title: Rendszermodellezés
-baseurl: "/remo-jegyzet" # the subpath of your site, e.g. /blog/
-url: "http://docs.inf.mit.bme.hu/" # the base hostname & protocol for your site
-repo: https://github.com/FTSRG/remo-jegyzet
-

@@ -6,7 +6,6 @@ rm -rf out || exit 0
 mkdir out
 
 # run our compile script, discussed above
-cp -r site/* out/
 cp pdf/*.pdf out/
 
 # go to the out directory and create a *new* Git repo

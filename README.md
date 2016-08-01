@@ -1,11 +1,16 @@
 thesis-template-latex
 =====================
 
-* Travis CI: [![Build status](https://travis-ci.org/FTSRG/thesis-template-latex.svg?branch=master)](https://travis-ci.org/FTSRG/thesis-template-latex)
+[![Build status](https://travis-ci.org/FTSRG/thesis-template-latex.svg?branch=master)](https://travis-ci.org/FTSRG/thesis-template-latex)
 
 Thesis template in LaTeX, forked from the official thesis template of BME-VIK (Budapest University of Technology and Economics, Faculty of Electrical Engineering and Informatics). There is also a [Microsoft Word template](https://github.com/FTSRG/thesis-template-word) available.
 
-Check out the latest [PDF output](https://www.sharelatex.com/github/repos/FTSRG/thesis-template-latex/builds/latest/output.pdf).
+Check out the latest PDF outputs:
+
+* [XeLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-xelatex-hu.pdf)
+* [PDFLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-pdflatex-hu.pdf)
+* [XeLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-xelatex-en.pdf)
+* [PDFLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-pdflatex-en.pdf)
 
 For writing LaTeX documents, we recommend the [TeXstudio](http://www.texstudio.org/) editor.
 
