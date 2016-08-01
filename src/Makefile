@@ -34,6 +34,7 @@ switch_to_english:
 	sed -i "s|%\\\input{include/thesis-en}|\\\input{include/thesis-en}|" $(DOCUMENT).tex
 
 test_en:
+	${MAKE} switch_to_english
 	${MAKE} clean compile_xelatex
 	${MAKE} clean compile_pdflatex
 	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT)-xelatex-en.pdf
