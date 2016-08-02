@@ -1,4 +1,4 @@
-DOCUMENT=diploma
+DOCUMENT=thesis
 
 all: clean xelatex
 	echo

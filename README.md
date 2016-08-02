@@ -7,14 +7,14 @@ Thesis template for LaTeX documents, forked from the official thesis template of
 
 Check out the latest PDF outputs:
 
-* [XeLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-xelatex-hu.pdf)
-* [PDFLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-pdflatex-hu.pdf)
-* [XeLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-xelatex-en.pdf)
-* [PDFLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/diploma-pdflatex-en.pdf)
+* [XeLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-xelatex-hu.pdf)
+* [PDFLaTeX HU](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-pdflatex-hu.pdf)
+* [XeLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-xelatex-en.pdf)
+* [PDFLaTeX EN](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-pdflatex-en.pdf)
 
 For writing LaTeX documents, we recommend the [TeXstudio](http://www.texstudio.org/) editor.
 
-You should rename the `diploma.tex` file to something more descriptive, e.g. `john-doe-msc-thesis.tex`.
+You should rename the `thesis.tex` file to something more descriptive, e.g. `john-doe-msc-thesis.tex`.
 
 Key improvements (see the Git log for details):
 * The template can be imported to Eclipse as a TeXlipse project.
