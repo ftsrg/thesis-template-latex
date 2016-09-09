@@ -50,4 +50,4 @@ test: test_hu test_en
 
 clean:
 	echo Cleaning temporary files...
-	rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg content/*.aux include/*.aux
+	rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg *.log *.pdf *.synctex.gz content/*.log include/*.log content/*.aux include/*.aux
