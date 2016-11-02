@@ -3,12 +3,12 @@ addons:
   apt:
     packages:
     - lmodern
-    - texlive-latex-recommended
-    - texlive-latex-extra
     - texlive-fonts-extra
     - texlive-fonts-recommended
-    - texlive-xetex
+    - texlive-latex-extra
+    - texlive-latex-recommended
     - texlive-science
+    - texlive-xetex
 env:
   global:
   - GH_REF: github.com/FTSRG/thesis-template-latex.git
