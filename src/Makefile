@@ -1,4 +1,5 @@
 DOCUMENT=thesis
+MODE=-interaction=batchmode
 
 all: clean xelatex
 	echo
@@ -7,20 +8,20 @@ xelatex: compile_xelatex
 	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT).pdf
 
 compile_xelatex:
-	xelatex $(DOCUMENT)
+	xelatex $(MODE) $(DOCUMENT)
 	bibtex $(DOCUMENT)
-	xelatex $(DOCUMENT)
-	xelatex $(DOCUMENT)
+	xelatex $(MODE) $(DOCUMENT)
+	xelatex $(MODE) $(DOCUMENT)
 	mv $(DOCUMENT).pdf $(DOCUMENT)-xelatex.pdf
 
 pdflatex: compile_pdflatex
 	mv $(DOCUMENT)-pdflatex.pdf ../pdf/$(DOCUMENT).pdf
 
 compile_pdflatex:
-	pdflatex $(DOCUMENT)
+	pdflatex $(MODE) $(DOCUMENT)
 	bibtex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
-	pdflatex $(DOCUMENT)
+	pdflatex $(MODE) $(DOCUMENT)
+	pdflatex $(MODE) $(DOCUMENT)
 	mv $(DOCUMENT).pdf $(DOCUMENT)-pdflatex.pdf
 
 switch_to_hungarian:
