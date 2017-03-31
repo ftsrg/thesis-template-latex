@@ -18,3 +18,7 @@ script:
   - make test
   - cd ..
   - "./deploy.sh"
+notifications:
+  slack: ftsrg:qnSMPdAdgpSj9vVxcl2AB2qU
+  on_success: change
+  on_failure: always
