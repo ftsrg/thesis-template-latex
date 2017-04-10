@@ -8,6 +8,7 @@ addons:
     - texlive-fonts-recommended
     - texlive-latex-extra
     - texlive-latex-recommended
+    - texlive-luatex
     - texlive-science
     - texlive-xetex
 env:
