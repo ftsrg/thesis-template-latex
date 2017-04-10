@@ -1,5 +1,12 @@
+% thanks to http://tex.stackexchange.com/a/47579/71109
 \usepackage{ifxetex}
-\ifxetex
+\usepackage{ifluatex}
+\newif\ifxetexorluatex % a new conditional starts as false
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+   \xetexorluatextrue
+\fi
+
+\ifxetexorluatex
   \usepackage{fontspec}
 \else
   \usepackage[T1]{fontenc}
@@ -11,7 +18,7 @@
 
 %\usepackage{cmap}
 \usepackage{amsfonts,amsmath,amssymb} % Mathematical symbols.
-\usepackage[ruled,boxed,resetcount,linesnumbered]{algorithm2e} % For pseudocodes.
+%\usepackage[ruled,boxed,resetcount,linesnumbered]{algorithm2e} % For pseudocodes. % beware: this is not compatible with LuaLaTeX, see http://tex.stackexchange.com/questions/34814/lualatex-and-algorithm2e
 \usepackage{booktabs} % For publication quality tables for LaTeX
 \usepackage{graphicx}
 
