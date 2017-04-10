@@ -326,7 +326,7 @@ return {
 		loader = 'loadhyph-hu.tex',
 		lefthyphenmin = 2,
 		righthyphenmin = 2,
-		synonyms = {  },
+    synonyms = { 'hungarian', 'magyar' },
 		patterns = 'hyph-hu.pat.txt',
 		hyphenation = '',
 	},
