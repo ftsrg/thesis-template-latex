@@ -12,6 +12,11 @@ The latest PDF outputs of the build:
 
 ## User's Guide
 
+If you fork this repository, please revise the Travis integration:
+
+* Remove the Slack notification or redirect it.
+* Remove the call for the deployment script (`./deploy.sh`) or redirect it. To do this, you will need to use a GitHub token and encrypt it for Travis, which requires Ruby. For details, see [this guide].
+
 Please rename the `thesis.tex` file to something more descriptive, e.g. `john-doe-msc-thesis.tex`. If you are using [`make`](https://www.gnu.org/software/make/) to build the document, also update the [`Makefile`](https://github.com/FTSRG/thesis-template-latex/blob/master/src/Makefile#L1).
 
 For writing LaTeX documents, we recommend the [TeXstudio](http://www.texstudio.org/) editor.
