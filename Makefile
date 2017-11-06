@@ -1,68 +1,61 @@
-DOCUMENT=thesis
+DOCUMENT = thesis
 #MODE=-interaction=batchmode
 
-all: clean xelatex
-	echo
+FLAVOURS := pdflatex xelatex lualatex
+LANGUAGES := en hu
 
-xelatex: compile_xelatex
-	mv $(DOCUMENT)-xelatex.pdf pdf/$(DOCUMENT).pdf
+OUTDIR := pdf
 
-compile_xelatex:
-	xelatex $(MODE) $(DOCUMENT)
-	bibtex $(DOCUMENT)
-	xelatex $(MODE) $(DOCUMENT)
-	xelatex $(MODE) $(DOCUMENT)
-	mv $(DOCUMENT).pdf $(DOCUMENT)-xelatex.pdf
+INPUT_FILES := $(shell find . -type f -name '*.tex' -or -name '*.bib')
 
-pdflatex: compile_pdflatex
-	mv $(DOCUMENT)-pdflatex.pdf pdf/$(DOCUMENT).pdf
+S := >/dev/null
 
-compile_pdflatex:
-	pdflatex $(MODE) $(DOCUMENT)
-	bibtex $(DOCUMENT)
-	pdflatex $(MODE) $(DOCUMENT)
-	pdflatex $(MODE) $(DOCUMENT)
-	mv $(DOCUMENT).pdf $(DOCUMENT)-pdflatex.pdf
+default: pdf/$(DOCUMENT)-xelatex.pdf
+	@cp $^ pdf/$(DOCUMENT).pdf
+.PHONY: default
+.DEFAULT: default
 
-lualatex: compile_lualatex
-	mv $(DOCUMENT)-lualatex.pdf pdf/$(DOCUMENT).pdf
 
-compile_lualatex:
-	lualatex $(MODE) $(DOCUMENT)
-	bibtex $(DOCUMENT)
-	lualatex $(MODE) $(DOCUMENT)
-	lualatex $(MODE) $(DOCUMENT)
-	mv $(DOCUMENT).pdf $(DOCUMENT)-lualatex.pdf
+define compile_template
 
-switch_to_hungarian:
-	sed -i "s|^\\\input{include/thesis-en}|%\\\input{include/thesis-en}|" $(DOCUMENT).tex
-	sed -i "s|^%\\\input{include/thesis-hu}|\\\input{include/thesis-hu}|" $(DOCUMENT).tex
+$(1): pdf/$$(DOCUMENT)-$(1).pdf
+.PHONY: $(1)
 
-test_hu:
-	${MAKE} clean compile_xelatex
-	${MAKE} clean compile_pdflatex
-	${MAKE} clean compile_lualatex
-	mv $(DOCUMENT)-xelatex.pdf pdf/$(DOCUMENT)-xelatex-hu.pdf
-	mv $(DOCUMENT)-pdflatex.pdf pdf/$(DOCUMENT)-pdflatex-hu.pdf
-	mv $(DOCUMENT)-lualatex.pdf pdf/$(DOCUMENT)-lualatex-hu.pdf
+pdf/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
+	@${MAKE} clean-aux
+	@$(1) $$(MODE) $$(DOCUMENT) $S
+	@bibtex $$(DOCUMENT) $S
+	@$(1) $$(MODE) $$(DOCUMENT) $S
+	@$(1) $$(MODE) $$(DOCUMENT) $S
+	@mv $$(DOCUMENT).pdf pdf/$$(DOCUMENT)-$(1).pdf
 
-switch_to_english:
-	sed -i "s|^\\\input{include/thesis-hu}|%\\\input{include/thesis-hu}|" $(DOCUMENT).tex
-	sed -i "s|^%\\\input{include/thesis-en}|\\\input{include/thesis-en}|" $(DOCUMENT).tex
+endef
 
-test_en:
-	${MAKE} switch_to_english
-	${MAKE} clean compile_xelatex
-	${MAKE} clean compile_pdflatex
-	${MAKE} clean compile_lualatex
-	mv $(DOCUMENT)-xelatex.pdf pdf/$(DOCUMENT)-xelatex-en.pdf
-	mv $(DOCUMENT)-pdflatex.pdf pdf/$(DOCUMENT)-pdflatex-en.pdf
-	mv $(DOCUMENT)-lualatex.pdf pdf/$(DOCUMENT)-lualatex-en.pdf
-	${MAKE} switch_to_hungarian
+define switch_template
 
-test: test_hu test_en
-	echo
+switch_to_$(1):
+	@perl -i -p -e 's/^\\\input{include\/thesis-(?!$(1)})/%\\\input{include\/thesis-\1/' $$(DOCUMENT).tex
+	@perl -i -p -e 's/^%\\\input{include\/thesis-$(1)}/\\\input{include\/thesis-$(1)}/' $$(DOCUMENT).tex
+.PHONY: switch_to_$(1)
 
-clean:
-	echo Cleaning temporary files...
-	rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg
+endef
+
+$(foreach _,$(FLAVOURS),$(eval $(call compile_template,$_)))
+
+$(foreach _,$(LANGUAGES),$(eval $(call switch_template,$_)))
+
+clean: clean-pdf clean-aux
+
+.PHONY: clean
+
+clean-pdf:
+	@rm -rf pdf *.pdf
+.PHONY: clean-pdf
+
+clean-aux:
+	@rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg
+.PHONY: clean-aux
+
+$(OUTDIR):
+	@mkdir -p $@
+

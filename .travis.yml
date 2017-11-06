@@ -19,7 +19,13 @@ script:
   # fix Hungarian hyphenation for LuaLaTeX
   - kpsewhich language.dat.lua
   - sudo cp lua/language.dat.lua `kpsewhich language.dat.lua`
-  - make test
+  - |
+    for lang in en hu;
+        make switch_to_$lang
+        for flavour in xelatex pdflatex lualatex;
+            make $flavour
+        done
+    done
   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./deploy.sh; fi
 notifications:
   slack: ftsrg:qnSMPdAdgpSj9vVxcl2AB2qU

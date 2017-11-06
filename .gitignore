@@ -1,6 +1,7 @@
 thesis.pdf
 thesis-*.pdf
 
+pdf/
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
