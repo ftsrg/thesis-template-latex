@@ -20,9 +20,9 @@ script:
   - kpsewhich language.dat.lua
   - sudo cp lua/language.dat.lua `kpsewhich language.dat.lua`
   - |
-    for lang in en hu;
+    for lang in en hu; do
         make switch_to_$lang
-        for flavour in xelatex pdflatex lualatex;
+        for flavour in xelatex pdflatex lualatex; do
             make $flavour
         done
     done
