@@ -23,6 +23,7 @@ script:
     for lang in en hu; do
         make switch_to_$lang
         for flavour in xelatex pdflatex lualatex; do
+            make clean-aux
             make $flavour
         done
     done

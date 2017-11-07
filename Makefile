@@ -22,7 +22,6 @@ $(1): pdf/$$(DOCUMENT)-$(1).pdf
 .PHONY: $(1)
 
 pdf/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
-	@${MAKE} clean-aux
 	@$(1) $$(MODE) $$(DOCUMENT) $S
 	@bibtex $$(DOCUMENT) $S
 	@$(1) $$(MODE) $$(DOCUMENT) $S
@@ -45,7 +44,6 @@ $(foreach _,$(FLAVOURS),$(eval $(call compile_template,$_)))
 $(foreach _,$(LANGUAGES),$(eval $(call switch_template,$_)))
 
 clean: clean-pdf clean-aux
-
 .PHONY: clean
 
 clean-pdf:
