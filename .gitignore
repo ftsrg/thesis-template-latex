@@ -1,7 +1,17 @@
 thesis.pdf
 thesis-*.pdf
-
 pdf/
+
+## Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
