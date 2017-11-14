@@ -6,9 +6,7 @@ LANGUAGES := en hu
 
 OUTDIR := pdf
 
-INPUT_FILES := $(shell find . -type f -name '*.tex' -or -name '*.bib')
-
-S := >/dev/null
+INPUT_FILES := $(shell find . -type f -iregex '.*\.\(bib\|tex\)') $(shell find ./figures -type f -iregex '.*\.\(png\|pdf\|jpg\|jpeg\|svg\)')
 
 default: pdf/$(DOCUMENT)-xelatex.pdf
 	@cp $^ pdf/$(DOCUMENT).pdf
@@ -22,10 +20,10 @@ $(1): pdf/$$(DOCUMENT)-$(1).pdf
 .PHONY: $(1)
 
 pdf/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
-	@$(1) $$(MODE) $$(DOCUMENT) $S
-	@bibtex $$(DOCUMENT) $S
-	@$(1) $$(MODE) $$(DOCUMENT) $S
-	@$(1) $$(MODE) $$(DOCUMENT) $S
+	$(1) $$(MODE) $$(DOCUMENT)
+	bibtex $$(DOCUMENT)
+	$(1) $$(MODE) $$(DOCUMENT)
+	$(1) $$(MODE) $$(DOCUMENT)
 	@mv $$(DOCUMENT).pdf pdf/$$(DOCUMENT)-$(1).pdf
 
 endef
