@@ -13,7 +13,6 @@ addons:
     - texlive-xetex
 env:
   global:
-  - GH_REPO: FTSRG/thesis-template-latex
   - secure: UKf7VrvJ7IuC2f/QSIK7JPvtbPKNR00/1E9zm37UbHFSc3QsNLJ+NdHIWBSdkJQH6pgIJEgjW/q7n7iuIFPCkCgmORjFgfdad2cvTg4ntiEfdvG23vIZtGBvCwTeWb4QlANyzkaacHchkoCdgaDzNOEBl4cgH09XXkaks/IZ9Bc=
 script:
   # fix Hungarian hyphenation for LuaLaTeX
@@ -29,7 +28,7 @@ script:
     done
   - |
     if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
-        BRANCH=$TRAVIS_BRANCH make gh-upload
+        BRANCH=$TRAVIS_BRANCH GH_REPO=$TRAVIS_REPO_SLUG make gh-upload
     fi
 notifications:
   slack: ftsrg:qnSMPdAdgpSj9vVxcl2AB2qU
