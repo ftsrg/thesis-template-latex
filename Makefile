@@ -1,4 +1,6 @@
-DOCUMENT = thesis
+SHELL := $(shell which bash) -O globstar -c
+
+DOCUMENT := thesis
 #MODE=-interaction=batchmode
 
 FLAVOURS := pdflatex xelatex lualatex
@@ -6,25 +8,24 @@ LANGUAGES := en hu
 
 OUTDIR := pdf
 
-INPUT_FILES := $(shell find . -type f -iregex '.*\.\(bib\|tex\)') $(shell find ./figures -type f -iregex '.*\.\(png\|pdf\|jpg\|jpeg\|svg\)')
+INPUT_FILES = $(shell ls **/*.{tex,bib} figures/**/*.{png,pdf,jpg,jpeg,svg,gif} 2>/dev/null)
+OUTPUT_FILES := $(OUTDIR) $(DOCUMENT).pdf
+AUX_FILES = $(shell ls **/*.{aux,dvi,thm,lof,log,lot,fls,out,toc,bbl,blg} 2>/dev/null)
 
-default: pdf/$(DOCUMENT)-xelatex.pdf
-	@cp $^ pdf/$(DOCUMENT).pdf
-.PHONY: default
-.DEFAULT: default
-
+$(OUTDIR)/$(DOCUMENT).pdf: $(OUTDIR)/$(DOCUMENT)-xelatex.pdf
+	@cp $^ $@
 
 define compile_template
 
-$(1): pdf/$$(DOCUMENT)-$(1).pdf
+$(1): $(OUTDIR)/$$(DOCUMENT)-$(1).pdf
 .PHONY: $(1)
 
-pdf/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
+$(OUTDIR)/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
 	$(1) $$(MODE) $$(DOCUMENT)
 	bibtex $$(DOCUMENT)
 	$(1) $$(MODE) $$(DOCUMENT)
 	$(1) $$(MODE) $$(DOCUMENT)
-	@mv $$(DOCUMENT).pdf pdf/$$(DOCUMENT)-$(1).pdf
+	@mv $$(DOCUMENT).pdf $$@
 
 endef
 
@@ -45,11 +46,11 @@ clean: clean-pdf clean-aux
 .PHONY: clean
 
 clean-pdf:
-	@rm -rf pdf *.pdf
+	@rm -rf $(DOCUMENT).pdf $(OUTDIR)
 .PHONY: clean-pdf
 
 clean-aux:
-	@rm -f *.aux *.dvi *.thm *.lof *.log *.lot *.fls *.out *.toc *.bbl *.blg
+	@rm -f $(AUXFILES)
 .PHONY: clean-aux
 
 $(OUTDIR):
