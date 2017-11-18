@@ -53,6 +53,16 @@ clean-aux:
 	@rm -f $(AUXFILES)
 .PHONY: clean-aux
 
+GH_REPO ?= FTSRG/thesis-template-latex
+GIT_BRANCH ?= gh-pages
+GIT_USER ?= "FTSRG BME"
+GIT_EMAIL ?="ftsrg.bme@gmail.com"
+
+gh-upload: | $(OUTDIR)
+	@OUTDIR=$| GH_TOKEN=$(GH_TOKEN) GH_REPO=$(GH_REPO)\
+	 GIT_USER=$(GIT_USER) GIT_BRANCH=$(GIT_BRANCH) GIT_EMAIL=$(GIT_EMAIL)\
+	 ./scripts/gh_upload.sh
+
 $(OUTDIR):
 	@mkdir -p $@
 
