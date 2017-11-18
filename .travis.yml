@@ -24,6 +24,7 @@ script:
         for flavour in xelatex pdflatex lualatex; do
             make clean-aux
             make $flavour
+            mv pdf/thesis-$flavour.pdf pdf/thesis-$flavour-$lang.pdf
         done
     done
   - |

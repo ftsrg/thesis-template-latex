@@ -2,6 +2,7 @@ SHELL := $(shell which bash) -O globstar -c
 
 DOCUMENT := thesis
 #MODE=-interaction=batchmode
+HALT=-halt-on-error
 
 FLAVOURS := pdflatex xelatex lualatex
 LANGUAGES := en hu
@@ -21,10 +22,10 @@ $(1): $(OUTDIR)/$$(DOCUMENT)-$(1).pdf
 .PHONY: $(1)
 
 $(OUTDIR)/$$(DOCUMENT)-$(1).pdf: $(INPUT_FILES) | $(OUTDIR)
-	$(1) $$(MODE) $$(DOCUMENT)
+	$(1) $$(MODE) $(HALT) $$(DOCUMENT)
 	bibtex $$(DOCUMENT)
-	$(1) $$(MODE) $$(DOCUMENT)
-	$(1) $$(MODE) $$(DOCUMENT)
+	$(1) $$(MODE) $(HALT) $$(DOCUMENT)
+	$(1) $$(MODE) $(HALT) $$(DOCUMENT)
 	@mv $$(DOCUMENT).pdf $$@
 
 endef
@@ -50,7 +51,7 @@ clean-pdf:
 .PHONY: clean-pdf
 
 clean-aux:
-	@rm -f $(AUXFILES)
+	@rm -f $(AUX_FILES)
 .PHONY: clean-aux
 
 GH_REPO ?= FTSRG/thesis-template-latex
