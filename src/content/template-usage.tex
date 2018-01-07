@@ -29,11 +29,11 @@ Lehetőségeink Matlab ábrák esetén:
 	\item Javasolt megoldás: az ábrát a \verb+File/Save As+ opcióval EPS \emph{vektorgrafikus} formátumban elmentjük, PDF-be konvertálva beillesztjük a dolgozatba.
 \end{itemize}
 Az EPS kép az \verb+epstopdf+ programmal\footnote{a korábban említett \LaTeX-disztribúciókban megtalálható} konvertálható PDF formátumba. Célszerű egy batch-fájlt készíteni az összes EPS ábra lefordítására az alábbi módon (ez Windows alatt működik).
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @echo off
 for %%j in (*.eps) do (
-echo converting file "%%j"
-epstopdf "%%j"
+  echo converting file "%%j"
+  epstopdf "%%j"
 )
 echo done .
 \end{lstlisting}
@@ -95,7 +95,7 @@ Számozott felsorolást is készíthetünk az alábbi módon:
 A felsorolásokban sorok végén vessző, az utolsó sor végén pedig pont a szokásos írásjel. Ez alól kivételt képezhet, ha az egyes elemek több teljes mondatot tartalmaznak.
 
 Listákban a dolgozat szövegétől elkülönítendő kódrészleteket, programsorokat, pszeudo-kódokat jeleníthetünk meg (\ref{lst:Example}.~kódrészlet).
-\begin{lstlisting}[caption=A fenti számozott felsorolás \LaTeX-forráskódja,label=lst:Example]
+\begin{lstlisting}[language=tex,caption=A fenti számozott felsorolás \LaTeX-forráskódja,label=lst:Example]
 \begin{enumerate}
 	\item \emph{els(*@ő@*) bajusz:} ide lehetne írni az els(*@ő@*) elem kifejését,
 	és ez a kifejtés így néz ki, ha több sorosra sikeredik,
@@ -149,7 +149,7 @@ Ez pedig itt egy magyarázat, hogy miért érdemes \verb+align+ környezetet has
 \label{sec:HowtoReference}
 %----------------------------------------------------------------------------
 Egy \LaTeX~dokumentumban az irodalmi hivatkozások definíciójának két módja van. Az egyik a \verb+\thebibliograhy+ környezet használata a dokumentum végén, az \verb+\end{document}+ lezárás előtt.
-\begin{lstlisting}
+\begin{lstlisting}[language=tex]
 \begin{thebibliography}{9}
 
 \bibitem{Lamport94} Leslie Lamport, \emph{\LaTeX: A Document Preparation System}.
