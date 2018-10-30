@@ -1,5 +1,7 @@
 thesis.pdf
-thesis-*.pdf
+thesis-pdflatex*.pdf
+thesis-xelatex*.pdf
+thesis-lualatex*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
