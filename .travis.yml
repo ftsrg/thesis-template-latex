@@ -1,29 +1,24 @@
-sudo: true
-dist: trusty
-addons:
-  apt:
-    packages:
-    - lmodern
-    - texlive-fonts-extra
-    - texlive-fonts-recommended
-    - texlive-latex-extra
-    - texlive-latex-recommended
-    - texlive-luatex
-    - texlive-science
-    - texlive-xetex
-env:
-  global:
-  - GH_REF: github.com/FTSRG/thesis-template-latex.git
-  - secure: UKf7VrvJ7IuC2f/QSIK7JPvtbPKNR00/1E9zm37UbHFSc3QsNLJ+NdHIWBSdkJQH6pgIJEgjW/q7n7iuIFPCkCgmORjFgfdad2cvTg4ntiEfdvG23vIZtGBvCwTeWb4QlANyzkaacHchkoCdgaDzNOEBl4cgH09XXkaks/IZ9Bc=
+language: bash
+services:
+  - docker
+cache:
+  directories:
+  - docker
+before_install:
+ - mkdir -p docker
+ - if [[ -e docker/texbuilder.tar.gz  ]] ; then echo found ; gzip -dc docker/texbuilder.tar.gz | docker load ; else docker pull makisyu/texlive-2017 ; docker save makisyu/texlive-2017 | gzip > docker/texbuilder.tar.gz ; fi
 script:
-  - cd src
-  # fix Hungarian hyphenation for LuaLaTeX
-  - kpsewhich language.dat.lua
-  - sudo cp lua/language.dat.lua `kpsewhich language.dat.lua`
-  - make test
-  - cd ..
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./deploy.sh; fi
+- docker run -v `pwd`/:/mnt/ makisyu/texlive-2017 /bin/bash -c "cd /mnt/src && make test"
+- mkdir out/
+- cp pdf/*.pdf out/
 notifications:
   slack: ftsrg:qnSMPdAdgpSj9vVxcl2AB2qU
   on_success: change
   on_failure: always
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: out
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
