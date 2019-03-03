@@ -21,6 +21,21 @@ Please rename the `thesis.tex` file to something more descriptive, e.g. `john-do
 
 For writing LaTeX documents, we recommend the [TeXstudio](http://www.texstudio.org/) editor.
 
+## Troubleshooting
+
+### Build fails
+
+Make sure you get a clean run. For example, to run PDFLaTeX, invoke the build with the following command:
+
+```console
+make clean pdflatex
+```
+
+### xcolor
+
+The `xcolor` package tends to be problematic on some platforms with outdated TeX distributions.
+If you experience problems, try to place the [`xcolor.sty`](https://github.com/FTSRG/thesis-template-latex/blob/8fc7f9d10b1f0f65d8da0ad362492ec65134304f/src/xcolor.sty) file to the `src` directory.
+
 ## Improvements
 
 If you found any bugs or missing features that should be included, please raise an [issue](https://github.com/FTSRG/thesis-template-latex/issues). Pull requests are also welcome!
