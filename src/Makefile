@@ -60,7 +60,25 @@ test_en:
 	mv $(DOCUMENT)-lualatex.pdf ../pdf/$(DOCUMENT)-lualatex-en.pdf
 	${MAKE} switch_to_hungarian
 
-test: test_hu test_en
+switch_to_singlesided:
+	sed -i "s|^%\\\documentclass\[11pt,a4paper,oneside|\\\documentclass[11pt,a4paper,oneside|" $(DOCUMENT).tex
+	sed -i "s|^\\\documentclass\[11pt,a4paper,twoside|%\\\documentclass[11pt,a4paper,twoside|" $(DOCUMENT).tex
+
+switch_to_duplex:
+	sed -i "s|^\\\documentclass\[11pt,a4paper,oneside|%\\\documentclass[11pt,a4paper,oneside|" $(DOCUMENT).tex
+	sed -i "s|^%\\\documentclass\[11pt,a4paper,twoside|\\\documentclass[11pt,a4paper,twoside|" $(DOCUMENT).tex
+
+test_duplex:
+	${MAKE} switch_to_duplex
+	${MAKE} clean compile_xelatex
+	${MAKE} clean compile_pdflatex
+	${MAKE} clean compile_lualatex
+	mv $(DOCUMENT)-xelatex.pdf ../pdf/$(DOCUMENT)-xelatex-duplex.pdf
+	mv $(DOCUMENT)-pdflatex.pdf ../pdf/$(DOCUMENT)-pdflatex-duplex.pdf
+	mv $(DOCUMENT)-lualatex.pdf ../pdf/$(DOCUMENT)-lualatex-duplex.pdf
+	${MAKE} switch_to_singlesided
+
+test: test_hu test_en test_duplex
 	echo
 
 clean:

@@ -9,6 +9,7 @@ The latest PDF outputs of the build:
 
 * [`[XeLaTeX HU]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-xelatex-hu.pdf) | [`[PDFLaTeX HU]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-pdflatex-hu.pdf) | [`[LuaLaTeX HU]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-lualatex-hu.pdf)
 * [`[XeLaTeX EN]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-xelatex-en.pdf) | [`[PDFLaTeX EN]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-pdflatex-en.pdf) | [`[LuaLaTeX EN]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-lualatex-en.pdf)
+* [`[XeLaTeX Duplex]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-xelatex-duplex.pdf) | [`[PDFLaTeX Duplex]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-pdflatex-duplex.pdf) | [`[LuaLaTeX Duplex]`](http://docs.inf.mit.bme.hu/thesis-template-latex/thesis-lualatex-duplex.pdf)
 
 ## User's Guide
 
