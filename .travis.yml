@@ -1,4 +1,9 @@
 language: bash
+dist: bionic
+addons:
+  apt:
+    packages:
+      - zstd
 services:
   - docker
 cache:
@@ -6,7 +11,7 @@ cache:
   - docker
 before_install:
  - mkdir -p docker
- - if [[ -e docker/texbuilder.tar.gz  ]] ; then echo found ; gzip -dc docker/texbuilder.tar.gz | docker load ; else docker pull makisyu/texlive-2017 ; docker save makisyu/texlive-2017 | gzip > docker/texbuilder.tar.gz ; fi
+ - if [[ -e docker/texbuilder.zst  ]] ; then echo found ; zstdcat docker/texbuilder.zst | docker load ; else docker pull makisyu/texlive-2017 ; docker save makisyu/texlive-2017 | zstd -14 -T0 -o docker/texbuilder.zst; fi
 script:
 - docker run -v `pwd`/:/mnt/ makisyu/texlive-2017 /bin/bash -c "cd /mnt/src && make test"
 - mkdir out/
