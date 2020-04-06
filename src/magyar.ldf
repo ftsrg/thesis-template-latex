@@ -1,3 +1,4 @@
+% -*- coding: iso-8859-2 -*-
 %
 % magyar.ldf -- LaTeX Language Definition for `magyar' (Hungarian), v1.5c
 % written and copyright (C) by P\'eter SZAB\'O <pts@fazekas.hu>
@@ -58,7 +59,7 @@
 % This file is quite long, because it implements a lot of parametric features
 % related to typesetting Hungarian text with \LaTeX. Sorry.
 %
-% Motto: ``There is a lot to do in the future'' -- by Gyˆngyi BujdosÛ and
+% Motto: ``There is a lot to do in the future'' -- by Gy√∂ngyi Bujdos√≥ and
 % Ferenc Wettl in their conference proceedings article ``On the localization
 % of TeX in Hungary'', presented at EuroBachoTeX 2002.
 %
@@ -81,7 +82,7 @@
 %\ProvidesFile{magyar.ldf}[1996/12/23 v1.3h Magyar support from the babel system]
 %\ProvidesLanguage{magyar}[2001/03/05 v1.4c Magyar support from the babel system]
 % vvv for Babel v3.7
-\expandafter\ProvidesLanguage\expandafter{\CurrentOption}[2015/11/24 v1.5c Magyar support from the babel v3.7 system]
+\expandafter\ProvidesLanguage\expandafter{\CurrentOption}[2019/01/14 v1.5c Magyar (Hungarian) support for babel]
 
 % Possibly do \endinput if .ldf already loaded
 \expandafter\LdfInit\expandafter{\CurrentOption}{captions\CurrentOption}%
@@ -117,7 +118,7 @@
 % isn't enough for us, because it is processed
 % after \usepackage[magyar]{babel}, but we need the options information
 % earlier. And also it cannot contain `='.
-% 
+%
 
 %** `\dMf foo-bar {...}' is `\def\foo-bar{...}' where `-' is a letter
 \def\dMf#1 {\expandafter\def\csname#1\endcsname}
@@ -159,7 +160,7 @@
 %**     amstocnumskip=\enskip,     % TeX code or --empty--
 %**     amstocnumlang=all,         % or =hu
 %**     amspostsectiondot=no,      % or =unchanged
-%**     appendixdot=yes,           % or =no % !! dokument·lni
+%**     appendixdot=yes,           % or =no % !! dokument√°lni
 %**     az=weak,                   % or =yes or =no
 %**     babelmarkfix=yes,          % or =unchanged
 %**     captionfix=yes,            % or =unchanged
@@ -258,8 +259,9 @@
   \magyar@opt@ntheoremfix@@yes
   \magyar@opt@openqq@@maybedown
   \magyar@opt@partnumber@@unchanged
-  \magyar@opt@postpara{}{unchanged}%
-  \magyar@opt@postsubpara{}{unchanged}%
+  \magyar@opt@postdescription{postdescription}{unchanged}%
+  \magyar@opt@postpara{postpara}{unchanged}%
+  \magyar@opt@postsubpara{postsubpara}{unchanged}%
   \magyar@opt@refstruc{refstruc}{weak}%
   \magyar@opt@sectiondot@@safe
   \magyar@opt@shorthandcs{shorthandcs}{\shu}%
@@ -330,8 +332,9 @@
   \magyar@opt@ntheoremfix@@yes% OK
   \magyar@opt@openqq@@maybedown% OK
   \magyar@opt@partnumber@@unchanged% OK
-  \magyar@opt@postpara{}{unchanged}% OK
-  \magyar@opt@postsubpara{}{unchanged}% OK
+  \magyar@opt@postdescription{postdescription}{unchanged}% OK
+  \magyar@opt@postpara{postpara}{unchanged}% OK
+  \magyar@opt@postsubpara{postsubpara}{unchanged}% OK
   \magyar@opt@refstruc{refstruc}{no}% OK
   \magyar@opt@sectiondot@@safe% we don't want =problematic
   \magyar@opt@shorthandcs{shorthandcs}{none}% OK
@@ -395,8 +398,9 @@
   \magyar@opt@ntheoremfix@@unchanged
   \magyar@opt@openqq@@unchanged
   \magyar@opt@partnumber@@unchanged
-  \magyar@opt@postpara{}{unchanged}%
-  \magyar@opt@postsubpara{}{unchanged}%
+  \magyar@opt@postdescription{postdescription}{unchanged}%
+  \magyar@opt@postpara{postpara}{unchanged}%
+  \magyar@opt@postsubpara{postsubpara}{unchanged}%
   \magyar@opt@refstruc{refstruc}{no}%
   \magyar@opt@sectiondot@@none
   \magyar@opt@shorthandcs{shorthandcs}{none}%
@@ -462,9 +466,9 @@
   \magyar@opt@ntheoremfix@@yes
   \magyar@opt@openqq@@maybedown
   \magyar@opt@partnumber@@Huordinal
-  \magyar@opt@postdescription{}{dot}%
-  \magyar@opt@postpara{}{diamond}%
-  \magyar@opt@postsubpara{}{star}%
+  \magyar@opt@postdescription{postdescription}{dot}%
+  \magyar@opt@postpara{postpara}{diamond}%
+  \magyar@opt@postsubpara{postsubpara}{star}%
   \magyar@opt@refstruc{refstruc}{yes}%
   \magyar@opt@sectiondot@@safe
   \magyar@opt@shorthandcs{shorthandcs}{\shu}%
@@ -514,14 +518,13 @@
   labelenums=hu-d,
   labelitems=hu,
   longcaption=centered,
-  mathbrk=define,
   mathbrk=fix,
   mathfactorial=define,
   mathhucomma=fix,
   mathreal=weak,
   mond=weak,
   ntheoremfix=yes,
-  openqq=maybedown,
+  openqq=maybedown,  % Not: openqq=unchanged
   postdescription=dot,
   postpara=diamond,
   postsubpara=star,
@@ -542,9 +545,7 @@
 %** Matches Hungarian typographic rules most closely -- and most
 %** simplistically (minimally).
 \dMf magyar@opt@defaults@@hu-min {%
-  %\csname magyar@opt@defaults@@over-1.4\endcsname
-  \csname magyar@opt@defaults@@safest\endcsname
-  % Dat: no openqq=unchanged (!)
+  \magyar@opt@defaults@@safest
   \expandafter\magyar@doopt\magyar@@humin@options\hfuzz,%
 }
 
@@ -822,17 +823,14 @@
 \dMf magyar@opt@afterindent@@force-yes {\def\magyar@opt@@afterindent{1}}
 \dMf magyar@opt@afterindent@@unchanged {\def\magyar@opt@@afterindent{9}}
 \let\magyar@opt@afterindent\magyar@enumarg
-\def\magyar@opt@postpara#1#2{%
-  \def\reserved@a{#2}%
-  \ifx#2\magyar@@unchanged
-    \let\magyar@opt@@paragraphs\@undefined
-  \else
+\def\magyar@paragraphopt#1#2{%
+  \ifx#2\magyar@@unchanged\else
     \expandafter\def\csname magyar@opt@@#1\endcsname{#2}%
-    \let\magyar@opt@@paragraphs\@empty
   \fi
 }
-\let\magyar@opt@postsubpara\magyar@opt@postpara
-\let\magyar@opt@postdescription\magyar@opt@postpara
+\let\magyar@opt@postdescription\magyar@paragraphopt
+\let\magyar@opt@postpara\magyar@paragraphopt
+\let\magyar@opt@postsubpara\magyar@paragraphopt
 
 % --- Option processing code of \magyarOptions
 %
@@ -904,7 +902,7 @@
   \ifx#1\hfuzz\else
     %%\typeout{(#1#2)=(#3)}%
     % vvv wastes some heap (\csname), but never mind
-  \fi    
+  \fi
 }
 
 
@@ -1188,7 +1186,7 @@
 %** @param #1 tokens, will be \edef\vfuzz'ed
 \def\@@magyar@az@vfuzzedef#1{%
   \begingroup
-  \@safe@activestrue% allow active `:' inside labels; 
+  \@safe@activestrue% Allow active `:' inside labels.
   \def\hyper@@link[##1]##2##3##4{##4}% Dat: \def\b@abook{\hyper@@link [cite]{}{cite.sokt}{2}}% with hyperref.sty
   \let\romannumeral\number% by pts@fazekas.hu at Mon Oct 27 23:44:06 CET 2003
   % Dat: deliberately no \autoref for hyperref.sty !! (why??)
@@ -1202,10 +1200,20 @@
   \def\accent ##1 ##2{##2}%
   \def\add@accent ##1##2{##2}%
   \def\@text@composite@x ##1##2{##2}%
-  \def\i{i}\def\j{j}%
+  % TODO(pts): Add more from t1enc.def
+  %\let\`\@empty \let\'\@empty \let\^\@empty \let\~\@empty \let\"\@empty
+  %\let\H\@empty \let\r\@empty \let\v\@empty \let\u\@empty \let\=\@empty
+  %\let\.\@empty
+  \def\DH{DH}\def\DJ{DJ}\def\NG{NG}\def\O{O}\def\SS{S}\def\TH{TH}\def\IJ{IJ}%
+  \def\dh{dh}\def\dj{dj}\def\o{o}\def\ng{ng}\def\l{l}%
+  \def\th{th}\def\i{i}\def\j{j}\def\ij{ij}%
   \def\ae{a}\def\AE{A}\def\oe{o}\def\OE{O}%
-  \def\ss{s}\def\L{L}%
-  \def\d{}\def\b{}\def\c{}\def\t{}% Dat: no need to redefine \H and \.
+  \def\ss{s}\def\L{L}\def\i{i}\def\j{j}%
+  \def\d{}\def\b{}\def\c{}\def\t{}%
+  %
+  \def\IeC{}% \usepackage[utf8]{inputenc} generates \IeC{\'a}.
+  \def\ { }%
+  %
   % Dat: no need to remove \textsf or \mdseries, because they are
   % handled properly by \protect == \string here.
   \let\@safe@activestrue\@empty% babel puts these inside \b@...: % Dat: \def\b@abook{\@safe@activesfalse 2}% (what is \@safe@actives??)
@@ -1230,21 +1238,30 @@
 
 %** Usage: \az{alma} -> `az alma'; \Az*{alma} -> `az'
 %** Usage: \az+\ref{foo} is equivalent to \az{\ref{foo}}
+%** TODO(pts): fix \aref{l5} if the body of l5 is empty.
 \def\@@magyar@az@lowt{\@ifstar{\@@magyar@az@lowy}{\@ifnextchar+\@@magyar@az@lowz\@@magyar@az@lowx}}
+%** #1 is +.
 \def\@@magyar@az@lowz#1#2#3{\@@magyar@az@lowy{#2{#3}}~#2{#3}}
 %** Used by new varioref.sty
 \def\@@magyar@az@lowxu{\unskip\@@magyar@az@lowx}%
-\def\@@magyar@az@lowx#1{\@@magyar@az@lowy{#1}~#1}
-\def\@@magyar@az@lowy#1{{%
+\def\@@magyar@az@lowx#1{\@@magyar@az@lowy{#1}~\ignorespaces#1}
+\def\@@magyar@az@lowy#1{%
+  \begingroup
   \begingroup
   %\def\protect{\noexpand\protect\noexpand}%
-  \set@display@protect% screws up \r
+  % TODO(pts): Is \set@display@protect called in other invocations of
+  %            \@@magyar@az@vfuzzedef, such as \aref or \az+\ref? Make it
+  %            consistent.
+  % latex.ltx: \let\@typeset@protect\relax
+  % latex.ltx: \def\set@display@protect{\let\protect\string}
+  % latex.ltx: \def\set@typeset@protect{\let\protect\@typeset@protect}
+  \set@display@protect% \let\protect\string; screws up \r
   \@@magyar@az@vfuzzedef{#1}%
-  %%\show\vfuzz
   \expandafter\endgroup\expandafter
     \set@display@protect\expandafter% fixes \r; why??
     \@@magyar@az@set\expandafter{\vfuzz}\hbox$%
-}}
+  \endgroup
+}
 
 \def\@@magyar@firstarg#1#2\hbox${#1}%
 
@@ -1309,23 +1326,23 @@
 %** Adds definite article for a word #1#2#3 if #1 is in [A..Z]. Spaces
 %** between #1, #2 and #3 can be -- fortunately -- ignored.
 %** This is used to distinguish single-letter labels from text labels.
-%** Dat: by pts: `\Az{Sz} bet˚' emits `Az Sz bet˚'; `\az{szÛlam}' is also OK
+%** Dat: by pts: `\Az{Sz} bet√ª' emits `Az Sz bet√ª'; `\az{sz√≥lam}' is also OK
 %** @param #1#2#3 doesn't contain \hbox (but may contain space)
 %** @param #1 #2 #3 never lower case
 \def\@@magyar@azuc#1#2#3{%
   \if\noexpand#1Az%
   \else\if\noexpand#1Ez%
-  \else\if\noexpand#1F\ifnum11=\the\catcode\string`#2\else z\fi
+  \else\if\noexpand#1F\ifcat a\noexpand#2\else z\fi
   \else\if\noexpand#1Iz%
-  \else\if\noexpand#1L\ifnum11=\the\catcode\if\noexpand#2Y\string`#3\else\string`#2\fi\else z\fi
-  \else\if\noexpand#1M\ifnum11=\the\catcode\string`#2\else z\fi
-  \else\if\noexpand#1N\ifnum11=\the\catcode\if\noexpand#2Y\string`#3\else\string`#2\fi\else z\fi
+  \else\if\noexpand#1L\ifcat a\if\noexpand#2Y\expandafter\noexpand#3\else\expandafter\noexpand#2\fi\else z\fi
+  \else\if\noexpand#1M\ifcat a\noexpand#2\else z\fi
+  \else\if\noexpand#1N\ifcat a\if\noexpand#2Y\expandafter\noexpand#3\else\expandafter\noexpand#2\fi\else z\fi
   \else\if\noexpand#1Oz%
-  \else\if\noexpand#1S\ifnum11=\the\catcode\if\noexpand#2Z\string`#3\else\string`#2\fi\else z\fi
-  \else\if\noexpand#1R\ifnum11=\the\catcode\string`#2\else z\fi
+  \else\if\noexpand#1S\ifcat a\if\noexpand#2Z\expandafter\noexpand#3\else\expandafter\noexpand#2\fi\else z\fi
+  \else\if\noexpand#1R\ifcat a\noexpand#2\else z\fi
   \else\if\noexpand#1Uz%
-  \else\if\noexpand#1X\ifnum11=\the\catcode\string`#2\else z\fi
-  \else\if\noexpand#1Y\ifnum11=\the\catcode\string`#2\else z\fi
+  \else\if\noexpand#1X\ifcat a\noexpand#2\else z\fi
+  \else\if\noexpand#1Y\ifcat a\noexpand#2\else z\fi
   \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
 }
 \def\@@magyar@azuc@pre#1#2#3#4\hbox${%
@@ -1352,7 +1369,7 @@
 
 \@gobble\iftrue
 \def\@@magyar@azrb@stop#1#2\fi{#1}%
-%** Strips spaces and braces automatically
+%** Strips spaces and braces, up to \hfuzz.
 %** @expands to `z' or nothing (last char of definite article)
 %** @example \message{R:\removebraces {{foo}{{}{b}{{{{a\fi}}}}r}}\hfuzz;}
 \def\@@magyar@azrb#1{%
@@ -1371,25 +1388,59 @@
   \fi
 }
 
+% Expandable macro which removes single-letter control sequences, converts
+% multiletter control sequences to dots, and keeps letters, and converts
+% everything else (i.e. non-letter, non-control sequence tokens) to `other'.
+%
+% Usage: \@@magyar@azro...\hfuzz, where ... doesn't contain braces, spaces
+% or \hfuzz.
+%
+% Wizardry: this uses the following tricks:
+%
+%   \expandafter\@gobble\if...\fi\@@selfcontinue trick.
+%
+%   % Tests that #1 is a control sequence token, provided it's a single, non-space, non-brace token.
+%   \def\testcs#1{\ifcat a\expandafter\@gobble\string#1aNO\else CS\fi}
+%
+%   % Tests that #1 is a control sequence token of 1 character, provided it's a single control sequence token.
+%   \def\testcso#1{\ifcat a\expandafter\@gobbletwo\string#1\@empty aCSO\else NO\fi}
+%
+%   % Tests that #1 is other character, provided it's a single, non-space, non-brace token.
+%   \def\testother#1{\ifcat\string*\noexpand#1OTHER\else NO\fi}
+\def\@@magyar@azro#1{%
+  \ifx#1\hfuzz\expandafter\@gobble% Stop at \hfuzz.
+  \else\ifcat a\expandafter\@gobble\string#1a% Not a control sequence.
+    \ifcat a\noexpand#1\else\expandafter\string\fi#1% Keep letters, convert everything else with \string.
+  \else\ifcat a\expandafter\@gobbletwo\string#1\@empty a% Single-character control sequence, e.g. \/, \', \H, \ , remove it.
+  \else.% Replace multiletter control sequence with a dot.
+  \fi\fi\fi\@@magyar@azro}
+
+% Expandable macro which converts outermost spaces to dots, and occasionally
+% removes some layers of braces. It also adds an extra dot (as a side
+% effect).
+%
+% Usage: `\\@magyar@azrs...\hfuzz ', where ... argument doesn't contain
+% \if..., \else and \fi tokens.
+\def\@@magyar@azrs#1 {%
+  \ifx\hfuzz#1\expandafter\@gobble% Stop at \hfuzz.
+  \else#1.%
+  \fi\@@magyar@azrs}%
+
 %** @param #1 might not be \cs -- and isn't empty
 \def\@@magyar@aznospace@short#1{%
   \if5\noexpand#1z% Dat: emit `az 5'
     \@@magyar@swaprelax\@@magyar@ignorehbox@pre
   \else\if1\noexpand#1%
-    % Dat: properly handle `az 1001 Èjszaka', `az 1234567 Èves bolygÛ'
+    % Dat: properly handle `az 1001 √©jszaka', `az 1234567 √©ves bolyg√≥'
     \@@magyar@swaprelax\@@magyar@eatddd@pre
   \else\ifnum1<1\noexpand#1 % a different digit, emit `a '
     \@@magyar@swaprelax\@@magyar@ignorehbox@pre
   \else\if-\noexpand#1% \az{-5} yields `a~-5'
     \@@magyar@swaprelax\@@magyar@ignorehbox@pre
-  \else\ifcat\string*\noexpand#1% ignore non-digit (non-letter) `other' char
-    % Wizardary: (undocumented)
-    % This is a really smart way to ignore control sequence chars resulting
-    % from \string\textrm etc. Fortunately, most control sequences don't
-    % contain digits.
-    \@@magyar@swaprelax\@@magyar@aznospace
+  \else\ifcat\string*\noexpand#1% puncuation in the beginning, such as `(' in `(5)'
+    \@@magyar@swaprelax\@@magyar@aznospace  % ignore punctuation
   \else
-    \@@magyar@swaprelax{\@@magyar@azuc@pre#1}% safe to call, no \cs
+    \@@magyar@swaprelax{\@@magyar@azuc@pre#1}%
   \fi\fi\fi\fi\fi\relax
 }
 
@@ -1399,7 +1450,10 @@
 %**   tokens.
 \def\@@magyar@az@set#1#2\hbox${% by pts
   % ^^^ Dat: we have `$' instead of `!' because of catcode changes (shouldn't affect)
-  \edef\reserved@a{\@@magyar@azrb#1\hfuzz}%
+  % We use \@firstofone to strip a leading space.
+  \edef\reserved@a{\expandafter\@@magyar@azrs\@firstofone#1 \hfuzz\@gobble{} }%
+  \edef\reserved@a{\expandafter\@@magyar@azrb\reserved@a\hfuzz}%
+  \edef\reserved@a{\expandafter\@@magyar@azro\reserved@a\hfuzz}%
   \expandafter\@@magyar@aznospace\reserved@a[b][][] \hbox$%
   % ^^^ Wizardry: [b][][] is a smart sentinel for \@@magyar@azuc and `b' for
   %	\@@magyar@aznospace@short. First `[' is there for aesthetics. Space
@@ -1441,7 +1495,7 @@
 % \label will be redefined to write another line to .aux file:
 % \hunnewlabel{...}{...}: similar to \newlabel{sectionStructNr}{pageNr},
 % where the roman numerals are replaced by their arabic representations, so
-% \aref and \apageref will work (`a II. rÈsz'). The name \hunnewlabel is a
+% \aref and \apageref will work (`a II. r√©sz'). The name \hunnewlabel is a
 % legacy.
 %
 % We have to redefine \refstepcounter, which defines \@currentlabel, so we
@@ -1582,7 +1636,7 @@
 
 \if0\magyar@opt@@captions\@@magyar@skiplong\fi
 \@namedef{captions\CurrentOption}{%
-  % Dat: inputenc isn't known, so we just use the safe \'a for accented letters 
+  % Dat: inputenc isn't known, so we just use the safe \'a for accented letters.
   \def\prefacename{El\H osz\'o}%
   \def\refname{Hivatkoz\'asok}%
   \def\abstractname{Kivonat}%
@@ -1596,7 +1650,7 @@
   \def\ccname{K\"orlev\'el--c\'\i mzettek}% ??
   \def\headtoname{C\'\i mzett}%
   \def\proofname{Bizony\'\i t\'as}% AMS-\LaTeX
-  \def\glossaryname{Sz\'ojegyz\'ek}% glossz·rium, (magyar·zatos) szÛjegyzÈk
+  \def\glossaryname{Sz\'ojegyz\'ek}% glossz√°rium, (magyar√°zatos) sz√≥jegyz√©k
   % vvv All these are start with a small letter
   \def\figurename{\'abra}%
   \def\chaptername{fejezet}%
@@ -1613,7 +1667,7 @@
 % --- Changing the order of the table numbers; tablecaptions=
 
 \if0\magyar@opt@@tablecaptions\@@magyar@skiplong\fi
-  % Wee need `1. t·bl·zat' instead of `Table 1'
+  % Wee need `1. t√°bl√°zat' instead of `Table 1'
   \if1\magyar@opt@@tablecaptions
         \def\@@magyar@fnum@table{\thetable.~\tablename}%
   \else \def\@@magyar@fnum@table{\tablename\nobreakspace\thetable}\fi
@@ -1653,7 +1707,8 @@
           \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
           mu\)}\hfill
        \nobreak
-       \setbox\@tempboxa\hbox{\normalfont \normalcolor #5}% ****pts****
+       % \begingroup needed because of https://tex.stackexchange.com/a/316692/820
+       \setbox\@tempboxa\hbox{\begingroup\normalfont \normalcolor #5\endgroup}% ****pts****
        \ifdim\wd\@tempboxa<\@pnumwidth\setbox\@tempboxa\hb@xt@\@pnumwidth{\hfil\unhbox\@tempboxa}\fi
        \box\@tempboxa
        \par}%
@@ -1684,7 +1739,7 @@
 
 % --- amsuppercasefix=
 
-% Fix for small \'\i in capitalized title (no fix needed for \'i and Ì):
+% Fix for small \'\i in capitalized title (no fix needed for \'i and √≠):
 %   \documentlcass{amsart} % amsart.cls
 %   \usepackage{t1enc}
 %   \usepackage[latin2]{inputenc}
@@ -1801,7 +1856,7 @@
 
 % --- captionfix=
 %
-% Fix ``1. ·bra'' order in \caption defined by caption.sty 2004/07/16 v3.0c.
+% Fix ``1. √°bra'' order in \caption defined by caption.sty 2004/07/16 v3.0c.
 %
 % The manual fix would be:
 %
@@ -1842,10 +1897,10 @@
 
 \ifx\magyar@caption@centering\@empty\@@magyar@skiplong\fi
   \def\magyar@caption@hsizecheck{\hsize}
-  % We don't emit the two dots of `1. t·bl·zat.' here, because
+  % We don't emit the two dots of `1. t√°bl√°zat.' here, because
   % has already been emitted by \fnum@table etc.
   % We apply some formatting depending on the longcaption= option.
-  % Dat: Gyurgy·k, p95. says: `11. ·bra. Hajt·si v·ltozatok.'
+  % Dat: Gyurgy√°k, p95. says: `11. √°bra. Hajt√°si v√°ltozatok.'
   \let\@@magyar@do@makecaption\relax% before .toc
   \expandafter\addto\csname extras\CurrentOption\endcsname{%
     \@@magyar@do@makecaption}
@@ -1982,9 +2037,18 @@
 
 % --- postpara= and postsubpara= and postdescription=
 
-\expandafter\ifx\csname magyar@opt@@paragraphs\endcsname\relax\@@magyar@skiplong\fi
+%\show\magyar@opt@@postpara
+%\show\magyar@@unchanged
+\let\magyar@opt@override@paragraphs\@empty
+  \ifx\magyar@opt@@postpara\magyar@@unchanged
+  \ifx\magyar@opt@@postsubpara\magyar@@unchanged
+  \ifx\magyar@opt@@postdescription\magyar@@unchanged
+  \let\magyar@opt@override@paragraphs\@undefined
+  \fi\fi\fi
+\expandafter\ifx\csname magyar@opt@override@paragraphs\endcsname\relax\@@magyar@skiplong\fi
   % Dat: We make sure that hspaces emitted by \magyar@post@... are unstretchable
-  \def\magyar@post@dot{.\enskip}%
+  \def\magyar@post@dot{.\enskip}%  \bfseries is the default, same as =bfdot
+  \def\magyar@post@mddot{\textmd.\enskip}%
   \def\magyar@post@bfdot{\textbf.\enskip}%
   \let\magyar@post@quad\quad% not recommended in Hungarian
   \let\magyar@post@enskip\enskip% not recommended in Hungarian
@@ -2065,28 +2129,31 @@
       }%
     \fi\fi\fi
   }
-  % !! Imp: change Hungarian \paragraphs only, with dual load
-  \expandafter\ifx\csname magyar@opt@@postpara\endcsname\relax\else
-    \magyar@paragraphfix\paragraph
+  % !! Imp: change Hungarian \paragraph()s only, with dual load
+  \ifx\magyar@opt@@postpara\magyar@@unchanged\else
     \expandafter\let\expandafter\magyar@post@paragraph\csname magyar@post@\magyar@opt@@postpara\endcsname
     \ifx\magyar@post@paragraph\relax
       \@@magyar@error{Invalid arg for option: postpara = \magyar@opt@@postpara}%
+    \else
+      \magyar@paragraphfix\paragraph
     \fi
   \fi
-  \expandafter\ifx\csname magyar@opt@@postsubpara\endcsname\relax\else
-    \magyar@paragraphfix\subparagraph
+  \ifx\magyar@opt@@postsubpara\magyar@@unchanged\else
     \expandafter\let\expandafter\magyar@post@subparagraph\csname magyar@post@\magyar@opt@@postsubpara\endcsname
     \ifx\magyar@post@subparagraph\relax
       \@@magyar@error{Invalid arg for option: postsubpara = \magyar@opt@@postsubpara}%
+    \else
+      \magyar@paragraphfix\subparagraph
     \fi
   \fi
-  \expandafter\ifx\csname magyar@opt@@postdescription\endcsname\relax\else
+  \ifx\magyar@opt@@postdescription\magyar@@unchanged\else
     \expandafter\let\expandafter\magyar@post@description\csname magyar@post@\magyar@opt@@postdescription\endcsname
     \ifx\magyar@post@description\relax
       \@@magyar@error{Invalid arg for option: postdescription = \magyar@opt@@postdescription}%
+    \else
+      \def\magyar@@descriptionfont{\normalfont\bfseries}%
+      \def\descriptionlabel#1{\hskip\labelsep{\magyar@@descriptionfont#1}\magyar@post@description\hskip-\labelsep}%
     \fi
-    \def\magyar@@descriptionfont{\normalfont\bfseries}%
-    \def\descriptionlabel#1{\hskip\labelsep{\magyar@@descriptionfont#1}\magyar@post@description\hskip-\labelsep}%
   \fi
   \@gobble
 {^}%
@@ -2222,7 +2289,7 @@
     % [pts] We definitely want \numberline to emit table number in \listoftables as
     % `5.6.' instead of the default `5.6', but we don't want to redefine \@caption,
     % because the # args \addcontentsline adds to \contentsline depends on whether
-    % nameref.sty (hyperref.sty) is loaded (no nameref: 3, w/ nameref: 4); this 
+    % nameref.sty (hyperref.sty) is loaded (no nameref: 3, w/ nameref: 4); this
     % would cause the strange `Package hyperref Warning: No destination for
     % bookmark of \addcontentsline'.
     %   So we rather redefine \numberline. But we cannot simply add a dot, because
@@ -2511,21 +2578,22 @@
        \def\reftextlabelrange23456\AtBeginDocument78\hbox${#1}%$
   }
   \def\magyar@sugg@to#1{%
-    \def\reserved@a{T1}
-    \edef\reserved@b{\encodingdefault}% \encodingdefault is \long for t1enc.sty, but not for fontenc.sty
-    \ifx\reserved@a\reserved@b\else
-      \@latex@warning@no@line{Please use \string\usepackage{t1enc} with\MessageBreak \string\usepackage[#1]{babel}, to get accented chars hyphenated}%
-      % ^^^ Dat: \usepackage[T1]{fontenc} is equally good, but less effective
+    % In lualatex, the (unchecked) recommendation is: don't do \usepackage{t1enc}.
+    \ifnum0\ifx\luatexversion\@undefined1\fi\ifx\luatexversion\relax1\fi>0
+      \def\reserved@a{T1}%
+      \edef\reserved@b{\encodingdefault}% \encodingdefault is \long for t1enc.sty, but not for fontenc.sty
+      \ifx\reserved@a\reserved@b\else
+        \@latex@warning@no@line{Please use \string\usepackage{t1enc} with\MessageBreak \string\usepackage[#1]{babel}, to get accented chars hyphenated}%
+        % ^^^ Dat: \usepackage[T1]{fontenc} is equally good, but less effective
+      \fi
     \fi
   }
   \def\magyar@sugg@ie@lowb#1{\@latex@warning@no@line{%
       Please use \string\usepackage[latin2]{inputenc}\MessageBreak
       or \string\usepackage[utf8]{inputenc}\MessageBreak
       with \string\usepackage[#1]{babel}}}%
-  %** @param #1 empty (old) or \protect
-  %** @param #2 input encoding name
-  \def\magyar@sugg@ie@low#1\@inpenc@undefined@#2#3\vfuzz#4{%
-    \def\reserved@b{#2}%
+  %** @param #1 Code to run if encoding in \reserved@b is unknown.
+  \def\magyar@sugg@ie@lowu#1{%
     \def\reserved@a{latin2}%
     \ifx\reserved@a\reserved@b\else
       \def\reserved@a{utf8}%
@@ -2534,21 +2602,37 @@
         \ifx\reserved@a\reserved@b\else
           \def\reserved@a{cp1250}%
           \ifx\reserved@a\reserved@b\else
-            \magyar@sugg@ie@lowb{#4}%
+            #1%
           \fi
         \fi
       \fi
     \fi
-  }
+  }%
+  %** @param #1 empty (old) or \protect
+  %** @param #2 input encoding name
+  \def\magyar@sugg@ie@low#1\@inpenc@undefined@#2#3\vfuzz#4{%
+    \def\reserved@b{#2}%
+    \magyar@sugg@ie@lowu{\magyar@sugg@ie@lowb{#4}}%
+  }%
   \def\magyar@sugg@ie#1{%
-    % Dat: don't print warning for missing \usepackage
-    \expandafter\ifx\csname @inpenc@undefined\endcsname\relax
-      \magyar@sugg@ie@lowb{#1}%
-    \else
-      % from inputenc.sty: \edef\@inpenc@undefined{\noexpand\@inpenc@undefined@{#1}}%
-      % > \@inpenc@undefined=macro:
-      % ->\@inpenc@undefined@ {latin2}.
-      \expandafter\magyar@sugg@ie@low\@inpenc@undefined....\vfuzz{#1}%
+    % In lualatex, the (unchecked) recommendation is: don't do \usepackage[...]{inputenc}, do \usepackage[...]{luainputenc} only if not utf8.
+    \ifnum0\ifx\luatexversion\@undefined1\fi\ifx\luatexversion\relax1\fi>0
+      \expandafter\expandafter\expandafter\def\expandafter\expandafter\expandafter
+        \reserved@b\expandafter\expandafter\expandafter{%
+        \csname inputencodingname\endcsname}%
+      \magyar@sugg@ie@lowu{%
+        \ifx\reserved@a\reserved@b\else
+          % Dat: don't print warning for missing \usepackage
+          \expandafter\ifx\csname @inpenc@undefined\endcsname\relax
+            \magyar@sugg@ie@lowb{#1}%
+          \else
+            % from inputenc.sty: \edef\@inpenc@undefined{\noexpand\@inpenc@undefined@{#1}}%
+            % > \@inpenc@undefined=macro:
+            % ->\@inpenc@undefined@ {latin2}.
+            \expandafter\magyar@sugg@ie@low\@inpenc@undefined....\vfuzz{#1}%
+          \fi
+        \fi
+      }%
     \fi
   }%
   \def\magyar@sugg@af#1{%
@@ -2675,7 +2759,7 @@
 
 %** Call \@@magyar@shorthand@... For example: {`tty} and
 %** {\@@magyar@shorthand tty} are interchangeable.
-%** @param #1 a char token. 
+%** @param #1 a char token.
 \def\@@magyar@shorthand#1{%
   \expandafter\ifx\csname @@magyar@shorthand@\string#1\endcsname\relax
     \@@magyar@error{Unknown shorthand: \string#1 }%
@@ -2693,7 +2777,7 @@
   \def\magyar@thinspaced#1{%
     % Dat: `!' at the end of the word is OK, but at the beginning it makes the
     %      word unhyphenatable. Imp: maybe \nobreak\hskip\z@skip?
-    % Dat: this is math-mode safe, because \ifhmode is false in math mode 
+    % Dat: This is math-mode safe, because \ifhmode is false in math mode.
     \ifhmode% \ifhmode and \ifmmode are never true
       \ifdim\lastskip>\z@
         \unskip\penalty\@M\kern.1em% \thinspace is .16667em
@@ -2748,25 +2832,25 @@
   \fi\fi
   %
   %** A hyphen, but hyphenation is OK at both sides
-  %** reported and asked by JÛzsa M·rton <jozsineni@freemail.hu>
+  %** reported and asked by J√≥zsa M√°rton <jozsineni@freemail.hu>
   \@@magyar@declare@shorthandx ={\leavevmode\nobreak-\hskip\z@skip}
   % ^^^ Dat: no need for \nobreak\hskip\z@skip, because of the empty discretionary
   %** \shu?-- typesets an endash (--) with a small space around it (the one to
   %** the right is breakable). \shu?- typesets a normal hyphen, having
   %** hyphenation OK at both sides.
-  %** @example Kiss Elıd\shu?--Nagy P·l
-  %** @example kˆzgazdas·g\shu?-tudom·nyi
+  %** @example Kiss El√µd\shu?--Nagy P√°l
+  %** @example k√∂zgazdas√°g\shu?-tudom√°nyi
   \def\@@magyar@shorthandminus{%
     \ifmmode \mskip2.4mu plus3.6mu minus1.8mu \else % ,`- is just a space in math mode
       \if-\noexpand\@Lang@tmp \leavevmode\nobreak\,\nobreak\hbox{--}\,\expandafter\expandafter\expandafter\@gobble% Dat: \@gobble -
-      \else                   \leavevmode\nobreak-\hskip\z@skip\fi% Dat: e.g hegyes`-szˆg˚
+      \else                   \leavevmode\nobreak-\hskip\z@skip\fi% Dat: e.g hegyes`-sz√∂g√ª
     \fi
   }
   \@@magyar@declare@shorthandx -{\futurelet\@Lang@tmp\@@magyar@shorthandminus}%
   %** A hyphen that is displayed in both next and current lines. Hyphenation
   %** is OK at both sides. This differs from ukraineb.ldf.
-  %** \showhyphens{n·trium`|klorid} -> n·t-ri-um--klo-rid
-  \@@magyar@declare@shorthandx |{\leavevmode\nobreak-\nobreak\discretionary{}{-}{}\nobreak\hskip\z@skip}% Dat: all \nobreak s are important % e.g egyszer`|kÈtszer
+  %** \showhyphens{n√°trium`|klorid} -> n√°t-ri-um--klo-rid
+  \@@magyar@declare@shorthandx |{\leavevmode\nobreak-\nobreak\discretionary{}{-}{}\nobreak\hskip\z@skip}% Dat: all \nobreak s are important % e.g egyszer`|k√©tszer
   \@@magyar@declare@shorthandx _{\leavevmode\nobreak\-\nobreak\hskip\z@skip}
   \@@magyar@declare@shorthandx <{\flqq}
   \@@magyar@declare@shorthandx >{\frqq}
@@ -2845,7 +2929,7 @@
   \else\if\noexpand#1eE%
   \else\if\noexpand#1hH%
   \else\if\noexpand#1kK%
-  \else\if\noexpand#1mM% mÌnusz
+  \else\if\noexpand#1mM% m√≠nusz
   \else\if\noexpand#1nN%
   \else\if\noexpand#1oO%
   \else\if\noexpand#1sS% sokadik
@@ -2854,7 +2938,7 @@
   \fi\fi\fi\fi\fi\fi\fi\fi\fi
 }
 %** For \pagenumbering{huordinal}. Expands to the Hungarian ordered numeral,
-%** spelled out in letters (i.e 1 --> first --> elsı). Suitable for numbering
+%** spelled out in letters (i.e 1 --> first --> els√µ). Suitable for numbering
 %** \part{}s and \chapter{}s of a book (\def\thepart{\@Huordinal\c@part}})
 %** @param #1 a number (input for \number) in -9999..9999
 \def\@huordinal#1{%
@@ -2874,11 +2958,11 @@
   \ifnum#1#2>9999 sokadik\else
     \@@magyar@egyjegyu#1%
     \ifnum#2=0 ezredik\else
-      ezer\ifnum#1>1 -\fi% kÈtezer-harmadik
+      ezer\ifnum#1>1 -\fi% k√©tezer-harmadik
       \ifnum#2<100
         \expandafter\@@magyar@tizesedik\number#2%
       \else
-        \ifnum#2<200 egy\fi% ezersz·zadik -> ezeregysz·zadik
+        \ifnum#2<200 egy\fi% ezersz√°zadik -> ezeregysz√°zadik
         \@@magyar@szazasodik#2%
       \fi
     \fi
@@ -2905,7 +2989,7 @@
   \else\ifnum#1#2=20  huszadik%
   \else\ifnum#1#2>10     tizen\@@magyar@egyesedik#2.%
   \else\ifnum#1#2=10   tizedik%
-  \else                       \@@magyar@egyesedik#2a% ``kÈtsz·zadik''
+  \else                       \@@magyar@egyesedik#2a% ``k√©tsz√°zadik''
   \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
 }%
 \def\@@magyar@egyesedik#1#2{%
@@ -2923,7 +3007,7 @@
 \def\Huordinal#1{\expandafter\@Huordinal\csname c@#1\endcsname}
 
 %** For \pagenumbering{hunumeral}. Expands to the Hungarian ordered numeral,
-%** spelled out in letters (i.e 1 --> first --> elsı). Suitable for numbering
+%** spelled out in letters (i.e 1 --> first --> els√µ). Suitable for numbering
 %** \part{}s and \chapter{}s of a book (\def\thepart{\@Hunumeral\c@part}})
 %** @param #1 a number (input for \number) in -9999..9999
 \def\@hunumeral#1{%
@@ -2940,11 +3024,11 @@
   \ifnum#1#2>9999 sokadik\else
     \@@magyar@egyjegyu#1%
     \ifnum#2=0 ezer\else
-      ezer\ifnum#1>1 -\fi% kÈtezer-harmadik
+      ezer\ifnum#1>1 -\fi% k√©tezer-harmadik
       \ifnum#2<100
         \expandafter\@@magyar@tiz\number#2%
       \else
-        \ifnum#2<200 egy\fi% ezersz·zadik -> ezeregysz·zadik
+        \ifnum#2<200 egy\fi% ezersz√°zadik -> ezeregysz√°zadik
         \@@magyar@szaz#2%
       \fi
     \fi
@@ -2971,7 +3055,7 @@
   \else\ifnum#1#2=20  h\'usz%
   \else\ifnum#1#2>10     tizen\@@magyar@egy#2%
   \else\ifnum#1#2=10   t\'iz%
-  \else                       \@@magyar@egy#2% ``kÈtsz·zadik''
+  \else                       \@@magyar@egy#2% ``k√©tsz√°zadik''
   \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
 }%
 \def\@@magyar@egy#1{%
@@ -3062,7 +3146,7 @@
 \def\@@magyar@suffix@A#1#2{%
   \ifcase#2 \'a\or j\'e\or \'a\or \'a\or \'e\or \'e\or \'a\or \'e\or \'a\or \'e\or \'e\or \'e\or \'e\or \'a\or \'e\or \'a\or\'a\or\'a\or\'a\or\'e\or\'a\fi
   \ifx#1\@@magyar@suffix@at t\else
-  \ifx#1\@@magyar@suffix@an n\else% Dat: suffix overload: 2-a-an => 2-·n
+  \ifx#1\@@magyar@suffix@an n\else% Dat: suffix overload: 2-a-an => 2-√°n
     \expandafter#1\ifcase#2 3\or 1\or 1\or 3\or 1\or   1\or 3\or 1\or 3\or 1\or 1\or 1\or 1\or 3\or 1\or 3\or 3\or 3\or 3\or 1\or 3\fi
   \fi\fi
 }%
@@ -3458,23 +3542,23 @@
 %** \refstruc doesn't work inside it, because \refstruc isn't expandable
 %** @example \told4+a+a+a+a+adik raises strange error
 %** @example no -en is provided for -an/-on, to avoid ambiguity
-%** @example \told4+adik: 0-adik 1-sı 2-odik 3-adik 12-edik 10^8-adik
+%** @example \told4+adik: 0-adik 1-s√µ 2-odik 3-adik 12-edik 10^8-adik
 %** @example augusztus \told20-a: 1-je 2-a 3-a 4-e 5-e 6-a ... (augusztus 20-a)
-%** @example \told3+as: 0-s(??) 1-es 2-es 3-as 4-es 5-ˆs 10^6-s
-%** @example \told0+ad: 0-ad 1-ed 2-ed 3-ad 5-ˆd 10^6-ad
-%** @example \told1000+hoz: 0-hoz 3-hoz 6-hoz 8-hoz 100-hoz 10^6-hoz 10^9-hoz 1-hez 4-hez 7-hez 9-hez 10-hez 1000-hez 2-hˆz 5-hˆz
+%** @example \told3+as: 0-s(??) 1-es 2-es 3-as 4-es 5-√∂s 10^6-s
+%** @example \told0+ad: 0-ad 1-ed 2-ed 3-ad 5-√∂d 10^6-ad
+%** @example \told1000+hoz: 0-hoz 3-hoz 6-hoz 8-hoz 100-hoz 10^6-hoz 10^9-hoz 1-hez 4-hez 7-hez 9-hez 10-hez 1000-hez 2-h√∂z 5-h√∂z
 %** @example \told5+an: 5-en 2-en 100-an 10^6-n
-%** @example \told5+on: 5-ˆn 2-n 3-on 100-on 10^6-n
-%** @example \told0+at: 0-t 2-t 10^6-t 1-et 4-et 7-et 9-et 10-et 1000-et 3-at 8-at 6-ot 10^9-ot 5-ˆt
+%** @example \told5+on: 5-√∂n 2-n 3-on 100-on 10^6-n
+%** @example \told0+at: 0-t 2-t 10^6-t 1-et 4-et 7-et 9-et 10-et 1000-et 3-at 8-at 6-ot 10^9-ot 5-√∂t
 %** @example \told1000+ban: 1000-ben
 %** @example \told7+ba: 7-be
 %** @example \told5+nak: 7-nek
 %** @example \told2+ra: 2-re
-%** @example \told4+nal: 4-nÈl
-%** @example \told7+bol: 7-bıl
-%** @example \told5+tol: 5-tıl
-%** @example \told3+rol: 3-rÛl
-%** @example \told2+ul: 0-ul 1-¸l 2-¸l 3-ul
+%** @example \told4+nal: 4-n√©l
+%** @example \told7+bol: 7-b√µl
+%** @example \told5+tol: 5-t√µl
+%** @example \told3+rol: 3-r√≥l
+%** @example \told2+ul: 0-ul 1-√ºl 2-√ºl 3-ul
 %** @example \told5+odik+hoz
 %** @example \told{300}+szor
 %** @example -i and -ig don't change have alternate forms
@@ -3687,7 +3771,7 @@
 }
 
 \let\@@magyar@toldas\@gobble
-\def\@@magyar@strucname@part{r\'esz\@@magyar@toldas{4}}% SUXX: may not contain \-; !! rÈsszel (vs. rÈszszel)
+\def\@@magyar@strucname@part{r\'esz\@@magyar@toldas{4}}% SUXX: may not contain \-; !! r√©sszel (vs. r√©szszel)
 \def\@@magyar@strucname@chapter{fejezet\@@magyar@toldas{9}}% !! fejezettel
 \def\@@magyar@strucname@appendix{f\"ug\-gel\'ek\@@magyar@toldas{4}}% !! fuggelekkel
 \def\@@magyar@strucname@section{szakasz\@@magyar@toldas{20}}%
@@ -3697,13 +3781,13 @@
 \def\@@magyar@strucname@paragraph{bekezd\'es\@@magyar@toldas{4}}%
 \def\@@magyar@strucname@subparagraph{albekezd\'es\@@magyar@toldas{4}}%
 \def\@@magyar@strucname@subsubparagraph{alalbekezd\'es\@@magyar@toldas{4}}%
-\def\@@magyar@strucname@figure{\'ab\-ra\@@magyar@toldas{4}}% !! ·br·ban etc.
+\def\@@magyar@strucname@figure{\'ab\-ra\@@magyar@toldas{4}}% !! √°br√°ban etc.
 \def\@@magyar@strucname@table{t\'ab\-l\'azat\@@magyar@toldas{6}}%
 \def\@@magyar@strucname@equation{egyenlet\@@magyar@toldas{7}}%
 \def\@@magyar@strucname@footnote{l\'ab\-jegy\-zet\@@magyar@toldas{7}}%
 \def\@@magyar@strucname@item{elem\@@magyar@toldas{4}}% !! elemmel etc.
 \def\@@magyar@strucname@FancyVerbLine{sor\@@magyar@toldas{8}}% !! sorral
-\def\@@magyar@strucname@theorem{t\'e-tel\@@magyar@toldas{4}}% !! tÈtellel
+\def\@@magyar@strucname@theorem{t\'e-tel\@@magyar@toldas{4}}% !! t√©tellel
 
 %** Must be expandable.
 %** @param #1 `section' etc.
@@ -3789,7 +3873,7 @@
 %** @param #1 \ref id or with \told
 %** (@param #2 1 to prefix with 1\ref{...}.~' in Hungarian order)
 %** @example \refstruc{sec:foo}
-%** @example \refstruc{sec:foo+as+an} 
+%** @example \refstruc{sec:foo+as+an}
 %** May not touch \reserved@a
 \def\@@magyar@refstruc@name#1{%
   \begingroup
@@ -4042,21 +4126,21 @@
 %** Usage: \magyar@emitdate{FMT}{DATE} or \magyar@emitdate[SUFFIX]{FMT}{DATE}
 %** @example [\emitdate{b}{October 25, 2003}]
 %** @example %[\emitdate{b}{x-y-z}]% ! Package magyar.ldf Error: Unrecognised date: x-y-z.
-%** @example A mai d·tum: [\emitdate{b}{\today}].
+%** @example A mai d√°tum: [\emitdate{b}{\today}].
 %** @example [\emitdate[e]{g}{1848.15.3}] a nap, mikor elhangzott a Nemzeti dal.
 %** @example [\emitdate{b}{1956-10-23}]
-%** @example \told{\@@magyar@date@g{1848}{3}{115}}+a{} 
+%** @example \told{\@@magyar@date@g{1848}{3}{115}}+a{}
 %** @param SUFFIX any suffix for \told, e.g `e' or `adik+an'
 %** @param DATE date in any format, will be expanded
 %** @param FMT a single letter, specifies the format of the emitted date
-%**   a: 1848-03-15 (ISO d·tumform·tum, 2002-tıl(?) a magyar helyesÌr·s rÈsze)
-%**   b: 1848.\ m·rcius 15.
-%**   c: 1848.\ m·rc.\ 15.
+%**   a: 1848-03-15 (ISO d√°tumform√°tum, 2002-t√µl(?) a magyar helyes√≠r√°s r√©sze)
+%**   b: 1848.\ m√°rcius 15.
+%**   c: 1848.\ m√°rc.\ 15.
 %**   d: 1848.\ III.\ 15.
 %**   e: 1848.\ 03.\ 15.
-%**   f: 1848. m·rcius kˆzepe
-%**   g: 1848. m·rcius 15[-e reggele]
-%**   h: 1848 m·rcius [hÛnapj·nak kˆzepe, m·rcius·nak kˆzepe, m·rcius·ban stb.] birtokos rag
+%**   f: 1848. m√°rcius k√∂zepe
+%**   g: 1848. m√°rcius 15[-e reggele]
+%**   h: 1848 m√°rcius [h√≥napj√°nak k√∂zepe, m√°rcius√°nak k√∂zepe, m√°rcius√°ban stb.] birtokos rag
 %** english.ldf: `October 25, 2003' or [UK]: `25th October 2003'
 \def\@@magyar@emitdate{%
   \@ifnextchar[\@@magyar@emitdate@opt{\@@magyar@emitdate@opt[]}%]
@@ -4174,7 +4258,7 @@
     %     the very first run. Fine.
     \reserved@a
     }%\endgroup
-  }  
+  }
 
   \let\magyar@fo@resetzero\relax
 
@@ -4275,7 +4359,7 @@
     \fi
   }
 
-  % `Szerkesztık Ès szerzık kÈzikˆnyve, p. 116' says this about Hungarian
+  % `Szerkeszt√µk √©s szerz√µk k√©zik√∂nyve, p. 116' says this about Hungarian
   % footnotes. Implementation notes are marked with [...]. See better docs
   % in magyarldf-doc.tex
   %
@@ -4291,7 +4375,7 @@
   %     till \shipout.
   % (4) Put a \footnoterule (1/3\textwidth or 1/4\textwidth) if footnote is
   %     continued from previous page.
-  % [4] Not supported. Imp: how to?      
+  % [4] Not supported. Imp: how to?
   % (5) Multiple short footnotes may be put into a single line.
   % [5] \usepackage[para]{footmisc} or \usepackage{fnpara}
   % (6) Footnotes for \begin{figure} and \begin{table} must be put just under
@@ -4301,7 +4385,7 @@
   % [7] Use \footnotestyle{marksize=max-normal}
   % (8) It is possible to use either \parindent or \item when starting a
   %     footnote.
-  % [8] Use \footnotestyle{indent=hulist} 
+  % [8] Use \footnotestyle{indent=hulist}
   % (9) The footnotemark must be followed by a thin space (only at BOP).
   % [9] OK, see \@makefntext
   % (10) Don't emit too much stars. Recommended: * ** *** + ++ +++
@@ -4340,7 +4424,8 @@
   \@namedef{fos@reset=page-resume}{%
     \fos@resume \csname fos@reset=page\endcsname
   }
-  %** Resume to the previous footnote number at the end of the group. (Default: don't resume)	       
+  %** Resume to the previous footnote number at the end of the group. (Default: don't
+  %** resume)
   %** \footnotestyle{resume,reset=page} is the correct order
   \def\fos@resume{%
     \aftergroup\global
@@ -4384,7 +4469,7 @@
   \def\fos@starplain{\fos@huplain\csname fos@reset=page\endcsname\csname fos@mark=stars-max\endcsname}%
   %\def\fos@editor{\fos@resume\fos@starplain}%
   \def\fos@editor{\fos@huplain\csname fos@reset=page-cont\endcsname\csname fos@mark=stars-max\endcsname}%
-  
+
   \def\footnotestyle#1{%
     \@for\reserved@a:=#1\do{%
       \@ifundefined{fos@\reserved@a}{\@latex@error{Undefined footnote style: \reserved@a}\@ehc}%
@@ -4461,7 +4546,7 @@
 
 % --- mathbrk=
 
-\if0\magyar@opt@@mathbrk \@@magyar@skiplong\fi
+\if0\magyar@opt@@mathbrk \@@magyar@skiplong\fi  % mathbrk=define and mathbrk=fix
   %** Similar to \@@magyar@fixmathcmd@low, but inserts symbol immediately.
   %** @param #1 `\mathchar', all catcodes
   %** @param #2 hex code
@@ -4537,7 +4622,7 @@
     \fi
     \catcode`#112
   }
-  %** \newmcodes@ defined in amsopn.sty doesn't work (triggered by 
+  %** \newmcodes@ defined in amsopn.sty doesn't work (triggered by
   %** \DeclareMathOperator{\tg}{tg} $\tg$) because it wants to assign
   %** \mathchardef\std@minus\mathcode`\-, which is "8000, which is a bad
   %** matchar. We fix that by prepending \mathcode`-45 to \newmcodes@ .
@@ -4584,17 +4669,18 @@
   }
 
   \let\@@magyar@domathbins@prefix\@empty
-  \def\@@magyar@fixeverymathcmds@appendto#1{%
-    \expandafter\def\expandafter#1\expandafter{#1% append
-      \@@magyar@resetmathchars
-      \let\do\@@magyar@fixmathbinchar
-      \@@magyar@domathbins@prefix\@@magyar@domathbins% only in math mode start
-    }%
+  \def\@@magyar@onmathstart{%
+    \@@magyar@resetmathchars
+    \let\do\@@magyar@fixmathbinchar
+    \@@magyar@domathbins@prefix\@@magyar@domathbins% only in math mode start
   }
+
+  \def\@@magyar@fixeverymathcmds@appendto#1#2{% A generic \appendto.
+    \expandafter\def\expandafter#1\expandafter{#1#2}}%
   \def\@@magyar@fixeverymathcmds@setup{%
     \expandafter\ifx\csname mathoptions@on\endcsname\relax% no nath.sty
-	 \@@magyar@fixeverymathcmds@appendto\check@mathfonts
-    \else\@@magyar@fixeverymathcmds@appendto\mathoptions@on\fi
+         \@@magyar@fixeverymathcmds@appendto\check@mathfonts\@@magyar@onmathstart
+    \else\@@magyar@fixeverymathcmds@appendto\mathoptions@on\@@magyar@onmathstart\fi
   }
 
   % The definition of \@tabular contains a $, which calls
@@ -4633,7 +4719,22 @@
     \def\slash{\nobreak/\nobreak}% only in math-mode start, \nobreak
     % ^^^ Dat: \slash is fragile in latex.ltx
   }
-  \AtBeginDocument{\@@magyar@fixmathcmds\@@magyar@fixeverymathcmds@setup}
+
+  % This fixes \url defined in url.sty, by making \@@magyar@onmathstart a no-op
+  % with a URL. This is important because \url defines its own math mode with
+  % its own \mathcode and \catcode values, and we don't want mathbrk=fix clash
+  % with that.
+  \def\@@magyar@mathfixurl{%
+    \ifx\Url\@undefined\else
+      % Prepend \let\@@magyar@onmathstart\@empty to \Url.
+      \expandafter\def\expandafter\Url\expandafter{%
+        \expandafter\let\expandafter\@@magyar@onmathstart\expandafter\@empty
+        \Url}%
+    \fi
+  }%
+
+  \AtBeginDocument{%
+     \@@magyar@mathfixurl\@@magyar@fixmathcmds\@@magyar@fixeverymathcmds@setup}
   \@gobble
 {^}
 
@@ -4661,7 +4762,7 @@
   %** Inspired by Donald Aresenau
   %** @param #1 the
   %** @param #2 character
-  %** @example The sample in your article would be typed 
+  %** @example The sample in your article would be typed
   %**   \[  F_{i}(x,y) = y^i + 1,3x \qquad x,y \in A,\ i = 1, 2, 3,\ldots \]
   \edef\@@magyar@hucomma@lowa#1#2 #3#4 #5#6\hfuzz{%
     \noexpand\ifnum9<1#5 \noexpand\if#1t\noexpand\if#3c%
@@ -4688,7 +4789,6 @@
 
 % --- mathmuskips=
 
-% 
 \if1\magyar@opt@@mathmuskips% =latex, as defined in latex.ltx
   \thickmuskip 5mu plus 5mu
   \medmuskip   4mu plus 2mu minus 4mu
@@ -5439,7 +5539,7 @@
 
 
 % vvv cjhebrewfix= % by pts@fazekas.hu at Tue Apr 19 18:26:54 CEST 2005
-%     thanks to Zolt·n Hamar for reporting the problem
+%     thanks to Zolt√°n Hamar for reporting the problem
 % Dat: the ultimate solution is active=onlycs, but it limits other
 %      functionality
 % Dat: use \def\h{\cjRL} in the preamble to abbreviate \cjRL
@@ -5456,8 +5556,8 @@
 %      Solution #2: (won't convert any heading to uppercase)
 %        % change the definition of \ps@headings, remove \MakeUppercase
 %        \makeatletter \def\ps@headings{%
-%          \let\@oddfoot\@empty \let\@mkboth\markboth  
-%          \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%  
+%          \let\@oddfoot\@empty \let\@mkboth\markboth
+%          \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
 %          \def\sectionmark##1{\markright {\iffalse\MakeUppercase\fi{%
 %            \ifnum \c@secnumdepth >\m@ne \thesection\quad \fi##1}}}}
 \if0\magyar@opt@@cjhebrewfix \@@magyar@skiplong\fi
@@ -5511,7 +5611,7 @@
 \if0\magyar@opt@@varioref \@@magyar@skiplong\fi
 \expandafter\addto\csname extras\CurrentOption\endcsname{%
   \@@magyar@setup@varioref} % Dat: we are we late enough so we override varioref.sty
-% vvv don't apply changes if varioref.sty wasn't loaded 
+% vvv Don't apply changes if varioref.sty wasn't loaded.
 \AtBeginDocument{\expandafter\ifx\csname vpagerefrange\endcsname\relax
   \let\@@magyar@setup@varioref\@empty\fi}
 \def\@@magyar@setup@varioref{% Dat: must be a separate macro for suggestions= not to find our \reftextfaceafter etc.
@@ -5619,7 +5719,7 @@
 
 % !! doc: (\string!)
 % !! doc: \umlautlow is much more important in OT1 cmr fonts than in T1
-% !! %** @example ÈrtelmezÈs\/be·llÌt·s
+% !! %** @example √©rtelmez√©s\/be√°ll√≠t√°s
 %    \def\per{/\penalty\exhyphenpenalty\hskip\z@skip}
 % !! \itemize identation
 % !! layout.sty
@@ -5639,19 +5739,19 @@
 %  % ^^^ \def`{\abbreviation}, but with active `
 %  \@@magyar@saved@mathoptions@on
 %}
-% !! doc: hegyes`-szˆg˚
+% !! doc: hegyes`-sz√∂g√ª
 % !! option to detect new magyar.ldf from a TeX file
-% !! book.cls \appendix \chapter, sub-numbers into TOC, need dot after `A. f¸ggelÈk'? Gyurgy·k recommends `1. f¸ggelÈk'.
+% !! book.cls \appendix \chapter, sub-numbers into TOC, need dot after `A. f√ºggel√©k'? Gyurgy√°k recommends `1. f√ºggel√©k'.
 % !! \MathReal, frenchb.ldf, \nombre
 % !! \told\ref{foo}+ban{}, if \foo expands to empty (no \section etc. in .tex file)
 % !! french.ldf number decimal comma etc.
 % !! \hunnewlabel should store `table', `figure', `section', `equation' etc.
 % !! letter.cls
 % !! should \newlabel emit a `.' ? (now doesn't) -- compatibility
-%    `\aref{ekezetek}.\ t·bl·zat' needs explicit `.'
+%    `\aref{ekezetek}.\ t√°bl√°zat' needs explicit `.'
 % !! alternative solutions for meny-nyi (possibly defining ligatures?)
 % !! baseline grid?
-% !! BujdosÛ`--Wettl: http://www.math.bme.hu/~wettl/plcv/pdf/BWfinal.pdf
+% !! Bujdos√≥`--Wettl: http://www.math.bme.hu/~wettl/plcv/pdf/BWfinal.pdf
 % !!   some comments not related to magyar.ldf, but to *hyph.tex etc.
 % !!   add their postpara symbols
 % !!   section title sizes
@@ -5690,7 +5790,7 @@
 % !! tmagyar.tex \tableofcontents wide \section
 % !! \restoreparindent in \item in \itemize
 %    \edef\restoreparindent{\parindent\the\parindent\relax} in \@listi
-% !! 1848 m·rcius+·nak kˆzepe
+% !! 1848 m√°rcius+√°nak k√∂zepe
 % !! should \told insert \, ?? (no, only \told*??)
 % !! \told45{-ed-hez} ??
 % !! \told{45}-ed-hez ??
@@ -5707,15 +5807,15 @@
 % !! hyperref.sty bugfix when turning hyperref.sty on, \ref is spoiled:
 %    w/ or w/o magyar.ldf
 %    ! Argument of \@fifthoffive has an extra }.
-%    <inserted text> 
-%                    \par 
+%    <inserted text>
+%                    \par
 %    l.48 Ld. \ref{tab}
-% !! >    KiprÛb·ltam, s tÈnyleg pontosan ugyanaz a f·jl magyar.ldf (texmf f·ban) Ès
-%    > magyar-0510.ldf (aktu·lis kˆnyvt·rban) nÈven m·s eredmÈnyt ad.
+% !! >    Kipr√≥b√°ltam, s t√©nyleg pontosan ugyanaz a f√°jl magyar.ldf (texmf f√°ban) √©s
+%    > magyar-0510.ldf (aktu√°lis k√∂nyvt√°rban) n√©ven m√°s eredm√©nyt ad.
 %    (cjhebrew)
 % !! a4wide.sty doesn't compile
 %    \documentclass[12pt,a4paper]{article}
-%    \usepackage{t1enc}                   
+%    \usepackage{t1enc}
 %    \usepackage{times}% Imp: math mode
 %    \usepackage[magyar]{babel}
 %    \usepackage{graphicx}
@@ -5729,19 +5829,19 @@
 % !! doc: `- not suitable in .bib files etc.
 % !! \cite{foo,bar} -> `[2, 1]' increasing order preferred
 % Imp: indent using the maximum footnotemark *** count on the current page
-% Imp: generate ,,harminch·rombÛl'' by \told{\@huordinal{33}}+bol etc.
+% Imp: generate ,,harminch√°romb√≥l'' by \told{\@huordinal{33}}+bol etc.
 %
-% Dat: \mathcode`\,="013B     % Ès Ìgy a tizedes tˆrtekben matematikai mÛdban sem lesz kˆz
-% Dat:  \mathchardef\comma="613B  % a veszı (,) ami matematikai mÛdban elv·lasztÛ karakterkÈnt haszn·lhatÛ
+% Dat: \mathcode`\,="013B     % √©s √≠gy a tizedes t√∂rtekben matematikai m√≥dban sem lesz k√∂z
+% Dat:  \mathchardef\comma="613B  % a vesz√µ (,) ami matematikai m√≥dban elv√°laszt√≥ karakterk√©nt haszn√°lhat√≥
 % Dat: additive \PassOptionsToPackage{foo=bar}{magyar.ldf}
 % Dat: for book.cls and article.cls: the user has to run \pagestyle{headings} after \selectlanguage{magyar} -- for performance reasons
-% Dat: doc: \let\@@magyar@setup@psheadings\relax maybe needed in the preamble 
+% Dat: doc: \let\@@magyar@setup@psheadings\relax maybe needed in the preamble
 % Dat: \pagestyle{headings} is forced \AtBeginDocument -- user should change it later
 % Dat: babel.def assumes we have: \textquotedblright \textquoteright \ll \gg
 %      < >
 % Dat: babel.def defines for OT1 and others: \quotedblbase \quotesinglbase
 %      \guillemotleft \guillemotright \guilsinglleft \guilsinglright \ij \IJ
-%      \dj \DJ \SS 
+%      \dj \DJ \SS
 % Dat: babel.def defines the following robust commands in math and text modes:
 %      \glq \grq \glqq \grqq \flq \frq \flqq \frqq
 % Dat: OT1 encoding respects accents=low (\umlauthigh and \umlautlow), but T1
@@ -5759,17 +5859,17 @@
 %      \usepackage[hungarian,magyar]{babel}
 % Dat: argument of \az and \told may not contain \if..., \else and \fi
 % OK: works with article.cls: (mathbrk=fix)
-%    \noindent Ès ebbıl a tov·bbi h·rom rÈsz ter¸lete
+%    \noindent √©s ebb√µl a tov√°bbi h√°rom r√©sz ter√ºlete
 %    $\displaystyle{1\over3}-{1\over 4}={1\over 12}$,
-%    $\displaystyle{1\over 2}-{1\over 4}={1\over 4}$ Ès
+%    $\displaystyle{1\over 2}-{1\over 4}={1\over 4}$ √©s
 %    $\displaystyle{1\over 4}+\bigg({1\over 2}-{1\over 3}\bigg)={1\over 4}+{1\over 6}}=\displaystyle{5\over 12}$
-%    ter¸letegysÈg. 
+%    ter√ºletegys√©g.
 % OK: doc in magyarldf-doc.tex: enumeration in math, see $a,\ b$ in nath.sty
 % OK: mathbrk=fix +\\+ (all binary ops and relations) in math, \nobreak\cdot, \nobreak\slash
 % OK: footnote text indented, asterisks on pages
-% OK: Kiss Elıd\nobreak\,\nobreak--\,Nagy P·l ...
+% OK: Kiss El√µd\nobreak\,\nobreak--\,Nagy P√°l ...
 % OK: \partname in book.cls (seems to work now)
-% OK: Elsı rÈsz
+% OK: Els√µ r√©sz
 % OK: smartly disable active chars in preamble
 % OK: \@inpenc@undefined defined and != latin2 => recommend \usepackage[latin2]{inputenc}
 % OK: \encodingdefault != T1 => recommend \usepackage{t1enc}
@@ -5781,17 +5881,17 @@
 % OK: compatibility with latex.ltx, theorem.sty, ntheorem.sty, amsthm.sty
 % OK: \PackageWarning if \magyarOptions defined too late
 % OK: like frenchb.ldf \declare@shorthand{french}{;}{
-% OK: \told\ref{hellopart}+es{} rÈszt olvasd el.
+% OK: \told\ref{hellopart}+es{} r√©szt olvasd el.
 % OK: \told appends suffixes to numbers
 % OK: activeacute, activegrave babel options
 % OK: even more parts made conditional
 % OK: \@hunumeral \@huordinal \@Hunumeral \@Huordinal
-% OK: negative numbers \told-5-nek, `mÌnusz kettedik' etc.
+% OK: negative numbers \told-5-nek, `m√≠nusz kettedik' etc.
 % OK: magyar.ldf defaults=hu-min (mathbrk=define) $x+116=\break x-97$ adds space only to BOL; added \nobreak before \discretionary -- and the problem was solved
 % OK: fixed. varioref.sty (2001/09/04 v1.3c) mustn't be loaded with option
 %     [magyar], because that option contains a stupid \AtBeginDocument hook
 %     added to \extrasmagyar
-% OK: BujdosÛ`--Wettl: add their {itemize} symbols and {enumerate} styles
+% OK: Bujdos√≥`--Wettl: add their {itemize} symbols and {enumerate} styles
 % OK: spacing around excl. marks in math mode  ! closing(5) -> punct(6)
 %     better solution (found in nath.sty): \def!{\mathchar20513\relax\mathopen{}\mathinner{}},
 %     because it doesn't need braces
