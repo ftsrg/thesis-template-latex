@@ -1,0 +1,31 @@
+name: Compile and deploy LaTeX document
+
+on: [push, pull_request]
+
+jobs:
+  compile_document:
+    runs-on: ubuntu-latest
+    name: Compile document
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build PDFs with the LaTeX engine in Docker
+      uses: ftsrg/document-converter-actions@master
+      with:
+        makefile-arguments: -C src test
+    - name: Compile deploy package
+      run: |
+        OUT_DIR=out/
+        mkdir -p $OUT_DIR
+        {
+          echo '- [`[XeLaTeX HU]`](thesis-xelatex-hu.pdf) | [`[PDFLaTeX HU]`](thesis-pdflatex-hu.pdf) | [`[LuaLaTeX HU]`](thesis-lualatex-hu.pdf)'
+          echo '- [`[XeLaTeX EN]`](thesis-xelatex-en.pdf) | [`[PDFLaTeX EN]`](thesis-pdflatex-en.pdf) | [`[LuaLaTeX EN]`](thesis-lualatex-en.pdf)'
+          echo '- [`[XeLaTeX Duplex]`](thesis-xelatex-duplex.pdf) | [`[PDFLaTeX Duplex]`](thesis-pdflatex-duplex.pdf) | [`[LuaLaTeX Duplex]`](thesis-lualatex-duplex.pdf)'
+          echo "- Commit: [$GITHUB_SHA](https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA)"
+        } > $OUT_DIR/README.md
+        cp pdf/*.pdf $OUT_DIR
+    - name: Deploy site and PDFs
+      uses: maxheld83/ghpages@68f783a4f5313d776c1599e18479607e71c9c738  # v0.3.0
+      env:
+        BUILD_DIR: out
+        GH_PAT: x-access-token:${{ secrets.GITHUB_TOKEN }}
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
