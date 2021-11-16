@@ -11,6 +11,7 @@ jobs:
     - name: Build PDFs with the LaTeX engine in Docker
       uses: ftsrg/document-converter-actions@master
       with:
+        # run Makefile target `test` from the `src` LaTeX source folder
         makefile-arguments: -C src test
     - name: Compile deploy package
       run: |
@@ -22,6 +23,7 @@ jobs:
           echo '- [`[XeLaTeX Duplex]`](thesis-xelatex-duplex.pdf) | [`[PDFLaTeX Duplex]`](thesis-pdflatex-duplex.pdf) | [`[LuaLaTeX Duplex]`](thesis-lualatex-duplex.pdf)'
           echo "- Commit: [$GITHUB_SHA](https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA)"
         } > $OUT_DIR/README.md
+        # copy PDF outputs from `pdf` folder
         cp pdf/*.pdf $OUT_DIR
     - name: Deploy site and PDFs
       uses: maxheld83/ghpages@68f783a4f5313d776c1599e18479607e71c9c738  # v0.3.0
